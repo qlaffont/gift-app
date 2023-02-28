@@ -40,3 +40,4 @@ yarn-error.log*
 .eslintcache
 dist
 services/apis/gql/generated/graphql.ts
+prisma/client
