@@ -1,0 +1,105 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch"]
+  output          = "../prisma/client"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model User {
+  id String @id @default(uuid())
+
+  email    String
+  name     String
+  description String?
+
+  discordUserId String?  @unique
+  googleUserId String? @unique
+
+  tokens Token[]
+  giftLists GiftList[]
+  giftsTaken Gift[]
+  giftListUserAccesses GiftListUserAccess[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Token {
+  id           String @id @default(uuid())
+  refreshToken String
+  accessToken  String
+
+  owner   User   @relation(fields: [ownerId], references: [id])
+  ownerId String
+
+  createdAt DateTime @default(now())
+
+  @@index([ownerId])
+}
+
+enum GiftListAccess {
+  PASSWORD_PROTECTED
+  EMAIL
+  PUBLIC
+}
+
+model GiftList {
+  id String @id @default(uuid())
+
+  name    String
+  description String?
+  resetTakenWhen     DateTime?
+  access GiftListAccess
+  password String?
+
+  owner   User   @relation(fields: [ownerId], references: [id])
+  ownerId String
+
+  gifts Gift[]
+  giftListUserAccesses GiftListUserAccess[]
+
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([ownerId])
+}
+
+model GiftListUserAccess {
+
+  owner   User   @relation(fields: [ownerId], references: [id])
+  ownerId String
+
+
+  giftList   GiftList   @relation(fields: [giftListId], references: [id])
+  giftListId String
+
+  @@unique([ownerId, giftListId])
+  @@index([giftListId, ownerId])
+}
+
+model Gift {
+  id String @id @default(uuid())
+
+  name    String
+  description String?
+  link String?
+
+  takenBy   User?   @relation(fields: [takenById], references: [id])
+  takenById String?
+  takenWhen DateTime?
+
+  giftList   GiftList   @relation(fields: [giftListId], references: [id])
+  giftListId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([giftListId])
+  @@index([takenById])
+}

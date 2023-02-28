@@ -8,10 +8,13 @@
     "start": "next start",
     "lint": "npx tsc --noEmit && next lint --fix",
     "prepare": "husky install",
-    "generate": "eval $(egrep -v '^#' .env | xargs) graphql-codegen --config codegen.yml",
-    "dev:generate": "eval $(egrep -v '^#' .env | xargs) graphql-codegen --config codegen.yml --watch",
     "generate-vercel": "graphql-codegen --config codegen.yml",
-    "update-template": "update-template https://github.com/flexper/starter-web"
+    "update-template": "update-template https://github.com/flexper/starter-web",
+    "generate": "prisma generate",
+    "migration:up": "prisma migrate deploy",
+    "migration:make": "prisma db push",
+    "migration:reset": "prisma migrate reset",
+    "postinstall": "prisma generate"
   },
   "lint-staged": {
     "*.{ts,tsx}": "eslint --fix"
@@ -19,6 +22,7 @@
   "dependencies": {
     "@headlessui/react": "1.7.12",
     "@hookform/resolvers": "2.9.11",
+    "@prisma/client": "^4.10.1",
     "@tailwindcss/forms": "0.5.3",
     "@tanstack/react-query": "4.24.10",
     "@tanstack/react-query-devtools": "4.24.12",
@@ -28,6 +32,7 @@
     "next": "13.2.1",
     "next-protected-auth": "2.0.93",
     "next-seo": "5.15.0",
+    "prisma": "^4.10.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "7.43.2",
