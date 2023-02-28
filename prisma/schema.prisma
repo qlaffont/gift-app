@@ -13,16 +13,16 @@ datasource db {
 model User {
   id String @id @default(uuid())
 
-  email    String
-  name     String
+  email       String
+  name        String
   description String?
 
-  discordUserId String?  @unique
-  googleUserId String? @unique
+  discordUserId String? @unique
+  googleUserId  String? @unique
 
-  tokens Token[]
-  giftLists GiftList[]
-  giftsTaken Gift[]
+  tokens               Token[]
+  giftLists            GiftList[]
+  giftsTaken           Gift[]
   giftListUserAccesses GiftListUserAccess[]
 
   createdAt DateTime @default(now())
@@ -51,18 +51,17 @@ enum GiftListAccess {
 model GiftList {
   id String @id @default(uuid())
 
-  name    String
-  description String?
-  resetTakenWhen     DateTime?
-  access GiftListAccess
-  password String?
+  name           String
+  description    String?
+  resetTakenWhen DateTime?
+  access         GiftListAccess
+  password       String?
 
   owner   User   @relation(fields: [ownerId], references: [id])
   ownerId String
 
-  gifts Gift[]
+  gifts                Gift[]
   giftListUserAccesses GiftListUserAccess[]
-
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -71,12 +70,10 @@ model GiftList {
 }
 
 model GiftListUserAccess {
-
   owner   User   @relation(fields: [ownerId], references: [id])
   ownerId String
 
-
-  giftList   GiftList   @relation(fields: [giftListId], references: [id])
+  giftList   GiftList @relation(fields: [giftListId], references: [id])
   giftListId String
 
   @@unique([ownerId, giftListId])
@@ -86,15 +83,15 @@ model GiftListUserAccess {
 model Gift {
   id String @id @default(uuid())
 
-  name    String
+  name        String
   description String?
-  link String?
+  link        String?
 
-  takenBy   User?   @relation(fields: [takenById], references: [id])
+  takenBy   User?     @relation(fields: [takenById], references: [id])
   takenById String?
   takenWhen DateTime?
 
-  giftList   GiftList   @relation(fields: [giftListId], references: [id])
+  giftList   GiftList @relation(fields: [giftListId], references: [id])
   giftListId String
 
   createdAt DateTime @default(now())
