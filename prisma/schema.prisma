@@ -1,7 +1,6 @@
 generator client {
   provider        = "prisma-client-js"
   previewFeatures = ["fullTextSearch"]
-  output          = "../prisma/client"
 }
 
 datasource db {
@@ -90,6 +89,8 @@ model Gift {
   takenBy   User?     @relation(fields: [takenById], references: [id])
   takenById String?
   takenWhen DateTime?
+  priority Int @default(0)
+  order Int @default(0)
 
   giftList   GiftList @relation(fields: [giftListId], references: [id])
   giftListId String
