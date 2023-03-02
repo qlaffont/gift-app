@@ -3,8 +3,9 @@ import jwt from 'jsonwebtoken';
 import { NextkitError } from 'nextkit';
 
 import { api } from '../../../server';
-import { saveRefresh } from '../../../services/apis/authUser';
+import { getAuthMethod, saveRefresh } from '../../../services/apis/authUser';
 import oAuthDiscord from '../../../services/auth/Discord';
+import oAuthGoogle from '../../../services/auth/Google';
 import prisma from '../../../services/prisma';
 
 export default api({
@@ -19,27 +20,82 @@ export default api({
         },
       );
 
-      const oAuthDiscordService = new oAuthDiscord();
+      const method = getAuthMethod(req, res);
 
-      const { access_token } = await oAuthDiscordService.fetchUserToken(req.query.code as string);
+      if (!method || ['google', 'discord'].indexOf(method) === -1) {
+        throw new Error('NotImplemented');
+      }
 
-      const { username, email, id } = await oAuthDiscordService.fetchUserInfo(access_token);
+      let user;
 
-      // Check if user already exist
-      const user = await prisma.user.findFirst({
-        where: {
-          discordUserId: id,
-        },
-      });
+      if (method === 'google') {
+        const oAuthGoogleService = new oAuthGoogle();
+        const { name, email, id } = await oAuthGoogleService.fetchUser(req.query.code as string);
 
-      if (!user) {
-        await prisma.user.create({
-          data: {
-            discordUserId: id,
-            email,
-            name: `${username}`,
+        // Check if user already exist
+        user = await prisma.user.findFirst({
+          where: {
+            OR: [{ googleUserId: id }, { email }],
           },
         });
+
+        if (!user) {
+          await prisma.user.create({
+            data: {
+              googleUserId: id,
+              email,
+              name,
+            },
+          });
+        } else {
+          await prisma.user.update({
+            where: {
+              id: user.id,
+            },
+            data: {
+              googleUserId: id,
+            },
+          });
+        }
+      }
+
+      if (method === 'discord') {
+        const oAuthDiscordService = new oAuthDiscord();
+
+        const { access_token } = await oAuthDiscordService.fetchUserToken(req.query.code as string);
+
+        const { username, email, id } = await oAuthDiscordService.fetchUserInfo(access_token);
+
+        // Check if user already exist
+        user = await prisma.user.findFirst({
+          where: {
+            OR: [
+              {
+                discordUserId: id,
+              },
+              { email },
+            ],
+          },
+        });
+
+        if (!user) {
+          await prisma.user.create({
+            data: {
+              discordUserId: id,
+              email,
+              name: `${username}`,
+            },
+          });
+        } else {
+          await prisma.user.update({
+            where: {
+              id: user.id,
+            },
+            data: {
+              discordUserId: id,
+            },
+          });
+        }
       }
 
       const accessToken = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {

@@ -83,3 +83,25 @@ export const getRefresh = async (req: NextApiRequest, res: NextApiResponse) => {
 
   return refresh;
 };
+
+export const saveAuthMethod = (method: string, req: NextApiRequest, res: NextApiResponse) => {
+  setCookie('auth-method', method, {
+    req,
+    res,
+    httpOnly: true,
+  });
+};
+
+export const getAuthMethod = (req: NextApiRequest, res: NextApiResponse) => {
+  const method = getCookie('auth-method', {
+    req,
+    res,
+    httpOnly: true,
+  }) as string;
+
+  if (!method || method.length === 0) {
+    throw new NextkitError(401, 'Forbidden');
+  }
+
+  return method;
+};
