@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "_id": "db106e7b-b0b3-4e9c-87bf-ef9de7eb269e",
+    "colName": "Auth",
+    "created": "2023-03-02T06:17:16.766Z",
+    "sortNum": 10000,
+    "folders": []
+  }
+]

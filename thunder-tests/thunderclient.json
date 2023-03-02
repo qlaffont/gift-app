@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "_id": "7f001fe7-df4a-485b-a2de-1f0a0232208c",
+    "colId": "db106e7b-b0b3-4e9c-87bf-ef9de7eb269e",
+    "containerId": "",
+    "name": "Get User Me",
+    "url": "http://localhost:3100/api/auth/me",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2023-03-02T06:17:25.450Z",
+    "modified": "2023-03-02T06:18:01.516Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZjNzIzZjAzLTI1MWUtNGZiNC1iMmY5LTJjNzRmMmY4NDRiOCIsImlhdCI6MTY3NzczNzA4MywiZXhwIjoxNjc3ODIzNDgzfQ.87w7yXep1v3UZYCkWh2eqhNnVG8XxgpkE48tNBU7B9E"
+    },
+    "tests": []
+  }
+]
