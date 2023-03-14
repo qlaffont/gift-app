@@ -1,7 +1,11 @@
 import enDict from './en';
 
 const lng: typeof enDict = {
-  navbar: {},
+  navbar: {
+    login: "S'inscrire/Se connecter",
+    logout: 'Se déconnecter',
+    profile: 'Mon profil ({{username}})',
+  },
   components: {
     form: {
       save: 'Envoyer',
@@ -33,6 +37,13 @@ const lng: typeof enDict = {
   pages: {
     home: {
       hello: 'Bienvenue tout le monde !',
+    },
+    auth: {
+      login: {
+        title: 'Connexion',
+        google: 'Connectez-vous avec Google',
+        discord: 'Connectez-vous avec Discord',
+      },
     },
   },
 };
