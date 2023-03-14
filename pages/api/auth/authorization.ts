@@ -116,7 +116,7 @@ export default api({
 
       await saveRefresh(refreshToken, req, res);
 
-      res.redirect('/auth?token=' + accessToken);
+      res.redirect('/auth?accessToken=' + accessToken);
     } catch (error) {
       throw new NextkitError(400, 'Impossible to login. Try Again !');
     }

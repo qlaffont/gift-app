@@ -48,7 +48,7 @@ const Modal: FC<{
             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
-            <div className="z-10 m-auto inline-block w-full max-w-xl transform rounded-lg text-left align-middle shadow-xl transition-all dark:bg-zinc-900">
+            <div className="z-10 m-auto inline-block w-full max-w-xl transform rounded-lg bg-white text-left align-middle shadow-xl transition-all dark:bg-zinc-900">
               {/* eslint-disable-next-line react/no-unknown-property */}
               <div className="h-max overflow-auto py-6 px-2 md:px-10" modal-content="true">
                 <div className="mb-5 flex justify-between">
@@ -62,7 +62,9 @@ const Modal: FC<{
                     ></i>
                   </span>
                   <div>
-                    <Dialog.Title className="text-2xl font-bold text-white line-clamp-1">{title}</Dialog.Title>
+                    <Dialog.Title className="text-2xl font-bold text-black line-clamp-1 dark:text-white">
+                      {title}
+                    </Dialog.Title>
                   </div>
                   <div>
                     {onClose && (

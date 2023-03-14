@@ -1,4 +1,7 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import { useSsr } from 'usehooks-ts';
 
 import { Button } from '../../components/atoms/Button';
 import Modal from '../../components/atoms/Modal';
@@ -7,6 +10,14 @@ import RestAPIService from '../../services/apis/RestAPIService';
 
 const Login = () => {
   const { t } = useI18n();
+  const { isBrowser } = useSsr();
+  const { query } = useRouter();
+
+  useEffect(() => {
+    if (query.redirectURL && isBrowser) {
+      window.localStorage.setItem('redirectURL', JSON.stringify(query.redirectURL));
+    }
+  }, [query, isBrowser]);
 
   return (
     <Modal isOpen={true} title={t('pages.auth.login.title')}>

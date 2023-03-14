@@ -19,7 +19,6 @@ import { useI18n, useI18nSEO } from '../i18n/useI18n';
 // import { useGetUserMeQuery } from '../services/apis/gql/generated/graphql';
 import { reactQueryClient } from '../services/apis/react-query/reactQueryClient';
 import RestAPIService from '../services/apis/RestAPIService';
-import { useDark } from '../services/useDark';
 
 const rosettyLocales = {
   fr: { dict: frDict, locale: locales.fr },
@@ -59,6 +58,7 @@ const ExtendedApp = ({ Component, pageProps }) => {
     publicURLs: ['/'],
     loginURL: '/auth/login',
     authCallbackURL: '/auth',
+    allowNotFound: true,
     renewTokenFct: async (oldAccessToken) => {
       if (!oldAccessToken) {
         throw 'not connected';
@@ -74,8 +74,6 @@ const ExtendedApp = ({ Component, pageProps }) => {
 
   // const { data: connectedUser } = useGetUserMeQuery(undefined, { enabled: isConnected });
 
-  useDark();
-
   // useEffect(() => {
   //   if (connectedUser) {
   //     changeLang(connectedUser.getUserMe.lang.toLowerCase());
@@ -83,7 +81,7 @@ const ExtendedApp = ({ Component, pageProps }) => {
   // }, [connectedUser, changeLang]);
 
   return (
-    <>
+    <div className="h-screen w-screen overflow-auto bg-white text-black dark:bg-zinc-900 dark:text-white ">
       <Layout>
         <Component {...pageProps} />
         {isDevelopmentEnv() && <ReactQueryDevtools initialIsOpen={false} />}
@@ -106,7 +104,7 @@ const ExtendedApp = ({ Component, pageProps }) => {
           </Transition>
         )}
       </Toaster>
-    </>
+    </div>
   );
 };
 

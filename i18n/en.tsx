@@ -1,5 +1,9 @@
 const lng = {
-  navbar: {},
+  navbar: {
+    login: 'Signup/Login',
+    logout: 'Logout',
+    profile: 'My Profile ({{username}})',
+  },
   components: {
     form: {
       save: 'Send',
