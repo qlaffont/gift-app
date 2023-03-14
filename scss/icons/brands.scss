@@ -2,7 +2,7 @@
   mask-size: 100% !important;
   mask-repeat: no-repeat !important;
 
-  $icons: "discord", "google";
+  $icons: "discord", "google", 'logo';
 
 
   @each $icon in $icons {

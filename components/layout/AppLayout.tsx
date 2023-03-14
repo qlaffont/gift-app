@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useNextAuthProtected } from 'next-protected-auth';
+import { useSsr } from 'usehooks-ts';
 
 import { useI18n } from '../../i18n/useI18n';
 import { useDark } from '../../services/useDark';
@@ -8,10 +9,13 @@ import { useUser } from '../../services/useUser';
 
 const DarkModeToggler = () => {
   const { isDarkMode, toggle } = useDark();
+  const { isBrowser } = useSsr();
 
   return (
     <button className=" rounded-full p-1" onClick={() => toggle()}>
-      <i className={`icon icon-${isDarkMode ? 'sun' : 'moon'} mb-1 block h-4 w-4 bg-black dark:bg-white`}></i>
+      <i
+        className={`icon icon-${isDarkMode && isBrowser ? 'sun' : 'moon'} mb-1 block h-4 w-4 bg-black dark:bg-white`}
+      ></i>
     </button>
   );
 };
@@ -25,8 +29,10 @@ export const AppLayout = ({ children }: React.PropsWithChildren) => {
   return (
     <div>
       <div className="w-full py-6 shadow-2xl">
-        <div className="container m-auto flex flex-wrap justify-between px-4">
-          <div>Gift App</div>
+        <div className="container m-auto flex flex-wrap justify-between gap-4 px-4">
+          <div>
+            <i className="brand icon-logo block h-6 w-36 bg-black dark:bg-white"></i>
+          </div>
 
           {isConnected ? (
             <div className="flex flex-wrap items-center gap-2 ">
@@ -73,7 +79,7 @@ export const AppLayout = ({ children }: React.PropsWithChildren) => {
         </div>
       </div>
 
-      <div className="container m-auto pt-4">{children}</div>
+      <div className="container m-auto px-4 pt-4">{children}</div>
     </div>
   );
 };
