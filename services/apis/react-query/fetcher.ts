@@ -8,7 +8,7 @@ export const fetcher = ({
   body,
   url = '',
 }: {
-  method: 'GET' | 'POST' | 'PUT' | 'DELETE';
+  method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
   headers?: HeadersInit;
   body?: BodyInit | null;
   url?: string;
@@ -19,6 +19,8 @@ export const fetcher = ({
     if (getAccessToken()) {
       allHeaders.Authorization = `Bearer ${getAccessToken()}`;
     }
+
+    allHeaders['Content-Type'] = `application/json`;
 
     if (headers) {
       //@ts-ignore

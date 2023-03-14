@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import '../scss/app.scss';
 
 import { Transition } from '@headlessui/react';
@@ -7,7 +6,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { isDevelopmentEnv } from 'env-vars-validator';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import { NextAuthProvider, useNextAuthProtected, useNextAuthProtectedHandler } from 'next-protected-auth';
+import { NextAuthProvider, useNextAuthProtectedHandler } from 'next-protected-auth';
 import { useEffect } from 'react';
 import { resolveValue, Toaster, ToastIcon } from 'react-hot-toast';
 import { locales, RosettyProvider } from 'rosetty-react';
@@ -16,9 +15,9 @@ import { AppLayout } from '../components/layout/AppLayout';
 import enDict from '../i18n/en';
 import frDict from '../i18n/fr';
 import { useI18n, useI18nSEO } from '../i18n/useI18n';
-// import { useGetUserMeQuery } from '../services/apis/gql/generated/graphql';
 import { reactQueryClient } from '../services/apis/react-query/reactQueryClient';
 import RestAPIService from '../services/apis/RestAPIService';
+import { useUser } from '../services/useUser';
 
 const rosettyLocales = {
   fr: { dict: frDict, locale: locales.fr },
@@ -70,15 +69,13 @@ const ExtendedApp = ({ Component, pageProps }) => {
     },
   });
 
-  const { isConnected } = useNextAuthProtected();
+  const user = useUser();
 
-  // const { data: connectedUser } = useGetUserMeQuery(undefined, { enabled: isConnected });
-
-  // useEffect(() => {
-  //   if (connectedUser) {
-  //     changeLang(connectedUser.getUserMe.lang.toLowerCase());
-  //   }
-  // }, [connectedUser, changeLang]);
+  useEffect(() => {
+    if (user) {
+      changeLang(user?.lang?.toLowerCase() || 'en');
+    }
+  }, [user, changeLang]);
 
   return (
     <div className="h-screen w-screen overflow-auto bg-white text-black dark:bg-zinc-900 dark:text-white ">

@@ -9,6 +9,11 @@ datasource db {
   relationMode = "prisma"
 }
 
+enum Language {
+  EN
+  FR
+}
+
 model User {
   id String @id @default(uuid())
 
@@ -18,6 +23,8 @@ model User {
 
   discordUserId String? @unique
   googleUserId  String? @unique
+
+  lang Language @default(EN)
 
   tokens               Token[]
   giftLists            GiftList[]

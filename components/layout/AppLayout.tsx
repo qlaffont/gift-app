@@ -1,9 +1,12 @@
+import { Language } from '@prisma/client';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useNextAuthProtected } from 'next-protected-auth';
 import { useSsr } from 'usehooks-ts';
 
 import { useI18n } from '../../i18n/useI18n';
+import { useUpdateUserLangMutation } from '../../services/apis/react-query/mutations/useUpdateUserLangMutation';
+import { useInvalidateQueries } from '../../services/apis/react-query/useInvalidateQueries';
 import { useDark } from '../../services/useDark';
 import { useUser } from '../../services/useUser';
 
@@ -12,10 +15,37 @@ const DarkModeToggler = () => {
   const { isBrowser } = useSsr();
 
   return (
-    <button className=" rounded-full p-1" onClick={() => toggle()}>
-      <i
-        className={`icon icon-${isDarkMode && isBrowser ? 'sun' : 'moon'} mb-1 block h-4 w-4 bg-black dark:bg-white`}
-      ></i>
+    <button
+      className="mb-1 flex h-8 w-8 items-center justify-center rounded-full bg-black !bg-opacity-20 p-2 hover:opacity-70 dark:bg-white"
+      onClick={() => toggle()}
+    >
+      <i className={`icon icon-${isDarkMode && isBrowser ? 'sun' : 'moon'} block h-4 w-4 bg-black dark:bg-white`}></i>
+    </button>
+  );
+};
+
+const LangToggler = () => {
+  const { actualLang, changeLang } = useI18n();
+  const { isConnected } = useNextAuthProtected();
+  const invalidateQueries = useInvalidateQueries();
+  const { mutate } = useUpdateUserLangMutation({
+    onSuccess: () => {
+      invalidateQueries(['getUserMe']);
+    },
+  });
+
+  return (
+    <button
+      className="mb-1 flex h-8 w-8 items-center justify-center rounded-full bg-black !bg-opacity-20 p-2 hover:opacity-70 dark:bg-white"
+      onClick={() => {
+        if (isConnected) {
+          mutate({ lang: actualLang === 'fr' ? Language.EN : Language.FR });
+        } else {
+          changeLang((actualLang === 'fr' ? Language.EN : Language.FR).toLowerCase());
+        }
+      }}
+    >
+      <i className={`icon bg-${actualLang !== 'fr' ? 'fr' : 'en'} block h-2 w-4 bg-black dark:bg-white`}></i>
     </button>
   );
 };
@@ -37,6 +67,8 @@ export const AppLayout = ({ children }: React.PropsWithChildren) => {
           {isConnected ? (
             <div className="flex flex-wrap items-center gap-2 ">
               <DarkModeToggler />
+
+              <LangToggler />
 
               <Link href={`/${user?.name}/${user?.id}`}>
                 <div className="flex items-center gap-1 hover:opacity-70">
@@ -64,6 +96,8 @@ export const AppLayout = ({ children }: React.PropsWithChildren) => {
             <div className="flex flex-wrap items-center gap-2 ">
               <DarkModeToggler />
 
+              <LangToggler />
+
               <Link href={`/auth/login?redirectURL=${asPath}`}>
                 <div className="flex items-center gap-1 hover:opacity-70">
                   <div>
@@ -79,7 +113,7 @@ export const AppLayout = ({ children }: React.PropsWithChildren) => {
         </div>
       </div>
 
-      <div className="container m-auto px-4 pt-4">{children}</div>
+      <div className="container m-auto !px-4 !pt-4">{children}</div>
     </div>
   );
 };
