@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const plugin = require('tailwindcss/plugin');
-
 module.exports = {
   darkMode: 'class',
   content: ['./pages/**/*.{ts,tsx}', './components/**/*.{ts,tsx}'],
@@ -23,19 +20,12 @@ module.exports = {
         success: '#78e08f',
         warning: '#f6b93b',
         transparent: 'transparent',
+        discord: '#5865f2',
       },
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/line-clamp'),
-    plugin(function ({ addComponents }) {
-      const components = {};
-
-      addComponents(components);
-    }),
-  ],
+  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/line-clamp')],
 };

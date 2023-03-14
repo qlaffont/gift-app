@@ -29,6 +29,13 @@ const lng = {
     },
   },
   pages: {
+    auth: {
+      login: {
+        title: 'Login',
+        google: 'Login with Google',
+        discord: 'Login with Discord',
+      },
+    },
     home: {
       hello: 'Hello world !',
     },

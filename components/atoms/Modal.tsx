@@ -9,7 +9,7 @@ const emptyFunction = () => {};
 const Modal: FC<{
   children;
   isOpen: boolean;
-  onClose: (event?: any) => void;
+  onClose?: (event?: any) => void;
   title?: string;
   onBackClick?: () => void;
 }> = ({ children, isOpen, onClose, title = '', onBackClick }) => {
@@ -28,7 +28,11 @@ const Modal: FC<{
           <Dialog.Overlay />
           <div
             className="fixed inset-0 bg-zinc-900 bg-opacity-50 backdrop-blur backdrop-filter transition-opacity"
-            onClick={() => onClose()}
+            onClick={() => {
+              if (onClose) {
+                onClose();
+              }
+            }}
           />
 
           {/* This element is to trick the browser into centering the modal contents. */}
@@ -44,7 +48,7 @@ const Modal: FC<{
             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
-            <div className="z-10 m-auto inline-block w-full max-w-xl transform rounded-lg bg-zinc-900 text-left align-middle shadow-xl transition-all">
+            <div className="z-10 m-auto inline-block w-full max-w-xl transform rounded-lg text-left align-middle shadow-xl transition-all dark:bg-zinc-900">
               {/* eslint-disable-next-line react/no-unknown-property */}
               <div className="h-max overflow-auto py-6 px-2 md:px-10" modal-content="true">
                 <div className="mb-5 flex justify-between">
@@ -61,11 +65,13 @@ const Modal: FC<{
                     <Dialog.Title className="text-2xl font-bold text-white line-clamp-1">{title}</Dialog.Title>
                   </div>
                   <div>
-                    <button
-                      className="icon icon-close bg-dark-20 block h-6 w-6 cursor-pointer"
-                      onClick={onClose}
-                      ref={closeButtonRef}
-                    ></button>
+                    {onClose && (
+                      <button
+                        className="icon icon-close bg-dark-20 block h-6 w-6 cursor-pointer"
+                        onClick={onClose}
+                        ref={closeButtonRef}
+                      ></button>
+                    )}
                   </div>
                 </div>
                 <div className="text-dark relative z-20 !max-h-full w-full dark:text-white">{children}</div>

@@ -1,12 +1,12 @@
 import { getAccessToken } from 'next-protected-auth';
 
-const base = process.env.NEXT_PUBLIC_API_URL;
+const base = process.env.NEXT_PUBLIC_BASE_URL;
 
 class RestAPIService {
-  static login = `${base}/auth/login`;
+  static login = `${base}/api/auth/connect`;
 
   public static async logout() {
-    const res = await fetch(`${base}/auth/logout`, {
+    const res = await fetch(`${base}/api/auth/logout`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -20,7 +20,7 @@ class RestAPIService {
   }
 
   public static async refresh() {
-    const res = await fetch(`${base}/auth/refresh`, {
+    const res = await fetch(`${base}/api/auth/refresh`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
