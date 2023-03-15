@@ -6,7 +6,7 @@
   mask-size: 100% !important;
   mask-repeat: no-repeat !important;
 
-  $icons: 'en', 'fr', 'user-list', 'login', 'logout', 'sun', 'moon';
+  $icons: 'en', 'fr', 'user-list', 'login', 'logout', 'sun', 'moon', 'share';
 
   @each $icon in $icons {
     &.icon-#{$icon} {

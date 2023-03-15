@@ -113,7 +113,7 @@ export const AppLayout = ({ children }: React.PropsWithChildren) => {
         </div>
       </div>
 
-      <div className="container m-auto !px-4 !pt-4">{children}</div>
+      <div className="container m-auto !px-4 !pt-8">{children}</div>
     </div>
   );
 };

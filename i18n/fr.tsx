@@ -45,6 +45,10 @@ const lng: typeof enDict = {
         discord: 'Connectez-vous avec Discord',
       },
     },
+    profile: {
+      share: 'Partager',
+      shareMessage: 'Voici ma liste de cadeau !',
+    },
   },
 };
 

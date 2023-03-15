@@ -43,6 +43,10 @@ const lng = {
     home: {
       hello: 'Hello world !',
     },
+    profile: {
+      share: 'Share',
+      shareMessage: 'This is my gift list !',
+    },
   },
 };
 

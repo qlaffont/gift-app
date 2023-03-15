@@ -1,7 +1,7 @@
 import '../scss/app.scss';
 
 import { Transition } from '@headlessui/react';
-import { QueryClientProvider } from '@tanstack/react-query';
+import { Hydrate, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { isDevelopmentEnv } from 'env-vars-validator';
 import type { AppProps } from 'next/app';
@@ -27,22 +27,24 @@ const rosettyLocales = {
 const MyApp = ({ Component, pageProps }: AppProps) => (
   <>
     <QueryClientProvider client={reactQueryClient}>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="google" content="notranslate" />
-        <meta name="google" content="nositelinkssearchbox" />
+      <Hydrate state={pageProps.dehydratedState}>
+        <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta name="google" content="notranslate" />
+          <meta name="google" content="nositelinkssearchbox" />
 
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="icon" type="image/png" href="/favicon.png" />
-        <title>App</title>
-      </Head>
-      <RosettyProvider languages={rosettyLocales} defaultLanguage="en">
-        <NextAuthProvider>
-          <ExtendedApp {...{ Component, pageProps }} />
-        </NextAuthProvider>
-      </RosettyProvider>
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+          <link rel="icon" type="image/png" href="/favicon.png" />
+          <title>App</title>
+        </Head>
+        <RosettyProvider languages={rosettyLocales} defaultLanguage="en">
+          <NextAuthProvider>
+            <ExtendedApp {...{ Component, pageProps }} />
+          </NextAuthProvider>
+        </RosettyProvider>
+      </Hydrate>
     </QueryClientProvider>
   </>
 );
@@ -54,7 +56,7 @@ const ExtendedApp = ({ Component, pageProps }) => {
   const Layout = Component.Layout ? Component.Layout : AppLayout;
 
   useNextAuthProtectedHandler({
-    publicURLs: ['/'],
+    publicURLs: ['/', '/:username/:id'],
     loginURL: '/auth/login',
     authCallbackURL: '/auth',
     allowNotFound: true,
