@@ -37,16 +37,15 @@ export const fetcher = ({
 
     const json = await res.json();
 
-    if (json.errors) {
-      const { message } = json.errors[0] || 'Error..';
-      if (message.includes('Access denied') || message.includes('Unauthorized')) {
+    if (json.success === false) {
+      const { message } = json || 'Error..';
+      if (message.includes('Access denied') || message.includes('Unauthorized') || message.includes('Forbidden')) {
         //Try to renew token
         try {
           await getAndSaveAccessToken({
             renewTokenFct: async () => {
-              const { accessToken: accessToken } = await RestAPIService.refresh();
-
-              return accessToken as string;
+              const data = await RestAPIService.refresh();
+              return data.data.token as string;
             },
           });
 

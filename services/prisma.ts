@@ -1,9 +1,11 @@
 import { PrismaClient } from '@prisma/client';
+import { fieldEncryptionMiddleware } from 'prisma-field-encryption';
 
-const globalForPrisma = global;
+const prisma: PrismaClient = global.prisma || new PrismaClient();
 
-const prisma: PrismaClient = globalForPrisma.prisma || new PrismaClient();
-
-if (!globalForPrisma.prisma) globalForPrisma.prisma = prisma;
+if (!global.prisma) {
+  prisma.$use(fieldEncryptionMiddleware());
+  global.prisma = prisma;
+}
 
 export default prisma;

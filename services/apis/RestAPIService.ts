@@ -21,7 +21,7 @@ class RestAPIService {
 
   public static async refresh() {
     const res = await fetch(`${base}/api/auth/refresh`, {
-      method: 'POST',
+      method: 'GET',
       headers: {
         Accept: 'application/json',
       },

@@ -63,9 +63,8 @@ const ExtendedApp = ({ Component, pageProps }) => {
         throw 'not connected';
       }
 
-      const { accessToken: accessToken } = await RestAPIService.refresh();
-
-      return accessToken as string;
+      const data = await RestAPIService.refresh();
+      return data.data.token as string;
     },
   });
 

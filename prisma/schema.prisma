@@ -9,6 +9,11 @@ datasource db {
   relationMode = "prisma"
 }
 
+generator fieldEncryptionMigrations {
+  provider = "prisma-field-encryption"
+  output   = "migrations"
+}
+
 enum Language {
   EN
   FR
@@ -17,12 +22,15 @@ enum Language {
 model User {
   id String @id @default(uuid())
 
-  email       String
-  name        String
-  description String?
+  email       String @unique /// @encrypted
+  emailHash       String? @unique /// @encryption:hash(email)
+  name        String /// @encrypted
+  description String? /// @encrypted
 
-  discordUserId String? @unique
-  googleUserId  String? @unique
+  discordUserId String? @unique /// @encrypted
+  discordUserIdHash       String? @unique /// @encryption:hash(discordUserId)
+  googleUserId  String? @unique /// @encrypted
+  googleUserIdHash       String? @unique /// @encryption:hash(googleUserId)
 
   lang Language @default(EN)
 
