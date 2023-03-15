@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@47ng/codec': ^1.1.0
   '@babel/core': 7.21.0
   '@commitlint/cli': 17.4.4
   '@commitlint/config-conventional': 17.4.4
@@ -43,6 +44,7 @@ specifiers:
   prettier-plugin-tailwindcss: 0.2.3
   prisma: ^4.10.1
   prisma-field-encryption: ^1.4.1
+  prompt-sync: ^4.2.0
   react: 18.2.0
   react-dom: 18.2.0
   react-hook-form: 7.43.2
@@ -88,6 +90,7 @@ dependencies:
   usehooks-ts: 2.9.1_biqbaboplfbrettd7655fr4n2y
 
 devDependencies:
+  '@47ng/codec': 1.1.0
   '@babel/core': 7.21.0
   '@commitlint/cli': 17.4.4
   '@commitlint/config-conventional': 17.4.4
@@ -111,6 +114,7 @@ devDependencies:
   postcss: 8.4.21
   prettier: 2.8.4
   prettier-plugin-tailwindcss: 0.2.3_prettier@2.8.4
+  prompt-sync: 4.2.0
   sass: 1.58.3
   ts-node: 10.9.1_ellgaeuoqnti3hful2ny2iugba
   typescript: 4.9.5
@@ -138,7 +142,6 @@ packages:
     dependencies:
       '@stablelib/base64': 1.0.1
       '@stablelib/hex': 1.0.1
-    dev: false
 
   /@ampproject/remapping/2.2.0:
     resolution: {integrity: sha512-qRmjj8nj9qmLTQXXmaR1cck3UXSRMPrbsLJAasZpF+t3riI71BXed5ebIOYwQntykeZuhjsdweEc9BxH5Jc26w==}
@@ -1004,11 +1007,9 @@ packages:
 
   /@stablelib/base64/1.0.1:
     resolution: {integrity: sha512-1bnPQqSxSuc3Ii6MhBysoWCg58j97aUjuCSZrGSmDxNqtytIi0k8utUenAwTZN4V5mXXYGsVUI9zeBqy+jBOSQ==}
-    dev: false
 
   /@stablelib/hex/1.0.1:
     resolution: {integrity: sha512-PQOEChVBjhYGgAD+ehO2ow1gSj1slre3jW4oMD4kV8VrhYhzmtsQDWDZej3BQO8qkVezdczDvISxVSF24PuYNA==}
-    dev: false
 
   /@stablelib/utf8/1.0.1:
     resolution: {integrity: sha512-FrYD1xadah/TtAP6VJ04lDD5h9rdDj/d8wH/jMYTtHqZBv9z2btdvEU8vTxdjdkFmo1b/BH+t3R1wi/mYhCCNg==}
@@ -1395,6 +1396,11 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       type-fest: 0.21.3
+    dev: true
+
+  /ansi-regex/4.1.1:
+    resolution: {integrity: sha512-ILlv4k/3f6vfQ4OoP2AGvirOktlQ98ZEL1k9FaQjxa3L1abBgbuTDAdPOpvbGncC0BTVQrl+OM8xZGK6tWXt7g==}
+    engines: {node: '>=6'}
     dev: true
 
   /ansi-regex/5.0.1:
@@ -4277,6 +4283,12 @@ packages:
       '@prisma/engines': 4.10.1
     dev: false
 
+  /prompt-sync/4.2.0:
+    resolution: {integrity: sha512-BuEzzc5zptP5LsgV5MZETjDaKSWfchl5U9Luiu8SKp7iZWD5tZalOxvNcZRwv+d2phNFr8xlbxmFNcRKfJOzJw==}
+    dependencies:
+      strip-ansi: 5.2.0
+    dev: true
+
   /prop-types/15.8.1:
     resolution: {integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==}
     dependencies:
@@ -4817,6 +4829,13 @@ packages:
     resolution: {integrity: sha512-hkRX8U1WjJFd8LsDJ2yQ/wWWxaopEsABU1XfkM8A+j0+85JAGppt16cr1Whg6KIbb4okU6Mql6BOj+uup/wKeA==}
     dependencies:
       safe-buffer: 5.2.1
+
+  /strip-ansi/5.2.0:
+    resolution: {integrity: sha512-DuRs1gKbBqsMKIZlrffwlug8MHkcnpjs5VPmL1PAh+mA30U0DTotfDZ0d2UUsXpPmPmMMJ6W773MaA3J+lbiWA==}
+    engines: {node: '>=6'}
+    dependencies:
+      ansi-regex: 4.1.1
+    dev: true
 
   /strip-ansi/6.0.1:
     resolution: {integrity: sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==}
