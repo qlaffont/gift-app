@@ -1,6 +1,6 @@
 import { dehydrate, QueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import toast from 'react-hot-toast';
 import { useSsr } from 'usehooks-ts';
 
@@ -10,13 +10,17 @@ import {
   findUserByIdFetcher,
   useFindUserByIdQuery,
 } from '../../../services/apis/react-query/queries/useFindUserByIdQuery';
+import { useUser } from '../../../services/useUser';
 
 const Profile = () => {
   const router = useRouter();
   const { t } = useI18n();
   const { isBrowser } = useSsr();
+  const connectedUser = useUser();
 
-  const { data: user } = useFindUserByIdQuery({ id: router.query.id as string }, { enabled: !!router.query.id });
+  const isUser = useMemo(() => connectedUser?.id === router.query.id, [connectedUser]);
+
+  const { data: user } = useFindUserByIdQuery({ id: router.query.id as string });
 
   const onShare = useCallback(async () => {
     if (isBrowser) {
@@ -33,7 +37,7 @@ const Profile = () => {
   }, [isBrowser]);
 
   return (
-    <div>
+    <div className="space-y-5">
       <div className="flex flex-wrap justify-between">
         <div>
           <div>
@@ -48,6 +52,21 @@ const Profile = () => {
           </Button>
         </div>
       </div>
+
+      {isUser && (
+        <div className="flex justify-end">
+          <Button prefixIcon="icon icon-list-add !w-5" variant="success" onClick={() => onShare()}>
+            {t('pages.profile.giftList.add')}
+          </Button>
+        </div>
+      )}
+
+      {user?.giftLists?.map((v) => (
+        <div key={v.id}>
+          <h2 className="text-xl font-bold">{v.name}</h2>
+          <p className="text-description">{v.description}</p>
+        </div>
+      ))}
     </div>
   );
 };

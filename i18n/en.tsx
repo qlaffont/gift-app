@@ -46,6 +46,9 @@ const lng = {
     profile: {
       share: 'Share',
       shareMessage: 'This is my gift list !',
+      giftList: {
+        add: 'Create a gift list',
+      },
     },
   },
 };

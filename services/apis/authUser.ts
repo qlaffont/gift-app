@@ -5,24 +5,36 @@ import { NextkitError } from 'nextkit';
 
 import prisma from '../prisma';
 
-export const getUserFromReq = async (req: NextApiRequest) => {
+export const getUserFromReq = async (req: NextApiRequest, allowUserNotFound = false) => {
   if (!req.headers.authorization) {
+    if (allowUserNotFound) {
+      return undefined;
+    }
     throw new NextkitError(401, 'Forbidden');
   }
 
   const token = req.headers.authorization.replace('Bearer ', '').trim();
 
   if (token.length === 0) {
+    if (allowUserNotFound) {
+      return undefined;
+    }
     throw new NextkitError(401, 'Forbidden');
   }
 
   const t = await prisma.token.findFirst({ where: { accessToken: token } });
 
   if (!t) {
+    if (allowUserNotFound) {
+      return undefined;
+    }
     throw new NextkitError(401, 'Forbidden');
   }
 
   if (!jwt.verify(token, process.env.JWT_SECRET)) {
+    if (allowUserNotFound) {
+      return undefined;
+    }
     await prisma.token.delete({
       where: {
         id: t.id,

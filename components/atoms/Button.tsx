@@ -9,6 +9,7 @@ const sizeClassNames = {
 const variantClassNames = {
   primary: 'font-bold text-black bg-gray-100',
   info: 'text-white bg-info font-bold',
+  success: 'text-white bg-success font-bold',
   error: 'text-white bg-error font-bold',
   discord: 'text-white bg-discord font-bold',
 };
@@ -16,6 +17,7 @@ const variantClassNames = {
 const iconVariantClassNames: Record<keyof typeof variantClassNames, string> = {
   primary: 'bg-black',
   info: 'bg-white',
+  success: 'bg-white',
   error: 'bg-black',
   discord: 'bg-white',
 };

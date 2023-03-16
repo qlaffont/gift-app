@@ -48,6 +48,9 @@ const lng: typeof enDict = {
     profile: {
       share: 'Partager',
       shareMessage: 'Voici ma liste de cadeau !',
+      giftList: {
+        add: 'Créer une liste de cadeaux',
+      },
     },
   },
 };
