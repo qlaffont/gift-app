@@ -2,7 +2,6 @@ import { Language } from '@prisma/client';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useNextAuthProtected } from 'next-protected-auth';
-import { useSsr } from 'usehooks-ts';
 
 import { useI18n } from '../../i18n/useI18n';
 import { useUpdateUserLangMutation } from '../../services/apis/react-query/mutations/useUpdateUserLangMutation';
@@ -12,14 +11,13 @@ import { useUser } from '../../services/useUser';
 
 const DarkModeToggler = () => {
   const { isDarkMode, toggle } = useDark();
-  const { isBrowser } = useSsr();
 
   return (
     <button
       className="mb-1 flex h-8 w-8 items-center justify-center rounded-full bg-black !bg-opacity-20 p-2 hover:opacity-70 dark:bg-white"
       onClick={() => toggle()}
     >
-      <i className={`icon icon-${isDarkMode && isBrowser ? 'sun' : 'moon'} block h-4 w-4 bg-black dark:bg-white`}></i>
+      <i className={`icon icon-${isDarkMode ? 'sun' : 'moon'} block h-4 w-4 bg-black dark:bg-white`}></i>
     </button>
   );
 };

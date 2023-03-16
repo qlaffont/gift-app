@@ -4,6 +4,9 @@ import React, { ComponentPropsWithoutRef, PropsWithoutRef, RefAttributes } from 
 import { useMemo } from 'react';
 import { UseFormRegisterReturn } from 'react-hook-form';
 
+import { useI18n } from '../../i18n/useI18n';
+import { translateErrorMessage } from '../../services/useYup';
+
 const variantClassNames = {
   transparent: 'w-full',
   normal: 'border border-dark-10 focus-within:border-dark-30 rounded-md',
@@ -42,7 +45,7 @@ export interface InputProps extends ComponentPropsWithoutRef<'input'> {
   size?: InputSize;
   className?: string;
   type?: string;
-  error?;
+  error?: any;
   register?: UseFormRegisterReturn;
   prefixIcon?: string;
   suffixIcon?: string;
@@ -79,6 +82,7 @@ export const Input: React.FC<PropsWithoutRef<InputProps> & RefAttributes<HTMLInp
   required,
   ...props
 }) => {
+  const { t } = useI18n();
   const isError = useMemo(() => {
     return !!error;
   }, [error]);
@@ -159,7 +163,9 @@ export const Input: React.FC<PropsWithoutRef<InputProps> & RefAttributes<HTMLInp
       {(!!error || helperText) && (
         <p
           className={clsx('mt-1 text-sm', isError ? '!border-error !text-error' : 'text-white text-opacity-80')}
-          dangerouslySetInnerHTML={{ __html: error || helperText }}
+          dangerouslySetInnerHTML={{
+            __html: translateErrorMessage({ message: error?.message }, t, undefined) || helperText,
+          }}
         ></p>
       )}
     </div>

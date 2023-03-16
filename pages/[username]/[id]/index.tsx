@@ -1,10 +1,12 @@
+import { GiftList } from '@prisma/client';
 import { dehydrate, QueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
-import { useCallback, useMemo } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import toast from 'react-hot-toast';
-import { useSsr } from 'usehooks-ts';
+import { useBoolean, useSsr } from 'usehooks-ts';
 
 import { Button } from '../../../components/atoms/Button';
+import { GiftListModal } from '../../../components/modules/giftList/GiftListModal';
 import { useI18n } from '../../../i18n/useI18n';
 import {
   findUserByIdFetcher,
@@ -18,10 +20,12 @@ const Profile = () => {
   const { isBrowser } = useSsr();
   const connectedUser = useUser();
 
-  const isUser = useMemo(() => connectedUser?.id === router.query.id, [connectedUser]);
+  const [currentGiftList, setCurrentGiftList] = useState<Partial<GiftList>>();
+  const { value: isOpenGiftListModal, setValue: setIsOpenGiftListModal } = useBoolean();
 
   const { data: user } = useFindUserByIdQuery({ id: router.query.id as string });
 
+  const isUser = useMemo(() => connectedUser?.id === router.query.id, [connectedUser]);
   const onShare = useCallback(async () => {
     if (isBrowser) {
       if (navigator.canShare) {
@@ -55,7 +59,14 @@ const Profile = () => {
 
       {isUser && (
         <div className="flex justify-end">
-          <Button prefixIcon="icon icon-list-add !w-5" variant="success" onClick={() => onShare()}>
+          <Button
+            prefixIcon="icon icon-list-add !w-5"
+            variant="success"
+            onClick={() => {
+              setCurrentGiftList(undefined);
+              setIsOpenGiftListModal(true);
+            }}
+          >
             {t('pages.profile.giftList.add')}
           </Button>
         </div>
@@ -67,6 +78,12 @@ const Profile = () => {
           <p className="text-description">{v.description}</p>
         </div>
       ))}
+
+      <GiftListModal
+        isOpen={isOpenGiftListModal}
+        giftList={currentGiftList}
+        onClose={() => setIsOpenGiftListModal(false)}
+      />
     </div>
   );
 };

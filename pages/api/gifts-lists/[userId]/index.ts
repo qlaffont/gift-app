@@ -3,6 +3,7 @@ import { NextkitError } from 'nextkit';
 
 import { api } from '../../../../server';
 import { getUserFromReq } from '../../../../services/apis/authUser';
+import { CryptoUtils } from '../../../../services/crypto.utils';
 import prisma from '../../../../services/prisma';
 
 export default api({
@@ -50,11 +51,17 @@ export default api({
       throw new NextkitError(400, 'Bad Request');
     }
 
-    return await prisma.giftList.create({
-      data: {
-        ...req.body,
-        ownerId: user.id,
-      },
+    const data = {
+      ...req.body,
+      ownerId: user.id,
+    };
+
+    if (data.password && data.password?.length > 0) {
+      data.password = await CryptoUtils.getArgonHash(data.password as string);
+    }
+
+    return prisma.giftList.create({
+      data,
     });
   },
 });

@@ -66,14 +66,20 @@ export default api({
       throw new NextkitError(404, 'Not found');
     }
 
+    const data = {
+      ...req.body,
+      ownerId: user.id,
+    };
+
+    if (data.password && data.password?.length > 0) {
+      data.password = await CryptoUtils.getArgonHash(data.password as string);
+    }
+
     await prisma.giftList.update({
       where: {
         id: giftList.id,
       },
-      data: {
-        ...req.body,
-        ownerId: user.id,
-      },
+      data,
     });
 
     return giftList;

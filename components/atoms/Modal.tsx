@@ -50,7 +50,7 @@ const Modal: FC<{
           >
             <div className="z-10 m-auto inline-block w-full max-w-xl transform rounded-lg bg-white text-left align-middle shadow-xl transition-all dark:bg-zinc-900">
               {/* eslint-disable-next-line react/no-unknown-property */}
-              <div className="h-max overflow-auto py-6 px-2 md:px-10" modal-content="true">
+              <div className="h-max overflow-auto py-6 px-2 shadow-2xl md:px-10" modal-content="true">
                 <div className="mb-5 flex justify-between">
                   <span>
                     <i
@@ -69,7 +69,7 @@ const Modal: FC<{
                   <div>
                     {onClose && (
                       <button
-                        className="icon icon-close bg-dark-20 block h-6 w-6 cursor-pointer"
+                        className="icon icon-close block h-6 w-6 cursor-pointer bg-black dark:bg-white"
                         onClick={onClose}
                         ref={closeButtonRef}
                       ></button>
