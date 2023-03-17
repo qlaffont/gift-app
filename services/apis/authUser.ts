@@ -31,7 +31,9 @@ export const getUserFromReq = async (req: NextApiRequest, allowUserNotFound = fa
     throw new NextkitError(401, 'Forbidden');
   }
 
-  if (!jwt.verify(token, process.env.JWT_SECRET)) {
+  try {
+    jwt.verify(token, process.env.JWT_SECRET);
+  } catch (error) {
     if (allowUserNotFound) {
       return undefined;
     }
