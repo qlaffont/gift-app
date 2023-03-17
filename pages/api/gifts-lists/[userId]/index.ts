@@ -62,6 +62,9 @@ export default api({
 
     return prisma.giftList.create({
       data,
+      select: {
+        id: true,
+      },
     });
   },
 });

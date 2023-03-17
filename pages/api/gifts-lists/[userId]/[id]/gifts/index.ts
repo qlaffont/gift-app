@@ -27,6 +27,9 @@ export default api({
         ...req.body,
         giftListId: giftList.id,
       },
+      select: {
+        id: true,
+      },
     });
   },
   async POST({ req }) {

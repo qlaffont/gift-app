@@ -1,4 +1,4 @@
-import { isValid } from 'date-fns';
+import isValid from 'date-fns/isValid';
 import * as yup from 'yup';
 
 export const useYup = () => {

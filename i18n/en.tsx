@@ -1,4 +1,4 @@
-import { GiftListAccess } from '@prisma/client';
+import { GiftListAccess } from '../services/types/prisma.type';
 
 const lng = {
   navbar: {
@@ -58,6 +58,7 @@ const lng = {
       giftList: {
         add: 'Create a gift list',
         edit: 'Edit a gift list',
+        editBtn: 'Edit',
         fields: {
           name: 'Name',
           description: 'Description',

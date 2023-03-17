@@ -1,4 +1,3 @@
-import { Language } from '@prisma/client';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useNextAuthProtected } from 'next-protected-auth';
@@ -6,6 +5,7 @@ import { useNextAuthProtected } from 'next-protected-auth';
 import { useI18n } from '../../i18n/useI18n';
 import { useUpdateUserLangMutation } from '../../services/apis/react-query/mutations/useUpdateUserLangMutation';
 import { useInvalidateQueries } from '../../services/apis/react-query/useInvalidateQueries';
+import { Language } from '../../services/types/prisma.type';
 import { useDark } from '../../services/useDark';
 import { useUser } from '../../services/useUser';
 
@@ -92,7 +92,7 @@ export const AppLayout = ({ children }: React.PropsWithChildren) => {
             </div>
           ) : (
             <div className="flex flex-wrap items-center gap-2 ">
-              <DarkModeToggler />
+              {/* <DarkModeToggler /> */}
 
               <LangToggler />
 

@@ -1,10 +1,17 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { GiftList, GiftListAccess } from '@prisma/client';
-import { useEffect, useMemo } from 'react';
-import { useForm } from 'react-hook-form';
+import dynamic from 'next/dynamic';
+import { useRouter } from 'next/router';
+import { useCallback, useEffect, useMemo } from 'react';
+import { useForm, useWatch } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import { useBoolean } from 'usehooks-ts';
 
 import { useI18n } from '../../../i18n/useI18n';
+import { useCreateGiftListMutation } from '../../../services/apis/react-query/mutations/useCreateGiftListMutation';
+import { useUpdateGiftListMutation } from '../../../services/apis/react-query/mutations/useUpdateGiftListMutation';
+import { useInvalidateQueries } from '../../../services/apis/react-query/useInvalidateQueries';
 import { setValuesReactHookForm } from '../../../services/setValuesReactHookForm';
+import { GiftList, GiftListAccess } from '../../../services/types/prisma.type';
 import { useYup } from '../../../services/useYup';
 import { Button } from '../../atoms/Button';
 import { FormDevTools } from '../../atoms/FormDevTool';
@@ -18,6 +25,8 @@ export const GiftListAccessOptions = (t) =>
     value: v,
   })) as SelectOption[];
 
+const DatePicker = dynamic(() => import('../../atoms/DatePicker').then((mod) => mod.DatePicker), { ssr: false });
+
 export const GiftListModal = ({
   giftList,
   isOpen,
@@ -29,6 +38,11 @@ export const GiftListModal = ({
 }) => {
   const { t } = useI18n();
   const yup = useYup();
+  const invalidateQueries = useInvalidateQueries();
+  const router = useRouter();
+  const { mutateAsync: createGiftList } = useCreateGiftListMutation();
+  const { mutateAsync: updateGiftList } = useUpdateGiftListMutation();
+  const { value: isLoading, setValue: setIsLoading } = useBoolean();
 
   const schema = useMemo(
     () =>
@@ -41,10 +55,10 @@ export const GiftListModal = ({
       }),
     [yup],
   );
-
   const {
     register,
     control,
+    getValues,
     reset,
     setValue,
     formState: { errors, isValid },
@@ -52,16 +66,47 @@ export const GiftListModal = ({
     resolver: yupResolver(schema),
     mode: 'all',
   });
+  const access = useWatch({ control, name: 'access' });
+  const resetTakenWhen = useWatch({ control, name: 'resetTakenWhen' });
+
+  const onSubmit = useCallback(async () => {
+    try {
+      setIsLoading(true);
+      const data = getValues();
+
+      if (giftList) {
+        await updateGiftList({
+          ...data,
+          id: giftList?.id,
+          userId: router.query.id as string,
+        });
+        await invalidateQueries(['findGiftListById', router.query.id]);
+        onClose();
+      } else {
+        await createGiftList({
+          ...data,
+          userId: router.query.id as string,
+        });
+      }
+      await invalidateQueries(['findUserById', { id: router.query.id }]);
+      onClose();
+      toast.success(t('components.atoms.alert.changesSaved'));
+    } catch (error) {
+      setIsLoading(false);
+      toast.error(t('components.atoms.alert.errorTryLater'));
+    }
+  }, [router, invalidateQueries, getValues, giftList]);
 
   useEffect(() => {
     if (!isOpen) {
-      reset();
+      setIsLoading(false);
+      reset({ name: null, description: null, access: GiftListAccess.PUBLIC, password: null, resetTakenWhen: null });
     } else {
       if (!giftList) {
         setValuesReactHookForm(setValue, { access: GiftListAccess.PUBLIC });
       }
     }
-  }, [isOpen]);
+  }, [isOpen, reset]);
 
   useEffect(() => {
     if (giftList) {
@@ -100,22 +145,31 @@ export const GiftListModal = ({
           isSearchable={false}
         />
 
-        <Input
-          register={register('password')}
-          error={errors.password}
-          label={t('pages.profile.giftList.fields.password')}
-        />
+        {access === GiftListAccess.PASSWORD_PROTECTED && (
+          <Input
+            register={register('password')}
+            error={errors.password}
+            type="password"
+            label={t('pages.profile.giftList.fields.password')}
+          />
+        )}
 
-        {/* TODO : Finish reset taken, Implement date picker, and branch submit with create/update  */}
-        <Input
-          register={register('resetTakenWhen')}
-          error={errors.resetTakenWhen}
+        <DatePicker
           label={t('pages.profile.giftList.fields.resetTakenWhen')}
+          error={errors?.resetTakenWhen}
+          value={resetTakenWhen ? new Date(resetTakenWhen) : undefined}
+          onChange={(date) => {
+            setValuesReactHookForm(setValue, {
+              resetTakenWhen: date ? date.toISOString() : undefined,
+            });
+          }}
+          className="m-auto max-w-xl"
+          minDate={new Date()}
         />
       </div>
 
       <div className="mt-5">
-        <Button className="m-auto" disabled={!isValid}>
+        <Button className="m-auto" disabled={!isValid} isLoading={isLoading} onClick={() => onSubmit()}>
           {t('components.form.save')}
         </Button>
       </div>

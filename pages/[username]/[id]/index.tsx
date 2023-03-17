@@ -1,4 +1,3 @@
-import { GiftList } from '@prisma/client';
 import { dehydrate, QueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
 import { useCallback, useMemo, useState } from 'react';
@@ -12,6 +11,7 @@ import {
   findUserByIdFetcher,
   useFindUserByIdQuery,
 } from '../../../services/apis/react-query/queries/useFindUserByIdQuery';
+import { GiftList } from '../../../services/types/prisma.type';
 import { useUser } from '../../../services/useUser';
 
 const Profile = () => {
@@ -23,7 +23,10 @@ const Profile = () => {
   const [currentGiftList, setCurrentGiftList] = useState<Partial<GiftList>>();
   const { value: isOpenGiftListModal, setValue: setIsOpenGiftListModal } = useBoolean();
 
-  const { data: user } = useFindUserByIdQuery({ id: router.query.id as string });
+  const { data: user } = useFindUserByIdQuery(
+    { id: router.query.id as string },
+    { enabled: router?.query?.id?.length > 0 },
+  );
 
   const isUser = useMemo(() => connectedUser?.id === router.query.id, [connectedUser]);
   const onShare = useCallback(async () => {
@@ -60,8 +63,9 @@ const Profile = () => {
       {isUser && (
         <div className="flex justify-end">
           <Button
-            prefixIcon="icon icon-list-add !w-5"
+            prefixIcon="icon icon-list-add !w-3.5"
             variant="success"
+            size="small"
             onClick={() => {
               setCurrentGiftList(undefined);
               setIsOpenGiftListModal(true);
@@ -74,8 +78,27 @@ const Profile = () => {
 
       {user?.giftLists?.map((v) => (
         <div key={v.id}>
-          <h2 className="text-xl font-bold">{v.name}</h2>
-          <p className="text-description">{v.description}</p>
+          <div className="flex flex-wrap items-center justify-between">
+            <div>
+              <h2 className="text-xl font-bold">{v.name}</h2>
+              <p className="text-description">{v.description}</p>
+            </div>
+            <div>
+              {isUser && (
+                <Button
+                  prefixIcon="icon icon-pen"
+                  variant="warning"
+                  size="small"
+                  onClick={() => {
+                    setCurrentGiftList(v);
+                    setIsOpenGiftListModal(true);
+                  }}
+                >
+                  {t('pages.profile.giftList.editBtn')}
+                </Button>
+              )}
+            </div>
+          </div>
         </div>
       ))}
 

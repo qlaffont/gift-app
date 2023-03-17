@@ -1,5 +1,4 @@
-import { GiftListAccess } from '@prisma/client';
-
+import { GiftListAccess } from '../services/types/prisma.type';
 import enDict from './en';
 
 const lng: typeof enDict = {
@@ -60,6 +59,7 @@ const lng: typeof enDict = {
       giftList: {
         add: 'Créer une liste de cadeaux',
         edit: 'Modifier une liste de cadeaux',
+        editBtn: 'Modifier',
         fields: {
           name: 'Nom',
           description: 'Description',
