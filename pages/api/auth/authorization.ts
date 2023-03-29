@@ -79,7 +79,7 @@ export default api({
         });
 
         if (!user) {
-          await prisma.user.create({
+          user = await prisma.user.create({
             data: {
               discordUserId: id,
               email,
@@ -118,6 +118,7 @@ export default api({
 
       res.redirect('/auth?accessToken=' + accessToken);
     } catch (error) {
+      console.log(error);
       throw new NextkitError(400, 'Impossible to login. Try Again !');
     }
   },

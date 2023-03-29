@@ -76,7 +76,7 @@ async function migrateRecord(client: PrismaClient, cursor: Cursor | undefined) {
  *       "hash": {
  *         "targetField": "emailHash",
  *         "algorithm": "sha256",
- *         "salt": "NgnTcdtwwNw4XBJ8F8ef",
+ *         "salt": "XQWgju4bgKNya62NXrTW",
  *         "inputEncoding": "utf8",
  *         "outputEncoding": "hex"
  *       }
@@ -95,7 +95,7 @@ async function migrateRecord(client: PrismaClient, cursor: Cursor | undefined) {
  *       "hash": {
  *         "targetField": "discordUserIdHash",
  *         "algorithm": "sha256",
- *         "salt": "NgnTcdtwwNw4XBJ8F8ef",
+ *         "salt": "XQWgju4bgKNya62NXrTW",
  *         "inputEncoding": "utf8",
  *         "outputEncoding": "hex"
  *       }
@@ -106,7 +106,7 @@ async function migrateRecord(client: PrismaClient, cursor: Cursor | undefined) {
  *       "hash": {
  *         "targetField": "googleUserIdHash",
  *         "algorithm": "sha256",
- *         "salt": "NgnTcdtwwNw4XBJ8F8ef",
+ *         "salt": "XQWgju4bgKNya62NXrTW",
  *         "inputEncoding": "utf8",
  *         "outputEncoding": "hex"
  *       }
