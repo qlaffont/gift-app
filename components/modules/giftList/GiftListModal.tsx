@@ -80,7 +80,13 @@ export const GiftListModal = ({
           id: giftList?.id,
           userId: router.query.id as string,
         });
-        await invalidateQueries(['findGiftListById', router.query.id]);
+        await invalidateQueries([
+          'findGiftListById',
+          {
+            id: giftList?.id,
+            userId: router.query.id as string,
+          },
+        ]);
         onClose();
       } else {
         await createGiftList({

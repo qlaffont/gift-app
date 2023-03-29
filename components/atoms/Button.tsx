@@ -20,7 +20,7 @@ const iconVariantClassNames: Record<keyof typeof variantClassNames, string> = {
   info: 'bg-white',
   warning: 'bg-white',
   success: 'bg-white',
-  error: 'bg-black',
+  error: 'bg-white',
   discord: 'bg-white',
 };
 

@@ -33,6 +33,12 @@ const lng = {
         loading: 'Loading',
       },
     },
+    modules: {
+      delete: {
+        title: 'Delete',
+        description: 'Are your sure your want to delete this item ?',
+      },
+    },
   },
   enums: {
     GiftListAccess: {
@@ -59,6 +65,9 @@ const lng = {
         add: 'Create a gift list',
         edit: 'Edit a gift list',
         editBtn: 'Edit',
+        delete: 'Delete a gift list',
+        deleteDescription: 'Are your sure your want to delete this gift list ?',
+        deleteBtn: 'Delete',
         fields: {
           name: 'Name',
           description: 'Description',

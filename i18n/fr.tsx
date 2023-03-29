@@ -34,6 +34,12 @@ const lng: typeof enDict = {
         loading: 'Chargement',
       },
     },
+    modules: {
+      delete: {
+        title: 'Delete',
+        description: 'Are your sure your want to delete this item ?',
+      },
+    },
   },
   enums: {
     GiftListAccess: {
@@ -60,6 +66,9 @@ const lng: typeof enDict = {
         add: 'Créer une liste de cadeaux',
         edit: 'Modifier une liste de cadeaux',
         editBtn: 'Modifier',
+        delete: 'Supprimer une liste de cadeaux',
+        deleteDescription: 'Êtes-vous sûr que vous souhaitez supprimer cette liste de cadeaux ?',
+        deleteBtn: 'Supprimer',
         fields: {
           name: 'Nom',
           description: 'Description',
