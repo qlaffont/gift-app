@@ -10,7 +10,7 @@ export default api({
 
     const gift = await prisma.gift.findFirst({
       where: {
-        id: req.body.giftId as string,
+        id: req.query.giftId as string,
       },
       include: {
         giftList: true,
@@ -27,7 +27,7 @@ export default api({
       },
       data: {
         ...req.body,
-        giftListId: gift.id,
+        giftListId: gift.giftListId,
       },
     });
   },
@@ -36,7 +36,7 @@ export default api({
 
     const gift = await prisma.gift.findFirst({
       where: {
-        id: req.body.giftId as string,
+        id: req.query.giftId as string,
       },
       include: {
         giftList: true,

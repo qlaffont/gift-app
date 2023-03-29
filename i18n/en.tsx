@@ -38,6 +38,20 @@ const lng = {
         title: 'Delete',
         description: 'Are your sure your want to delete this item ?',
       },
+      gift: {
+        add: 'Create a gift',
+        edit: 'Edit a gift',
+        editBtn: 'Edit',
+        delete: 'Delete a gift',
+        deleteDescription: 'Are your sure your want to delete this gift ?',
+        deleteBtn: 'Delete',
+        fields: {
+          name: 'Name',
+          description: 'Description',
+          link: 'Link',
+          coverUrl: 'Cover Url',
+        },
+      },
     },
   },
   enums: {

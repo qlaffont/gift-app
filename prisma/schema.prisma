@@ -100,6 +100,7 @@ model Gift {
   name        String
   description String?
   link        String?
+  coverUrl    String?
 
   takenBy   User?     @relation(fields: [takenById], references: [id])
   takenById String?

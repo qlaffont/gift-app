@@ -6,6 +6,7 @@ import { useBoolean, useSsr } from 'usehooks-ts';
 
 import { Button } from '../../../components/atoms/Button';
 import { DeleteModal } from '../../../components/modules/delete/DeleteModal';
+import { GiftListItem } from '../../../components/modules/giftList/GiftListItem';
 import { GiftListModal } from '../../../components/modules/giftList/GiftListModal';
 import { useI18n } from '../../../i18n/useI18n';
 import { useDeleteGiftListMutation } from '../../../services/apis/react-query/mutations/useDeleteGiftListMutation';
@@ -86,46 +87,19 @@ const Profile = () => {
       )}
 
       {user?.giftLists?.map((v) => (
-        <div key={v.id}>
-          <div className="flex flex-wrap items-center justify-between">
-            <div>
-              <h2 className="text-xl font-bold">{v.name}</h2>
-              <p className="text-description">{v.description}</p>
-            </div>
-            <div className="flex justify-end gap-1">
-              {isUser && (
-                <>
-                  <div>
-                    <Button
-                      prefixIcon="icon icon-pen"
-                      variant="warning"
-                      size="small"
-                      onClick={() => {
-                        setCurrentGiftList(v);
-                        setIsOpenGiftListModal(true);
-                      }}
-                    >
-                      {t('pages.profile.giftList.editBtn')}
-                    </Button>
-                  </div>
-                  <div>
-                    <Button
-                      prefixIcon="icon icon-trash"
-                      variant="error"
-                      size="small"
-                      onClick={() => {
-                        setCurrentGiftList(v);
-                        setIsOpenDeleteModal(true);
-                      }}
-                    >
-                      {t('pages.profile.giftList.deleteBtn')}
-                    </Button>
-                  </div>
-                </>
-              )}
-            </div>
-          </div>
-        </div>
+        <GiftListItem
+          key={v.id}
+          isUser={isUser}
+          onEdit={() => {
+            setCurrentGiftList(v);
+            setIsOpenGiftListModal(true);
+          }}
+          onDelete={() => {
+            setCurrentGiftList(v);
+            setIsOpenDeleteModal(true);
+          }}
+          giftList={v}
+        />
       ))}
 
       <GiftListModal

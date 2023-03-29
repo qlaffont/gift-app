@@ -39,6 +39,20 @@ const lng: typeof enDict = {
         title: 'Delete',
         description: 'Are your sure your want to delete this item ?',
       },
+      gift: {
+        add: 'Créer un cadeau',
+        edit: 'Modifier un cadeau',
+        editBtn: 'Modifier',
+        delete: 'Supprimer un cadeau',
+        deleteDescription: 'Êtes-vous sûr que vous souhaitez supprimer ce cadeau ?',
+        deleteBtn: 'Supprimer',
+        fields: {
+          name: 'Nom',
+          description: 'Description',
+          link: 'Lien',
+          coverUrl: 'Image de couverture',
+        },
+      },
     },
   },
   enums: {
