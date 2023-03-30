@@ -59,6 +59,8 @@ const lng: typeof enDict = {
           low: 'Priorité basse',
           nc: 'Aucune Priorité',
         },
+        buyIt: 'Acheter',
+        compare: 'Comparer les prix',
       },
     },
   },

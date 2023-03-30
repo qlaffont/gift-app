@@ -30,6 +30,7 @@
     "cookies-next": "^2.1.1",
     "date-fns": "^2.29.3",
     "env-vars-validator": "1.2.5",
+    "fetch-opengraph": "^1.0.36",
     "googleapis": "^112.0.0",
     "jsonwebtoken": "^9.0.0",
     "lodash": "^4.17.21",

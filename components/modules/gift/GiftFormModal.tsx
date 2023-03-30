@@ -1,13 +1,15 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Gift } from '@prisma/client';
+import { isNil } from 'lodash';
 import { useRouter } from 'next/router';
 import { useCallback, useEffect, useMemo } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useBoolean } from 'usehooks-ts';
 
 import { useI18n } from '../../../i18n/useI18n';
 import { useCreateGiftMutation } from '../../../services/apis/react-query/mutations/useCreateGiftMutation';
+import { useFetchOGDataMutation } from '../../../services/apis/react-query/mutations/useFetchOGDataMutation';
 import { useUpdateGiftMutation } from '../../../services/apis/react-query/mutations/useUpdateGiftMutation';
 import { useInvalidateQueries } from '../../../services/apis/react-query/useInvalidateQueries';
 import { setValuesReactHookForm } from '../../../services/setValuesReactHookForm';
@@ -46,12 +48,14 @@ export const GiftFormModal = ({
   const { mutateAsync: updateGift } = useUpdateGiftMutation();
   const { value: isLoading, setValue: setIsLoading } = useBoolean();
 
+  const { mutateAsync: fetchData, isLoading: isLoadingFetchData } = useFetchOGDataMutation();
+
   const schema = useMemo(
     () =>
       yup.object({
         name: yup.string().required(),
         description: yup.string().optional().nullable(),
-        link: yup.string().optional().nullable(),
+        link: yup.string().url().optional().nullable(),
         coverUrl: yup.string().optional().nullable(),
         priority: yup.number().optional().nullable(),
       }),
@@ -126,6 +130,30 @@ export const GiftFormModal = ({
     }
   }, [gift]);
 
+  const link = useWatch({ control, name: 'link' });
+
+  const onFetch = useCallback(async () => {
+    const data = await fetchData({ url: link });
+
+    const name = isNil(data.title) ? (isNil(data['og:title']) ? undefined : data['og:title']) : data.title;
+    const description = isNil(data.description)
+      ? isNil(data['og:description'])
+        ? undefined
+        : data['og:description']
+      : data.description;
+    const image = isNil(data.image) ? (isNil(data['og:image']) ? undefined : data['og:image']) : data.image;
+
+    if (!isNil(name)) {
+      setValue('name', name);
+    }
+    if (!isNil(description)) {
+      setValue('description', description);
+    }
+    if (!isNil(image)) {
+      setValue('coverUrl', image);
+    }
+  }, [setValue, link]);
+
   return (
     <Modal
       isOpen={isOpen}
@@ -146,15 +174,33 @@ export const GiftFormModal = ({
           label={t('components.modules.gift.fields.description')}
         />
 
-        <Input
-          register={register('link')}
-          error={errors.description}
-          label={t('components.modules.gift.fields.link')}
-        />
+        <div className="flex w-full items-center">
+          <div className="grow">
+            <Input
+              register={register('link')}
+              error={errors.link}
+              label={t('components.modules.gift.fields.link')}
+              blockClassName="!rounded-r-none"
+            />
+          </div>
+          <div className="pt-7">
+            <Button
+              className="m-auto !rounded-l-none py-[0.68rem] text-sm"
+              disabled={!link || link?.length <= 0 || !!errors.link}
+              isLoading={isLoadingFetchData || isLoading}
+              onClick={async () => {
+                if (link?.length > 0) {
+                  onFetch();
+                }
+              }}
+              prefixIcon="icon icon-download !h-5 !w-5"
+            ></Button>
+          </div>
+        </div>
 
         <Input
           register={register('coverUrl')}
-          error={errors.description}
+          error={errors.coverUrl}
           label={t('components.modules.gift.fields.coverUrl')}
         />
 

@@ -1,4 +1,6 @@
 import { Gift } from '@prisma/client';
+import Link from 'next/link';
+import { useMemo } from 'react';
 
 import { useI18n } from '../../../i18n/useI18n';
 import { Button } from '../../atoms/Button';
@@ -18,7 +20,14 @@ export const GiftModal = ({
   onEdit?: () => void;
   onDelete?: () => void;
 }) => {
-  const { t } = useI18n();
+  const { t, actualLang } = useI18n();
+
+  const compareLink = useMemo(() => {
+    if (actualLang === 'fr') {
+      return `https://ledenicheur.fr/search?search=${encodeURIComponent(gift?.name)}`;
+    }
+    return `https://pricespy.co.uk/search?search=${encodeURIComponent(gift?.name)}`;
+  }, [actualLang, gift]);
 
   return (
     <Modal isOpen={isOpen} title={gift?.name} onClose={onClose}>
@@ -78,8 +87,23 @@ export const GiftModal = ({
           <p>{gift?.description}</p>
         </div>
 
-        <div>
-          <Button className="m-auto">buy</Button>
+        <div className="flex items-center justify-center gap-2">
+          {gift?.link && (
+            <div>
+              <Link href={gift.link} target="_blank">
+                <Button className="m-auto" prefixIcon="icon icon-card">
+                  {t('components.modules.gift.buyIt')}
+                </Button>
+              </Link>
+            </div>
+          )}
+          <div>
+            <Link href={compareLink} target="_blank">
+              <Button className="m-auto" prefixIcon="icon icon-chart" variant="info">
+                {t('components.modules.gift.compare')}
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
     </Modal>

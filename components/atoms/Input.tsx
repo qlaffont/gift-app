@@ -49,6 +49,7 @@ export interface InputProps extends ComponentPropsWithoutRef<'input'> {
   register?: UseFormRegisterReturn;
   prefixIcon?: string;
   suffixIcon?: string;
+  blockClassName?: string;
   prefixIconClassName?: string;
   suffixIconClassName?: string;
   labelClassName?: string;
@@ -67,6 +68,7 @@ export const Input: React.FC<PropsWithoutRef<InputProps> & RefAttributes<HTMLInp
   suffixIcon,
   prefixIconClassName = '',
   suffixIconClassName = '',
+  blockClassName = '',
   labelClassName = '',
   disabled,
   className,
@@ -111,6 +113,7 @@ export const Input: React.FC<PropsWithoutRef<InputProps> & RefAttributes<HTMLInp
           sizeClassNames[size],
           disabled ? 'opacity-30' : '',
           isError ? '!border-error ' : '',
+          blockClassName,
         )}
       >
         {prefixIcon && (

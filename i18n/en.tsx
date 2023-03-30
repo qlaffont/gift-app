@@ -58,6 +58,8 @@ const lng = {
           low: 'Low priority',
           nc: 'No priority ',
         },
+        buyIt: 'Buy',
+        compare: 'Compare prices',
       },
     },
   },

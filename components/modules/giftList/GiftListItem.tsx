@@ -108,8 +108,8 @@ export const GiftListItem = ({
           {giftListData?.gifts.map((v) => (
             <div
               key={v.id}
-              className="block h-52 w-52 cursor-pointer rounded-md border border-black border-opacity-20 bg-cover bg-center hover:opacity-70 dark:border-white"
-              style={{ background: v.coverUrl }}
+              className="block cursor-pointer rounded-md border border-black border-opacity-20 !bg-cover !bg-center hover:opacity-70 dark:border-white"
+              style={{ background: `url(${v.coverUrl})` }}
               onClick={() => {
                 setGift(v);
                 setIsOpenGiftViewModal(true);
@@ -127,7 +127,7 @@ export const GiftListItem = ({
                 </div>
 
                 <div className="w-full">
-                  <div className="w-full rounded-b-md bg-black bg-opacity-10 p-3 dark:bg-white dark:bg-opacity-10 ">
+                  <div className="w-full rounded-b-md bg-slate-200 bg-opacity-80 p-3 dark:bg-zinc-700 dark:bg-opacity-80 ">
                     <p className="line-clamp-1">{v.name}</p>
                     <p className="text-sm line-clamp-2">{v.description}</p>
                   </div>
