@@ -92,7 +92,10 @@ export const GiftListItem = ({
           {isUser && (
             <div
               className="flex h-52 w-52 cursor-pointer items-center justify-center rounded-md border border-black border-opacity-20 hover:opacity-70 dark:border-white"
-              onClick={() => setIsOpenGiftFormModal(true)}
+              onClick={() => {
+                setGift(undefined);
+                setIsOpenGiftFormModal(true);
+              }}
             >
               <Button variant="success" size="small" suffixIcon="icon icon-gift">
                 +
