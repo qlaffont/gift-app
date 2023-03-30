@@ -4,6 +4,7 @@ import React from 'react';
 const sizeClassNames = {
   medium: 'py-2 px-5 text-base',
   small: 'py-1 px-3 text-sm',
+  roundSmall: 'p-2 text-sm',
 };
 
 const variantClassNames = {
@@ -27,6 +28,7 @@ const iconVariantClassNames: Record<keyof typeof variantClassNames, string> = {
 const iconSizeClassNames: Record<keyof typeof sizeClassNames, string> = {
   medium: 'h-4 w-4',
   small: 'h-3 w-3',
+  roundSmall: 'h-3 w-3',
 };
 
 export const Button: React.FC<{

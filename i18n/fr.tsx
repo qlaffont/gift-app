@@ -51,6 +51,13 @@ const lng: typeof enDict = {
           description: 'Description',
           link: 'Lien',
           coverUrl: 'Image de couverture',
+          priority: 'Priorité',
+        },
+        priority: {
+          high: 'Priorité haute',
+          middle: 'Priorité moyenne',
+          low: 'Priorité basse',
+          nc: 'Aucune Priorité',
         },
       },
     },

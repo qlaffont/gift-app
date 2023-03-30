@@ -32,6 +32,7 @@
     "env-vars-validator": "1.2.5",
     "googleapis": "^112.0.0",
     "jsonwebtoken": "^9.0.0",
+    "lodash": "^4.17.21",
     "next": "13.2.1",
     "next-protected-auth": "2.0.93",
     "next-seo": "5.15.0",

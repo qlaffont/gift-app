@@ -16,6 +16,16 @@ import { Button } from '../../atoms/Button';
 import { FormDevTools } from '../../atoms/FormDevTool';
 import { Input } from '../../atoms/Input';
 import Modal from '../../atoms/Modal';
+import { Select } from '../../atoms/Select/Select';
+
+export const PriorityOptions = (t) => {
+  return [
+    { value: 0, label: t('components.modules.gift.priority.nc') },
+    { value: 1, label: t('components.modules.gift.priority.low') },
+    { value: 2, label: t('components.modules.gift.priority.middle') },
+    { value: 3, label: t('components.modules.gift.priority.high') },
+  ];
+};
 
 export const GiftFormModal = ({
   gift,
@@ -43,6 +53,7 @@ export const GiftFormModal = ({
         description: yup.string().optional().nullable(),
         link: yup.string().optional().nullable(),
         coverUrl: yup.string().optional().nullable(),
+        priority: yup.number().optional().nullable(),
       }),
     [yup],
   );
@@ -145,6 +156,15 @@ export const GiftFormModal = ({
           register={register('coverUrl')}
           error={errors.description}
           label={t('components.modules.gift.fields.coverUrl')}
+        />
+
+        <Select
+          control={control}
+          name="priority"
+          error={errors.priority}
+          options={PriorityOptions(t)}
+          label={t('components.modules.gift.fields.priority')}
+          isSearchable={false}
         />
       </div>
 

@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { isNil } from 'lodash';
 import React from 'react';
 import { useMemo } from 'react';
 import { RefCallBack } from 'react-hook-form';
@@ -158,7 +159,9 @@ export const Select = ({ name, control, options, required = false, ...props }: P
           options={options}
           selectRef={ref}
           required={required}
-          onChange={(val) => onChange(Array.isArray(val) ? val?.map((v) => v.value) : val?.value || undefined)}
+          onChange={(val) =>
+            onChange(Array.isArray(val) ? val?.map((v) => v.value) : !isNil(val?.value) ? val.value : undefined)
+          }
           {...props}
           id={name}
           instanceId={name}

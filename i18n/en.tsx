@@ -50,6 +50,13 @@ const lng = {
           description: 'Description',
           link: 'Link',
           coverUrl: 'Cover Url',
+          priority: 'Priority',
+        },
+        priority: {
+          high: 'High priority',
+          middle: 'Middle priority',
+          low: 'Low priority',
+          nc: 'No priority ',
         },
       },
     },
