@@ -88,32 +88,34 @@ export const GiftListItem = ({
       </div>
 
       {isDeveloped && (
-        <div className="flex gap-2 overflow-auto rounded-md bg-zinc-100 p-5 dark:bg-zinc-800">
+        <div className="flex flex-col items-center gap-2 overflow-auto rounded-md bg-zinc-100 p-5 dark:bg-zinc-800 sm:flex-row">
           {isUser && (
-            <div
-              className="flex h-52 w-52 cursor-pointer items-center justify-center rounded-md border border-black border-opacity-20 hover:opacity-70 dark:border-white"
-              onClick={() => {
-                setGift(undefined);
-                setIsOpenGiftFormModal(true);
-              }}
-            >
-              <Button variant="success" size="small" suffixIcon="icon icon-gift">
-                +
-              </Button>
+            <div className="h-52 w-52">
+              <div
+                className="flex h-52 w-52 cursor-pointer items-center justify-center rounded-md border border-black border-opacity-20 hover:opacity-70 dark:border-white"
+                onClick={() => {
+                  setGift(undefined);
+                  setIsOpenGiftFormModal(true);
+                }}
+              >
+                <Button variant="success" size="small" suffixIcon="icon icon-gift">
+                  +
+                </Button>
+              </div>
             </div>
           )}
 
           {giftListData?.gifts.map((v) => (
             <div
               key={v.id}
-              className=" h-52 w-52 cursor-pointer rounded-md border border-black border-opacity-20 bg-cover bg-center hover:opacity-70 dark:border-white"
+              className="block h-52 w-52 cursor-pointer rounded-md border border-black border-opacity-20 bg-cover bg-center hover:opacity-70 dark:border-white"
               style={{ background: v.coverUrl }}
               onClick={() => {
                 setGift(v);
                 setIsOpenGiftViewModal(true);
               }}
             >
-              <div className="flex h-full w-full flex-col justify-between">
+              <div className="flex h-52 w-52 flex-col justify-between">
                 <div className="p-3">
                   {v.priority > 0 && (
                     <Button
