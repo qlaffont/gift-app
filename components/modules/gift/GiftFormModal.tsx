@@ -85,7 +85,13 @@ export const GiftFormModal = ({
           userId: router.query.id as string,
         });
       }
-      await invalidateQueries(['findUserById', { id: router.query.id }]);
+      await invalidateQueries([
+        'findGiftListById',
+        {
+          userId: router.query.username,
+          id: giftListId,
+        },
+      ]);
       onClose();
       toast.success(t('components.atoms.alert.changesSaved'));
     } catch (error) {
