@@ -25,7 +25,7 @@ export default api({
           ownerId: user.id,
         },
         include: {
-          giftListUserAccesses: currentUser.id === req.query.id,
+          giftListUserAccesses: currentUser && currentUser.id === req.query.id,
         },
       })
     ).map((v) => ({ ...v, password: undefined }));
