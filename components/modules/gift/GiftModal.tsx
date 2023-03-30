@@ -23,7 +23,7 @@ export const GiftModal = ({
     <Modal isOpen={isOpen} title={gift?.name} onClose={onClose}>
       <div className="space-y-5">
         {onEdit && onDelete && (
-          <div className="flex items-center gap-1">
+          <div className="flex items-center justify-end gap-1">
             <div>
               <Button
                 prefixIcon="icon icon-pen"
