@@ -19,13 +19,16 @@ import { Input } from '../../atoms/Input';
 import Modal from '../../atoms/Modal';
 import { Select, SelectOption } from '../../atoms/Select/Select';
 
+const TextAreaMarkdown = dynamic(() => import('../../atoms/TextAreaMarkdown').then((mod) => mod.TextAreaMarkdown), {
+  ssr: false,
+});
+const DatePicker = dynamic(() => import('../../atoms/DatePicker').then((mod) => mod.DatePicker), { ssr: false });
+
 export const GiftListAccessOptions = (t) =>
   Object.values(GiftListAccess).map((v) => ({
     label: t(`enums.GiftListAccess.${v}`),
     value: v,
   })) as SelectOption[];
-
-const DatePicker = dynamic(() => import('../../atoms/DatePicker').then((mod) => mod.DatePicker), { ssr: false });
 
 export const GiftListModal = ({
   giftList,
@@ -136,8 +139,9 @@ export const GiftListModal = ({
           required
         />
 
-        <Input
-          register={register('description')}
+        <TextAreaMarkdown
+          name={'description'}
+          control={control}
           error={errors.description}
           label={t('pages.profile.giftList.fields.description')}
         />

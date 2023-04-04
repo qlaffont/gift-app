@@ -1,6 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Gift } from '@prisma/client';
 import { isNil } from 'lodash';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { useCallback, useEffect, useMemo } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
@@ -19,6 +20,10 @@ import { FormDevTools } from '../../atoms/FormDevTool';
 import { Input } from '../../atoms/Input';
 import Modal from '../../atoms/Modal';
 import { Select } from '../../atoms/Select/Select';
+
+const TextAreaMarkdown = dynamic(() => import('../../atoms/TextAreaMarkdown').then((mod) => mod.TextAreaMarkdown), {
+  ssr: false,
+});
 
 export const PriorityOptions = (t) => {
   return [
@@ -168,8 +173,9 @@ export const GiftFormModal = ({
           required
         />
 
-        <Input
-          register={register('description')}
+        <TextAreaMarkdown
+          name={'description'}
+          control={control}
           error={errors.description}
           label={t('components.modules.gift.fields.description')}
         />

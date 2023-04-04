@@ -1,4 +1,5 @@
 import { Gift } from '@prisma/client';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { useMemo } from 'react';
 
@@ -6,6 +7,8 @@ import { useI18n } from '../../../i18n/useI18n';
 import { Button } from '../../atoms/Button';
 import Modal from '../../atoms/Modal';
 import { PriorityOptions } from './GiftFormModal';
+//@ts-ignore
+const ReactMarkdown = dynamic(() => import('react-markdown').then((mod) => mod.default));
 
 export const GiftModal = ({
   gift,
@@ -84,7 +87,9 @@ export const GiftModal = ({
         <div className="space-y-3">
           <p className="font-bold">{gift?.name}</p>
 
-          <p>{gift?.description}</p>
+          <div className="[&>p]:pb-3">
+            <ReactMarkdown>{gift?.description}</ReactMarkdown>
+          </div>
         </div>
 
         <div className="flex items-center justify-center gap-2">

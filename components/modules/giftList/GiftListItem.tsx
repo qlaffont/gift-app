@@ -1,4 +1,5 @@
 import { Gift, GiftList } from '@prisma/client';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useBoolean } from 'usehooks-ts';
@@ -11,6 +12,8 @@ import { Button } from '../../atoms/Button';
 import { DeleteModal } from '../delete/DeleteModal';
 import { GiftFormModal } from '../gift/GiftFormModal';
 import { GiftModal } from '../gift/GiftModal';
+//@ts-ignore
+const ReactMarkdown = dynamic(() => import('react-markdown').then((mod) => mod.default));
 
 export const GiftListItem = ({
   isUser,
@@ -48,12 +51,14 @@ export const GiftListItem = ({
   return (
     <div className="space-y-3">
       <div className="flex flex-wrap items-center justify-between">
-        <div>
+        <div className="space-y-2">
           {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
           <h2 className="cursor-pointer text-xl font-bold" onClick={() => setIsDeveloped((b) => !b)}>
             {giftList.name}
           </h2>
-          <p className="text-description">{giftList.description}</p>
+          <div className="[&>p]:pb-3">
+            <ReactMarkdown>{giftList?.description}</ReactMarkdown>
+          </div>
         </div>
         <div className="flex justify-end gap-1">
           {isUser && (
