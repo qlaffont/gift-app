@@ -91,6 +91,7 @@ const lng = {
         delete: 'Delete a gift list',
         deleteDescription: 'Are your sure your want to delete this gift list ?',
         deleteBtn: 'Delete',
+        accessBtn: 'Access',
         fields: {
           name: 'Name',
           description: 'Description',

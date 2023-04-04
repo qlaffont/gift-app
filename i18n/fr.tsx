@@ -92,6 +92,7 @@ const lng: typeof enDict = {
         delete: 'Supprimer une liste de cadeaux',
         deleteDescription: 'Êtes-vous sûr que vous souhaitez supprimer cette liste de cadeaux ?',
         deleteBtn: 'Supprimer',
+        accessBtn: 'Accès',
         fields: {
           name: 'Nom',
           description: 'Description',

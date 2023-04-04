@@ -82,28 +82,39 @@ export const GiftListItem = ({
         <div className="flex justify-end gap-1">
           {isUser && (
             <>
+              {giftList.access === GiftListAccess.EMAIL && (
+                <div>
+                  <Button
+                    prefixIcon="icon icon-user-list !h-4 !w-4 ml-1 md:!m-0 my-1 md:!h-3 md:!w-3"
+                    variant="info"
+                    size="small"
+                  >
+                    <span className="hidden md:block">{t('pages.profile.giftList.accessBtn')}</span>
+                  </Button>
+                </div>
+              )}
               <div>
                 <Button
-                  prefixIcon="icon icon-pen"
+                  prefixIcon="icon icon-pen !h-4 !w-4 ml-1 md:!m-0 my-1 md:!h-3 md:!w-3"
                   variant="warning"
                   size="small"
                   onClick={() => {
                     onEdit();
                   }}
                 >
-                  {t('pages.profile.giftList.editBtn')}
+                  <span className="hidden md:block">{t('pages.profile.giftList.editBtn')}</span>
                 </Button>
               </div>
               <div>
                 <Button
-                  prefixIcon="icon icon-trash"
+                  prefixIcon="icon icon-trash !h-4 !w-4 ml-1 md:!m-0 my-1 md:!h-3 md:!w-3"
                   variant="error"
                   size="small"
                   onClick={() => {
                     onDelete();
                   }}
                 >
-                  {t('pages.profile.giftList.deleteBtn')}
+                  <span className="hidden md:block">{t('pages.profile.giftList.deleteBtn')}</span>
                 </Button>
               </div>
             </>
