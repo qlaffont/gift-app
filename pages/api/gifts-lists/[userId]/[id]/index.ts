@@ -9,6 +9,8 @@ import prisma from '../../../../../services/prisma';
 export default api({
   async GET({ req }) {
     const where = [];
+    const user = await getUserFromReq(req, true);
+    let isPasswordQuery = false;
 
     where.push({
       id: req.query.id as string,
@@ -29,21 +31,46 @@ export default api({
     }
 
     if (req.query.password) {
+      isPasswordQuery = true;
       where.push({
         id: req.query.id as string,
         access: GiftListAccess.PASSWORD_PROTECTED,
-        password: await CryptoUtils.getArgonHash(req.query.password as string),
       });
     }
 
-    const giftList = await prisma.giftList.findFirst({
-      where: {
-        OR: where,
-      },
-      include: {
-        gifts: true,
-      },
-    });
+    if (user) {
+      where.push({
+        id: req.query.id as string,
+        ownerId: user.id,
+      });
+    }
+
+    console.log(JSON.stringify(where, null, 2));
+
+    let giftList;
+    if (isPasswordQuery) {
+      giftList = await prisma.giftList.findFirst({
+        where: {
+          OR: where,
+        },
+        include: {
+          gifts: true,
+        },
+      });
+
+      if (!(await CryptoUtils.compareArgonHash(req.query.password as string, giftList.password))) {
+        throw new NextkitError(404, 'Not found');
+      }
+    } else {
+      giftList = await prisma.giftList.findFirst({
+        where: {
+          OR: where,
+        },
+        include: {
+          gifts: true,
+        },
+      });
+    }
 
     if (giftList) {
       giftList.password = undefined;

@@ -99,6 +99,7 @@ const lng: typeof enDict = {
           access: 'Mode de publication',
           password: 'Mot de passe',
         },
+        passwordInvalid: 'Ce mot de passe est invalid.',
       },
     },
   },

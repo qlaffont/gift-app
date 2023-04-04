@@ -7,10 +7,9 @@ import prisma from '../../../../../../services/prisma';
 export default api({
   async PUT({ req }) {
     const user = await getUserFromReq(req);
-
     const giftList = await prisma.giftList.findFirst({
       where: {
-        id: req.body.id as string,
+        id: req.query.id as string,
       },
     });
 
@@ -37,7 +36,7 @@ export default api({
 
     const giftList = await prisma.giftList.findFirst({
       where: {
-        id: req.body.id as string,
+        id: req.query.id as string,
       },
       include: {
         gifts: true,

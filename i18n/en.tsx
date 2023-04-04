@@ -98,6 +98,7 @@ const lng = {
           access: 'Publication Mode',
           password: 'Password',
         },
+        passwordInvalid: 'Ce mot de passe est invalid.',
       },
     },
   },

@@ -2,13 +2,16 @@ import { Gift, GiftList } from '@prisma/client';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { useBoolean } from 'usehooks-ts';
+import { useBoolean, useDebounce } from 'usehooks-ts';
 
 import { useI18n } from '../../../i18n/useI18n';
 import { useDeleteGiftMutation } from '../../../services/apis/react-query/mutations/useDeleteGiftMutation';
 import { useFindGiftListByIdQuery } from '../../../services/apis/react-query/queries/useFindGiftListByIdQuery';
 import { useInvalidateQueries } from '../../../services/apis/react-query/useInvalidateQueries';
+import { GiftListAccess } from '../../../services/types/prisma.type';
+import { useUser } from '../../../services/useUser';
 import { Button } from '../../atoms/Button';
+import { Input } from '../../atoms/Input';
 import { DeleteModal } from '../delete/DeleteModal';
 import { GiftFormModal } from '../gift/GiftFormModal';
 import { GiftModal } from '../gift/GiftModal';
@@ -31,6 +34,8 @@ export const GiftListItem = ({
   const { value: isOpenGiftFormModal, setValue: setIsOpenGiftFormModal } = useBoolean();
   const { value: isOpenGiftViewModal, setValue: setIsOpenGiftViewModal } = useBoolean();
   const { value: isOpenDeleteModal, setValue: setIsOpenDeleteModal } = useBoolean();
+  const [password, setPassword] = useState<string>();
+  const passwordDebounce = useDebounce(password, 300);
 
   const invalidateQueries = useInvalidateQueries();
 
@@ -39,13 +44,27 @@ export const GiftListItem = ({
   const [gift, setGift] = useState<Partial<Gift>>();
 
   const router = useRouter();
+  const user = useUser();
 
-  const { data: giftListData } = useFindGiftListByIdQuery(
+  const {
+    data: giftListData,
+    error,
+    isFetched,
+  } = useFindGiftListByIdQuery(
     {
       userId: router.query.username as string,
       id: giftList.id,
+      password: passwordDebounce,
     },
-    { enabled: router.query.id && giftList.id && (giftList.access === 'EMAIL' || giftList.access === 'PUBLIC') },
+    {
+      enabled:
+        router.query.id &&
+        giftList.id &&
+        (giftList.access === 'EMAIL' ||
+          giftList.access === 'PUBLIC' ||
+          giftList.ownerId === user?.id ||
+          (passwordDebounce && passwordDebounce?.length > 0)),
+    },
   );
 
   return (
@@ -140,6 +159,22 @@ export const GiftListItem = ({
               </div>
             </div>
           ))}
+
+          {(!giftListData?.gifts || giftListData?.gifts?.length === 0) &&
+            giftList.access === GiftListAccess.PASSWORD_PROTECTED && (
+              <div className="m-auto text-center">
+                <Input
+                  label={t('pages.profile.giftList.fields.password')}
+                  blockClassName="bg-white"
+                  onChange={(e) => setPassword(e?.target?.value)}
+                  error={
+                    error && isFetched && passwordDebounce?.length > 0
+                      ? { message: 'pages.profile.giftList.passwordInvalid' }
+                      : ''
+                  }
+                />
+              </div>
+            )}
         </div>
       )}
       <GiftFormModal
