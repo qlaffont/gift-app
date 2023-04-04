@@ -85,7 +85,7 @@ export default api({
 
     const giftList = await prisma.giftList.findFirst({
       where: {
-        id: req.body.id as string,
+        id: req.query.id as string,
       },
     });
 
@@ -116,7 +116,7 @@ export default api({
 
     const giftList = await prisma.giftList.findFirst({
       where: {
-        id: req.body.id as string,
+        id: req.query.id as string,
       },
     });
 
