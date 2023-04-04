@@ -45,8 +45,6 @@ export default api({
       });
     }
 
-    console.log(JSON.stringify(where, null, 2));
-
     let giftList;
     if (isPasswordQuery) {
       giftList = await prisma.giftList.findFirst({

@@ -41,7 +41,6 @@ export const TextAreaMarkdown = ({
       name={name}
       control={control}
       render={({ field: { ref, onChange, value, ...fieldProps } }) => {
-        console.log(value, value ? convertFromRaw(mdToDraftjs(value)) : '');
         return (
           <div className={clsx(className, 'max-w-xl')}>
             {label && (
