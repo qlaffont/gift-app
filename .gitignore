@@ -42,3 +42,4 @@ dist
 services/apis/gql/generated/graphql.ts
 prisma/client
 thunderActivity.json
+analyze
