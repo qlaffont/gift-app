@@ -61,6 +61,9 @@ const lng = {
         buyIt: 'Buy',
         compare: 'Compare prices',
       },
+      giftListAccess: {
+        email: 'Email Address',
+      },
     },
   },
   enums: {
@@ -100,6 +103,7 @@ const lng = {
           password: 'Password',
         },
         passwordInvalid: 'Ce mot de passe est invalid.',
+        accessOrEmpty: "This list doesn't contain any gift or you don't have an access on it.",
       },
     },
   },

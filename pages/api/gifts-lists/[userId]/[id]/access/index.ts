@@ -28,7 +28,7 @@ export default api({
 
     return giftList?.giftListUserAccesses?.map((e) => e.owner.email);
   },
-  async POST({ req }) {
+  async PUT({ req }) {
     const user = await getUserFromReq(req);
 
     if (!req.body.email || req.body.email.length === 0) {
@@ -37,7 +37,7 @@ export default api({
 
     const giftList = await prisma.giftList.findFirst({
       where: {
-        id: req.body.id as string,
+        id: req.query.id as string,
         ownerId: user.id,
       },
       include: {
@@ -83,7 +83,7 @@ export default api({
 
     const giftList = await prisma.giftList.findFirst({
       where: {
-        id: req.body.id as string,
+        id: req.query.id as string,
         ownerId: user.id,
       },
       include: {

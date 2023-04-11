@@ -62,6 +62,9 @@ const lng: typeof enDict = {
         buyIt: 'Acheter',
         compare: 'Comparer les prix',
       },
+      giftListAccess: {
+        email: 'Adresse email',
+      },
     },
   },
   enums: {
@@ -101,6 +104,7 @@ const lng: typeof enDict = {
           password: 'Mot de passe',
         },
         passwordInvalid: 'Ce mot de passe est invalid.',
+        accessOrEmpty: 'Cette liste ne contient aucun cadeau ou ne vous est pas accessible.',
       },
     },
   },

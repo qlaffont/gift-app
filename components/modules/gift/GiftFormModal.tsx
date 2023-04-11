@@ -93,7 +93,7 @@ export const GiftFormModal = ({
         await invalidateQueries([
           'findGiftListById',
           {
-            userId: router.query.username,
+            userId: router.query.id,
             id: giftListId,
           },
         ]);
@@ -108,7 +108,7 @@ export const GiftFormModal = ({
       await invalidateQueries([
         'findGiftListById',
         {
-          userId: router.query.username,
+          userId: router.query.id,
           id: giftListId,
         },
       ]);

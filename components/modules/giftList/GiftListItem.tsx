@@ -1,4 +1,3 @@
-import { Gift, GiftList } from '@prisma/client';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -8,13 +7,14 @@ import { useI18n } from '../../../i18n/useI18n';
 import { useDeleteGiftMutation } from '../../../services/apis/react-query/mutations/useDeleteGiftMutation';
 import { useFindGiftListByIdQuery } from '../../../services/apis/react-query/queries/useFindGiftListByIdQuery';
 import { useInvalidateQueries } from '../../../services/apis/react-query/useInvalidateQueries';
-import { GiftListAccess } from '../../../services/types/prisma.type';
+import { Gift, GiftList, GiftListAccess } from '../../../services/types/prisma.type';
 import { useUser } from '../../../services/useUser';
 import { Button } from '../../atoms/Button';
 import { Input } from '../../atoms/Input';
 import { DeleteModal } from '../delete/DeleteModal';
 import { GiftFormModal } from '../gift/GiftFormModal';
 import { GiftModal } from '../gift/GiftModal';
+import { GiftListAccessModal } from './GiftListAccessModal';
 //@ts-ignore
 const ReactMarkdown = dynamic(() => import('react-markdown').then((mod) => mod.default));
 
@@ -33,6 +33,7 @@ export const GiftListItem = ({
   const { value: isDeveloped, setValue: setIsDeveloped } = useBoolean(true);
   const { value: isOpenGiftFormModal, setValue: setIsOpenGiftFormModal } = useBoolean();
   const { value: isOpenGiftViewModal, setValue: setIsOpenGiftViewModal } = useBoolean();
+  const { value: isOpenGiftAccessModal, setValue: setIsOpenGiftAccessModal } = useBoolean();
   const { value: isOpenDeleteModal, setValue: setIsOpenDeleteModal } = useBoolean();
   const [password, setPassword] = useState<string>();
   const passwordDebounce = useDebounce(password, 300);
@@ -52,7 +53,7 @@ export const GiftListItem = ({
     isFetched,
   } = useFindGiftListByIdQuery(
     {
-      userId: router.query.username as string,
+      userId: router.query.id as string,
       id: giftList.id,
       password: passwordDebounce,
     },
@@ -88,6 +89,9 @@ export const GiftListItem = ({
                     prefixIcon="icon icon-user-list !h-4 !w-4 ml-1 md:!m-0 my-1 md:!h-3 md:!w-3"
                     variant="info"
                     size="small"
+                    onClick={() => {
+                      setIsOpenGiftAccessModal(true);
+                    }}
                   >
                     <span className="hidden md:block">{t('pages.profile.giftList.accessBtn')}</span>
                   </Button>
@@ -186,6 +190,12 @@ export const GiftListItem = ({
                 />
               </div>
             )}
+
+          {(!giftListData?.gifts || giftListData?.gifts?.length === 0) && giftList.access === GiftListAccess.EMAIL && (
+            <div className="m-auto text-center">
+              <p className="text-sm font-bold">{t('pages.profile.giftList.accessOrEmpty')}</p>
+            </div>
+          )}
         </div>
       )}
       <GiftFormModal
@@ -216,6 +226,12 @@ export const GiftListItem = ({
         }
       />
 
+      <GiftListAccessModal
+        isOpen={isOpenGiftAccessModal}
+        onClose={() => setIsOpenGiftAccessModal(false)}
+        giftList={giftList}
+      />
+
       <DeleteModal
         title={t('components.modules.gift.delete')}
         description={t('components.modules.gift.deleteDescription')}
@@ -231,7 +247,7 @@ export const GiftListItem = ({
           await invalidateQueries([
             'findGiftListById',
             {
-              userId: router.query.username,
+              userId: router.query.id,
               id: giftList.id,
             },
           ]);

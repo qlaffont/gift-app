@@ -25,3 +25,18 @@ export type GiftListUserAccess = {
   ownerId: string;
   giftListId: string;
 };
+
+export type Gift = {
+  id: string;
+  name: string;
+  description: string | null;
+  link: string | null;
+  coverUrl: string | null;
+  takenById: string | null;
+  takenWhen: Date | null;
+  priority: number;
+  order: number;
+  giftListId: string;
+  createdAt: Date;
+  updatedAt: Date;
+};

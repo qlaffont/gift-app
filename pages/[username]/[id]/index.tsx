@@ -86,21 +86,23 @@ const Profile = () => {
         </div>
       )}
 
-      {user?.giftLists?.map((v) => (
-        <GiftListItem
-          key={v.id}
-          isUser={isUser}
-          onEdit={() => {
-            setCurrentGiftList(v);
-            setIsOpenGiftListModal(true);
-          }}
-          onDelete={() => {
-            setCurrentGiftList(v);
-            setIsOpenDeleteModal(true);
-          }}
-          giftList={v}
-        />
-      ))}
+      <div className="space-y-5 pb-5">
+        {user?.giftLists?.map((v) => (
+          <GiftListItem
+            key={v.id}
+            isUser={isUser}
+            onEdit={() => {
+              setCurrentGiftList(v);
+              setIsOpenGiftListModal(true);
+            }}
+            onDelete={() => {
+              setCurrentGiftList(v);
+              setIsOpenDeleteModal(true);
+            }}
+            giftList={v}
+          />
+        ))}
+      </div>
 
       <GiftListModal
         isOpen={isOpenGiftListModal}
