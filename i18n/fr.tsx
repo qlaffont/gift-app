@@ -46,6 +46,9 @@ const lng: typeof enDict = {
         delete: 'Supprimer un cadeau',
         deleteDescription: 'Êtes-vous sûr que vous souhaitez supprimer ce cadeau ?',
         deleteBtn: 'Supprimer',
+        takenTitle: 'Cadeau acheté',
+        takenDescription: 'Êtes-vous sûr que vous avez acheté ce cadeau ?',
+        takenAction: "Oui je l'ai acheté !",
         fields: {
           name: 'Nom',
           description: 'Description',
@@ -60,7 +63,8 @@ const lng: typeof enDict = {
           nc: 'Aucune Priorité',
         },
         buyIt: 'Acheter',
-        compare: 'Comparer les prix',
+        compare: 'Comparer',
+        taken: "Je l'ai acheté !",
       },
       giftListAccess: {
         email: 'Adresse email',

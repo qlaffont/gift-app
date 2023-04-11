@@ -5,9 +5,9 @@ import toast from 'react-hot-toast';
 import { useBoolean, useSsr } from 'usehooks-ts';
 
 import { Button } from '../../../components/atoms/Button';
-import { DeleteModal } from '../../../components/modules/delete/DeleteModal';
 import { GiftListItem } from '../../../components/modules/giftList/GiftListItem';
 import { GiftListModal } from '../../../components/modules/giftList/GiftListModal';
+import { ConfirmModal } from '../../../components/modules/modal/ConfirmModal';
 import { useI18n } from '../../../i18n/useI18n';
 import { useDeleteGiftListMutation } from '../../../services/apis/react-query/mutations/useDeleteGiftListMutation';
 import {
@@ -109,13 +109,13 @@ const Profile = () => {
         giftList={currentGiftList}
         onClose={() => setIsOpenGiftListModal(false)}
       />
-      <DeleteModal
+      <ConfirmModal
         title={t('pages.profile.giftList.delete')}
         description={t('pages.profile.giftList.deleteDescription')}
         isOpen={isOpenDeleteModal}
         isLoading={isLoadingDelete}
         onClose={() => setIsOpenDeleteModal(false)}
-        onDelete={async () => {
+        onAction={async () => {
           await deleteGiftList({
             id: currentGiftList?.id,
             userId: currentGiftList?.ownerId,

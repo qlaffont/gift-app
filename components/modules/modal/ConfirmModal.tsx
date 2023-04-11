@@ -2,20 +2,22 @@ import { useI18n } from '../../../i18n/useI18n';
 import { Button } from '../../atoms/Button';
 import Modal from '../../atoms/Modal';
 
-export const DeleteModal = ({
+export const ConfirmModal = ({
   title,
   description,
+  actionLabel,
   isOpen,
   isLoading,
   onClose,
-  onDelete,
+  onAction,
 }: {
   title: string;
   description: string;
+  actionLabel: string;
   isOpen: boolean;
-  isLoading: boolean;
+  isLoading?: boolean;
   onClose: () => void;
-  onDelete: () => void;
+  onAction: () => void;
 }) => {
   const { t } = useI18n();
 
@@ -36,12 +38,12 @@ export const DeleteModal = ({
             className="m-auto"
             isLoading={isLoading}
             onClick={async () => {
-              await onDelete();
+              await onAction();
               onClose();
             }}
             variant="error"
           >
-            {t('components.form.delete')}
+            {actionLabel}
           </Button>
         </div>
       </div>

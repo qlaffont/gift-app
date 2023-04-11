@@ -36,15 +36,18 @@ const lng = {
     modules: {
       delete: {
         title: 'Delete',
-        description: 'Are your sure your want to delete this item ?',
+        description: 'Are you sure your want to delete this item ?',
       },
       gift: {
         add: 'Create a gift',
         edit: 'Edit a gift',
         editBtn: 'Edit',
         delete: 'Delete a gift',
-        deleteDescription: 'Are your sure your want to delete this gift ?',
+        deleteDescription: 'Are you sure your want to delete this gift ?',
         deleteBtn: 'Delete',
+        takenTitle: 'Gift purchased',
+        takenDescription: 'Are you sure you bought this gift ?',
+        takenAction: 'Yes I bought it !',
         fields: {
           name: 'Name',
           description: 'Description',
@@ -59,7 +62,8 @@ const lng = {
           nc: 'No priority ',
         },
         buyIt: 'Buy',
-        compare: 'Compare prices',
+        compare: 'Compare',
+        taken: 'I bought it !',
       },
       giftListAccess: {
         email: 'Email Address',
@@ -92,7 +96,7 @@ const lng = {
         edit: 'Edit a gift list',
         editBtn: 'Edit',
         delete: 'Delete a gift list',
-        deleteDescription: 'Are your sure your want to delete this gift list ?',
+        deleteDescription: 'Are you sure your want to delete this gift list ?',
         deleteBtn: 'Delete',
         accessBtn: 'Access',
         fields: {

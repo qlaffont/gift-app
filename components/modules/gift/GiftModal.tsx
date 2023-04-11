@@ -16,12 +16,14 @@ export const GiftModal = ({
   onClose,
   onEdit,
   onDelete,
+  onAlreadyBuy,
 }: {
   gift: Partial<Gift>;
   isOpen: boolean;
   onClose: () => void;
   onEdit?: () => void;
   onDelete?: () => void;
+  onAlreadyBuy?: () => void;
 }) => {
   const { t, actualLang } = useI18n();
 
@@ -35,26 +37,26 @@ export const GiftModal = ({
   return (
     <Modal isOpen={isOpen} title={gift?.name} onClose={onClose}>
       <div className="space-y-5">
-        {onEdit && onDelete && (
-          <div className="flex items-center justify-between">
-            <div>
-              <Button
-                prefixIcon="icon icon-gift"
-                variant={
-                  gift?.priority === 3
-                    ? 'error'
-                    : gift?.priority === 2
-                    ? 'warning'
-                    : gift?.priority === 1
-                    ? 'info'
-                    : 'primary'
-                }
-                size="small"
-              >
-                {PriorityOptions(t).find((v) => v.value === gift?.priority)?.label}
-              </Button>
-            </div>
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:justify-between">
+          <div>
+            <Button
+              prefixIcon="icon icon-gift"
+              variant={
+                gift?.priority === 3
+                  ? 'error'
+                  : gift?.priority === 2
+                  ? 'warning'
+                  : gift?.priority === 1
+                  ? 'info'
+                  : 'primary'
+              }
+              size="small"
+            >
+              {PriorityOptions(t).find((v) => v.value === gift?.priority)?.label}
+            </Button>
+          </div>
 
+          {onEdit && onDelete && (
             <div className="flex items-center justify-end gap-1">
               <div>
                 <Button
@@ -81,8 +83,8 @@ export const GiftModal = ({
                 </Button>
               </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
 
         <div className="space-y-3">
           <p className="font-bold">{gift?.name}</p>
@@ -92,7 +94,7 @@ export const GiftModal = ({
           </div>
         </div>
 
-        <div className="flex items-center justify-center gap-2">
+        <div className="flex flex-wrap items-center justify-center gap-2">
           {gift?.link && (
             <div>
               <Link href={gift.link} target="_blank">
@@ -108,6 +110,16 @@ export const GiftModal = ({
                 {t('components.modules.gift.compare')}
               </Button>
             </Link>
+          </div>
+          <div>
+            <Button
+              className="m-auto animate-pulse"
+              prefixIcon="icon icon-shopping-bag"
+              variant="success"
+              onClick={() => onAlreadyBuy()}
+            >
+              {t('components.modules.gift.taken')}
+            </Button>
           </div>
         </div>
       </div>

@@ -11,9 +11,9 @@ import { Gift, GiftList, GiftListAccess } from '../../../services/types/prisma.t
 import { useUser } from '../../../services/useUser';
 import { Button } from '../../atoms/Button';
 import { Input } from '../../atoms/Input';
-import { DeleteModal } from '../delete/DeleteModal';
 import { GiftFormModal } from '../gift/GiftFormModal';
 import { GiftModal } from '../gift/GiftModal';
+import { ConfirmModal } from '../modal/ConfirmModal';
 import { GiftListAccessModal } from './GiftListAccessModal';
 //@ts-ignore
 const ReactMarkdown = dynamic(() => import('react-markdown').then((mod) => mod.default));
@@ -35,6 +35,7 @@ export const GiftListItem = ({
   const { value: isOpenGiftViewModal, setValue: setIsOpenGiftViewModal } = useBoolean();
   const { value: isOpenGiftAccessModal, setValue: setIsOpenGiftAccessModal } = useBoolean();
   const { value: isOpenDeleteModal, setValue: setIsOpenDeleteModal } = useBoolean();
+  const { value: isOpenConfirmModal, setValue: setIsOpenConfirmModal } = useBoolean();
   const [password, setPassword] = useState<string>();
   const passwordDebounce = useDebounce(password, 300);
 
@@ -224,6 +225,14 @@ export const GiftListItem = ({
               }
             : undefined
         }
+        onAlreadyBuy={
+          isUser
+            ? () => {
+                setIsOpenGiftViewModal(false);
+                setIsOpenConfirmModal(true);
+              }
+            : undefined
+        }
       />
 
       <GiftListAccessModal
@@ -232,18 +241,38 @@ export const GiftListItem = ({
         giftList={giftList}
       />
 
-      <DeleteModal
+      <ConfirmModal
         title={t('components.modules.gift.delete')}
         description={t('components.modules.gift.deleteDescription')}
         isOpen={isOpenDeleteModal}
         isLoading={isLoadingDelete}
         onClose={() => setIsOpenDeleteModal(false)}
-        onDelete={async () => {
+        onAction={async () => {
           await deleteGift({
             id: gift.id,
             userId: router.query.id as string,
             giftListId: giftListData.id,
           });
+          await invalidateQueries([
+            'findGiftListById',
+            {
+              userId: router.query.id,
+              id: giftList.id,
+            },
+          ]);
+        }}
+        actionLabel={t('components.form.delete')}
+      />
+
+      <ConfirmModal
+        title={t('components.modules.gift.takenTitle')}
+        description={t('components.modules.gift.takenDescription')}
+        isOpen={isOpenConfirmModal}
+        isLoading={false}
+        onClose={() => setIsOpenConfirmModal(false)}
+        actionLabel={t('components.modules.gift.takenAction')}
+        onAction={async () => {
+          // TODO
           await invalidateQueries([
             'findGiftListById',
             {
