@@ -96,7 +96,7 @@ export const GiftListItem = ({
                 <div>
                   <Button
                     prefixIcon="icon icon-square-check !h-4 !w-4 ml-1 md:!m-0 my-1 md:!h-3 md:!w-3"
-                    variant="success"
+                    variant="info"
                     size="small"
                     onClick={() => {
                       setIsOpenCleanTakenModal(true);
