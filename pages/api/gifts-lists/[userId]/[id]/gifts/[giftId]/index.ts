@@ -1,8 +1,8 @@
 import { NextkitError } from 'nextkit';
 
-import { api } from '../../../../../../server';
-import { getUserFromReq } from '../../../../../../services/apis/authUser';
-import prisma from '../../../../../../services/prisma';
+import { api } from '../../../../../../../server';
+import { getUserFromReq } from '../../../../../../../services/apis/authUser';
+import prisma from '../../../../../../../services/prisma';
 
 export default api({
   async POST({ req }) {

@@ -1,7 +1,6 @@
-import { Gift } from '@prisma/client';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 
-import { GiftListAccess } from '../../../types/prisma.type';
+import { Gift, GiftListAccess } from '../../../types/prisma.type';
 import { fetcher } from '../fetcher';
 
 type Return = {

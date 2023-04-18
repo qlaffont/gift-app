@@ -1,5 +1,4 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Gift } from '@prisma/client';
 import { isNil } from 'lodash';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
@@ -14,6 +13,7 @@ import { useFetchOGDataMutation } from '../../../services/apis/react-query/mutat
 import { useUpdateGiftMutation } from '../../../services/apis/react-query/mutations/useUpdateGiftMutation';
 import { useInvalidateQueries } from '../../../services/apis/react-query/useInvalidateQueries';
 import { setValuesReactHookForm } from '../../../services/setValuesReactHookForm';
+import { Gift } from '../../../services/types/prisma.type';
 import { useYup } from '../../../services/useYup';
 import { Button } from '../../atoms/Button';
 import { FormDevTools } from '../../atoms/FormDevTool';

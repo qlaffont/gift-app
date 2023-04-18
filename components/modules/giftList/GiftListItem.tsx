@@ -1,10 +1,14 @@
+import clsx from 'clsx';
+import isNil from 'lodash/isNil';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { useBoolean, useDebounce } from 'usehooks-ts';
 
 import { useI18n } from '../../../i18n/useI18n';
 import { useDeleteGiftMutation } from '../../../services/apis/react-query/mutations/useDeleteGiftMutation';
+import { useTakenGiftMutation } from '../../../services/apis/react-query/mutations/useTakenGiftMutation';
 import { useFindGiftListByIdQuery } from '../../../services/apis/react-query/queries/useFindGiftListByIdQuery';
 import { useInvalidateQueries } from '../../../services/apis/react-query/useInvalidateQueries';
 import { Gift, GiftList, GiftListAccess } from '../../../services/types/prisma.type';
@@ -42,6 +46,7 @@ export const GiftListItem = ({
   const invalidateQueries = useInvalidateQueries();
 
   const { mutateAsync: deleteGift, isLoading: isLoadingDelete } = useDeleteGiftMutation();
+  const { mutateAsync: takeGift, isLoading: isLoadingTaken } = useTakenGiftMutation();
 
   const [gift, setGift] = useState<Partial<Gift>>();
 
@@ -148,7 +153,11 @@ export const GiftListItem = ({
           {giftListData?.gifts.map((v) => (
             <div
               key={v.id}
-              className="block cursor-pointer rounded-md border border-black border-opacity-20 !bg-cover !bg-center hover:opacity-70 dark:border-white"
+              className={clsx(
+                'block cursor-pointer rounded-md border border-black',
+                'border-opacity-20 !bg-cover !bg-center hover:opacity-70 dark:border-white',
+                !isUser && !isNil(v.takenWhen) ? 'opacity-20' : '',
+              )}
               style={{ background: `url(${v.coverUrl})` }}
               onClick={() => {
                 setGift(v);
@@ -207,7 +216,10 @@ export const GiftListItem = ({
       />
       <GiftModal
         isOpen={isOpenGiftViewModal}
-        onClose={() => setIsOpenGiftViewModal(false)}
+        onClose={() => {
+          setIsOpenGiftViewModal(false);
+          setGift(undefined);
+        }}
         gift={gift}
         onEdit={
           isUser
@@ -226,13 +238,14 @@ export const GiftListItem = ({
             : undefined
         }
         onAlreadyBuy={
-          isUser
+          !isUser
             ? () => {
                 setIsOpenGiftViewModal(false);
                 setIsOpenConfirmModal(true);
               }
             : undefined
         }
+        canSeeTaken={!isUser}
       />
 
       <GiftListAccessModal
@@ -246,7 +259,10 @@ export const GiftListItem = ({
         description={t('components.modules.gift.deleteDescription')}
         isOpen={isOpenDeleteModal}
         isLoading={isLoadingDelete}
-        onClose={() => setIsOpenDeleteModal(false)}
+        onClose={() => {
+          setIsOpenDeleteModal(false);
+          setGift(undefined);
+        }}
         onAction={async () => {
           await deleteGift({
             id: gift.id,
@@ -268,18 +284,29 @@ export const GiftListItem = ({
         title={t('components.modules.gift.takenTitle')}
         description={t('components.modules.gift.takenDescription')}
         isOpen={isOpenConfirmModal}
-        isLoading={false}
-        onClose={() => setIsOpenConfirmModal(false)}
+        isLoading={isLoadingTaken}
+        onClose={() => {
+          setIsOpenConfirmModal(false);
+          setGift(undefined);
+        }}
         actionLabel={t('components.modules.gift.takenAction')}
         onAction={async () => {
-          // TODO
-          await invalidateQueries([
-            'findGiftListById',
-            {
-              userId: router.query.id,
-              id: giftList.id,
-            },
-          ]);
+          try {
+            await takeGift({
+              userId: router.query.id as string,
+              giftListId: giftList.id,
+              id: gift.id,
+            });
+            await invalidateQueries([
+              'findGiftListById',
+              {
+                userId: router.query.id,
+                id: giftList.id,
+              },
+            ]);
+          } catch (error) {
+            toast.error(t('components.modules.gift.takenError'));
+          }
         }}
       />
     </div>

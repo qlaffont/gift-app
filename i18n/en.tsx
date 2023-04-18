@@ -48,6 +48,7 @@ const lng = {
         takenTitle: 'Gift purchased',
         takenDescription: 'Are you sure you bought this gift ?',
         takenAction: 'Yes I bought it !',
+        takenError: 'This gift is already bought !',
         fields: {
           name: 'Name',
           description: 'Description',

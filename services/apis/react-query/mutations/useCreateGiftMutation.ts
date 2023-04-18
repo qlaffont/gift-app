@@ -1,6 +1,6 @@
-import { Gift } from '@prisma/client';
 import { useMutation, UseMutationOptions } from '@tanstack/react-query';
 
+import { Gift } from '../../../types/prisma.type';
 import { fetcher } from '../fetcher';
 
 export const useCreateGiftMutation = (

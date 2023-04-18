@@ -49,6 +49,7 @@ const lng: typeof enDict = {
         takenTitle: 'Cadeau acheté',
         takenDescription: 'Êtes-vous sûr que vous avez acheté ce cadeau ?',
         takenAction: "Oui je l'ai acheté !",
+        takenError: 'Ce cadeau est déjà acheté !',
         fields: {
           name: 'Nom',
           description: 'Description',

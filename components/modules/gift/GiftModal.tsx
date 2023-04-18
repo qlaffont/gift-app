@@ -1,9 +1,10 @@
-import { Gift } from '@prisma/client';
+import isNil from 'lodash/isNil';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { useMemo } from 'react';
 
 import { useI18n } from '../../../i18n/useI18n';
+import { Gift } from '../../../services/types/prisma.type';
 import { Button } from '../../atoms/Button';
 import Modal from '../../atoms/Modal';
 import { PriorityOptions } from './GiftFormModal';
@@ -17,9 +18,11 @@ export const GiftModal = ({
   onEdit,
   onDelete,
   onAlreadyBuy,
+  canSeeTaken,
 }: {
   gift: Partial<Gift>;
   isOpen: boolean;
+  canSeeTaken?: boolean;
   onClose: () => void;
   onEdit?: () => void;
   onDelete?: () => void;
@@ -37,6 +40,10 @@ export const GiftModal = ({
   return (
     <Modal isOpen={isOpen} title={gift?.name} onClose={onClose}>
       <div className="space-y-5">
+        {!isNil(gift?.takenWhen) && canSeeTaken && (
+          <p className="text-center text-lg font-bold text-error">{t('components.modules.gift.takenTitle')} !</p>
+        )}
+
         <div className="flex flex-wrap items-center justify-center gap-2 sm:justify-between">
           <div>
             <Button
@@ -111,16 +118,18 @@ export const GiftModal = ({
               </Button>
             </Link>
           </div>
-          <div>
-            <Button
-              className="m-auto animate-pulse"
-              prefixIcon="icon icon-shopping-bag"
-              variant="success"
-              onClick={() => onAlreadyBuy()}
-            >
-              {t('components.modules.gift.taken')}
-            </Button>
-          </div>
+          {isNil(gift?.takenWhen) && canSeeTaken && (
+            <div>
+              <Button
+                className="m-auto animate-pulse"
+                prefixIcon="icon icon-shopping-bag"
+                variant="success"
+                onClick={() => onAlreadyBuy()}
+              >
+                {t('components.modules.gift.taken')}
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     </Modal>
