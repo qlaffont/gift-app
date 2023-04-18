@@ -45,6 +45,7 @@ export default api({
               googleUserId: id,
               email,
               name,
+              lang: 'FR',
             },
           });
         } else {
@@ -54,6 +55,7 @@ export default api({
             },
             data: {
               googleUserId: id,
+              name,
             },
           });
         }
@@ -84,6 +86,7 @@ export default api({
               discordUserId: id,
               email,
               name: `${username}`,
+              lang: 'FR',
             },
           });
         } else {
@@ -93,6 +96,7 @@ export default api({
             },
             data: {
               discordUserId: id,
+              name: `${username}`,
             },
           });
         }

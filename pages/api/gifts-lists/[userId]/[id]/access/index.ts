@@ -3,6 +3,7 @@ import { NextkitError } from 'nextkit';
 import { api } from '../../../../../../server';
 import { getUserFromReq } from '../../../../../../services/apis/authUser';
 import prisma from '../../../../../../services/prisma';
+import sendim from '../../../../../../services/sendim';
 
 export default api({
   async GET({ req }) {
@@ -46,6 +47,7 @@ export default api({
             owner: true,
           },
         },
+        owner: true,
       },
     });
 
@@ -54,15 +56,34 @@ export default api({
     }
 
     if (!giftList.giftListUserAccesses.find((v) => v.owner.email === req.body.email)) {
-      const user = await prisma.user.findFirst({
+      const user = await prisma.user.upsert({
         where: {
           email: req.body.email,
         },
+        create: {
+          email: req.body.email,
+          name: `randomgenerateduser${new Date().getTime()}`,
+          lang: 'FR',
+        },
+        update: {},
       });
 
-      if (!user) {
-        throw new NextkitError(404, 'Not found');
-      }
+      //Send email to inform that we have an access to gift list
+      await sendim.sendTransactionalMail({
+        templateId: user.lang === 'EN' ? '2' : '1',
+        to: [
+          {
+            email: req.body.email,
+            name: user.name.startsWith('randomgenerateduser') ? undefined : user.name,
+          },
+        ],
+        sender: undefined,
+        params: {
+          USERNAME: giftList.owner.name,
+          EMAIL: giftList.owner.email,
+          URL: new URL(`/${giftList.owner.name}/${giftList.owner.id}`, process.env.NEXT_PUBLIC_BASE_URL!).toString(),
+        },
+      });
 
       await prisma.giftListUserAccess.create({
         data: {
