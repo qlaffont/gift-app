@@ -7,6 +7,7 @@ import { toast } from 'react-hot-toast';
 import { useBoolean, useDebounce } from 'usehooks-ts';
 
 import { useI18n } from '../../../i18n/useI18n';
+import { useCleanGiftListMutation } from '../../../services/apis/react-query/mutations/useCleanGiftListMutation';
 import { useDeleteGiftMutation } from '../../../services/apis/react-query/mutations/useDeleteGiftMutation';
 import { useTakenGiftMutation } from '../../../services/apis/react-query/mutations/useTakenGiftMutation';
 import { useFindGiftListByIdQuery } from '../../../services/apis/react-query/queries/useFindGiftListByIdQuery';
@@ -40,6 +41,7 @@ export const GiftListItem = ({
   const { value: isOpenGiftAccessModal, setValue: setIsOpenGiftAccessModal } = useBoolean();
   const { value: isOpenDeleteModal, setValue: setIsOpenDeleteModal } = useBoolean();
   const { value: isOpenConfirmModal, setValue: setIsOpenConfirmModal } = useBoolean();
+  const { value: isOpenCleanTakenModal, setValue: setIsOpenCleanTakenModal } = useBoolean();
   const [password, setPassword] = useState<string>();
   const passwordDebounce = useDebounce(password, 300);
 
@@ -47,6 +49,7 @@ export const GiftListItem = ({
 
   const { mutateAsync: deleteGift, isLoading: isLoadingDelete } = useDeleteGiftMutation();
   const { mutateAsync: takeGift, isLoading: isLoadingTaken } = useTakenGiftMutation();
+  const { mutateAsync: cleanGiftList, isLoading: isLoadingClean } = useCleanGiftListMutation();
 
   const [gift, setGift] = useState<Partial<Gift>>();
 
@@ -89,6 +92,20 @@ export const GiftListItem = ({
         <div className="flex justify-end gap-1">
           {isUser && (
             <>
+              {isNil(giftListData?.resetTakenWhen) && (
+                <div>
+                  <Button
+                    prefixIcon="icon icon-square-check !h-4 !w-4 ml-1 md:!m-0 my-1 md:!h-3 md:!w-3"
+                    variant="success"
+                    size="small"
+                    onClick={() => {
+                      setIsOpenCleanTakenModal(true);
+                    }}
+                  >
+                    <span className="hidden md:block">{t('pages.profile.giftList.cleanTaken')}</span>
+                  </Button>
+                </div>
+              )}
               {giftList.access === GiftListAccess.EMAIL && (
                 <div>
                   <Button
@@ -307,6 +324,29 @@ export const GiftListItem = ({
           } catch (error) {
             toast.error(t('components.modules.gift.takenError'));
           }
+        }}
+      />
+      <ConfirmModal
+        title={t('pages.profile.giftList.cleanTaken')}
+        description={t('pages.profile.giftList.cleanTakenDescription')}
+        isOpen={isOpenCleanTakenModal}
+        isLoading={isLoadingClean}
+        onClose={() => {
+          setIsOpenCleanTakenModal(false);
+        }}
+        actionLabel={t('components.form.confirm')}
+        onAction={async () => {
+          await cleanGiftList({
+            userId: router.query.id as string,
+            id: giftList.id,
+          });
+          await invalidateQueries([
+            'findGiftListById',
+            {
+              userId: router.query.id,
+              id: giftList.id,
+            },
+          ]);
         }}
       />
     </div>

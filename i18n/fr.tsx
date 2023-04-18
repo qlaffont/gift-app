@@ -101,6 +101,8 @@ const lng: typeof enDict = {
         deleteDescription: 'Êtes-vous sûr que vous souhaitez supprimer cette liste de cadeaux ?',
         deleteBtn: 'Supprimer',
         accessBtn: 'Accès',
+        cleanTaken: 'Supprimer les cadeaux achetés',
+        cleanTakenDescription: 'Êtes-vous sûr que vous souhaitez nettoyer les cadeaux achetés ?',
         fields: {
           name: 'Nom',
           description: 'Description',

@@ -7,7 +7,8 @@
   mask-repeat: no-repeat !important;
 
   $icons: 'en', 'fr', 'user-list', 'login', 'logout', 'sun', 'moon', 'share', 'list-add', 'close', 'arrow-down',
-  'pen', 'refresh', 'trash', 'gift', 'download', 'card', 'chart', 'shopping-bag';
+  'pen', 'refresh', 'trash', 'gift', 'download', 'card', 'chart', 'shopping-bag',
+  'square-check';
 
   @each $icon in $icons {
     &.icon-#{$icon} {
