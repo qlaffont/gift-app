@@ -65,7 +65,7 @@ export default api({
         const oAuthDiscordService = new oAuthDiscord();
 
         const { access_token } = await oAuthDiscordService.fetchUserToken(req.query.code as string);
-        console.log(access_token);
+        console.log({ access_token });
         const { username, email, id, ...data } = await oAuthDiscordService.fetchUserInfo(access_token);
         console.log({ username, email, id, ...data });
         // Check if user already exist
