@@ -91,6 +91,7 @@ const lng: typeof enDict = {
       },
     },
     profile: {
+      seo: 'Liste de cadeau de {{username}}',
       share: 'Partager',
       shareMessage: 'Voici ma liste de cadeau !',
       giftList: {

@@ -90,6 +90,7 @@ const lng = {
       hello: 'Hello world !',
     },
     profile: {
+      seo: 'Gift list of {{username}}',
       share: 'Share',
       shareMessage: 'This is my gift list !',
       giftList: {

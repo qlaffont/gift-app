@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import { useBoolean, useSsr } from 'usehooks-ts';
 
 import { Button } from '../../../components/atoms/Button';
+import { SEO } from '../../../components/atoms/SEO';
 import { GiftListItem } from '../../../components/modules/giftList/GiftListItem';
 import { GiftListModal } from '../../../components/modules/giftList/GiftListModal';
 import { ConfirmModal } from '../../../components/modules/modal/ConfirmModal';
@@ -53,6 +54,7 @@ const Profile = () => {
 
   return (
     <div className="space-y-5">
+      <SEO title={t('pages.profile.seo', { username: router.query.username as string })} />
       <div className="flex flex-wrap justify-between">
         <div>
           <div>
@@ -122,6 +124,7 @@ const Profile = () => {
           });
           await invalidateQueries(['findUserById', { id: router.query.id }]);
         }}
+        actionLabel={t('components.form.delete')}
       />
     </div>
   );

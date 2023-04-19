@@ -5,6 +5,7 @@ import { useSsr } from 'usehooks-ts';
 
 import { Button } from '../../components/atoms/Button';
 import Modal from '../../components/atoms/Modal';
+import { SEO } from '../../components/atoms/SEO';
 import { useI18n } from '../../i18n/useI18n';
 import RestAPIService from '../../services/apis/RestAPIService';
 
@@ -21,6 +22,7 @@ const Login = () => {
 
   return (
     <Modal isOpen={true} title={t('pages.auth.login.title')}>
+      <SEO title={t('pages.auth.login.title')} />
       <div className="space-y-2">
         <Link href={`${RestAPIService.login}?method=google`} className="flex">
           <Button className="m-auto w-full max-w-xs" prefixIcon="brand bg-google">
