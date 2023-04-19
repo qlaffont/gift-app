@@ -64,10 +64,9 @@ export default api({
       if (method === 'discord') {
         const oAuthDiscordService = new oAuthDiscord();
 
-        const { access_token, ...token } = await oAuthDiscordService.fetchUserToken(req.query.code as string);
-        console.log({ access_token, token });
-        const { username, email, id, ...data } = await oAuthDiscordService.fetchUserInfo(access_token);
-        console.log({ username, email, id, ...data });
+        const { access_token } = await oAuthDiscordService.fetchUserToken(req.query.code as string);
+        const { username, email, id } = await oAuthDiscordService.fetchUserInfo(access_token);
+
         // Check if user already exist
         user = await prisma.user.findFirst({
           where: {
