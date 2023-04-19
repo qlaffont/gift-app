@@ -5,6 +5,7 @@ import { useMemo } from 'react';
 
 import { useI18n } from '../../../i18n/useI18n';
 import { Gift } from '../../../services/types/prisma.type';
+import { useUser } from '../../../services/useUser';
 import { Button } from '../../atoms/Button';
 import Modal from '../../atoms/Modal';
 import { PriorityOptions } from './GiftFormModal';
@@ -29,6 +30,7 @@ export const GiftModal = ({
   onAlreadyBuy?: () => void;
 }) => {
   const { t, actualLang } = useI18n();
+  const user = useUser();
 
   const compareLink = useMemo(() => {
     if (actualLang === 'fr') {
@@ -118,7 +120,7 @@ export const GiftModal = ({
               </Button>
             </Link>
           </div>
-          {isNil(gift?.takenWhen) && canSeeTaken && (
+          {isNil(gift?.takenWhen) && canSeeTaken && user?.id && (
             <div>
               <Button
                 className="m-auto animate-pulse"
