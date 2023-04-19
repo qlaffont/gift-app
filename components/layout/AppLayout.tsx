@@ -59,7 +59,9 @@ export const AppLayout = ({ children }: React.PropsWithChildren) => {
       <div className="w-full py-6 shadow-2xl">
         <div className="container m-auto flex flex-wrap items-center justify-center gap-4 px-4 sm:justify-between">
           <div>
-            <i className="brand icon-logo block h-6 w-36 bg-black dark:bg-white"></i>
+            <Link href="/" className="hover:opacity-70">
+              <i className="brand icon-logo block h-6 w-36 bg-black dark:bg-white"></i>
+            </Link>
           </div>
 
           {isConnected ? (
