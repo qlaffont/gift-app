@@ -58,8 +58,6 @@ class oAuthGoogle {
 
     const dataToken = jwt.decode(tokens.id_token);
 
-    console.log(dataToken);
-
     return {
       email: user.data.emailAddresses[0].value,
       name: dataToken.name,
