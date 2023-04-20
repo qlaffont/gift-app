@@ -55,9 +55,9 @@ export const AppLayout = ({ children }: React.PropsWithChildren) => {
   const user = useUser();
 
   return (
-    <div>
+    <div className="flex min-h-screen flex-col">
       <div className="w-full py-6 shadow-2xl">
-        <div className="container m-auto flex flex-wrap items-center justify-center gap-4 px-4 sm:justify-between">
+        <div className="container mx-auto flex flex-wrap items-center justify-center gap-4 px-4 sm:justify-between">
           <div>
             <Link href="/" className="hover:opacity-70">
               <i className="brand icon-logo block h-6 w-36 bg-black dark:bg-white"></i>
@@ -113,7 +113,21 @@ export const AppLayout = ({ children }: React.PropsWithChildren) => {
         </div>
       </div>
 
-      <div className="container m-auto !px-4 !pt-8">{children}</div>
+      <div className="container mx-auto flex-grow !px-4 !pt-8 ">{children}</div>
+
+      <div className="flex flex-wrap items-center justify-center gap-2 py-4">
+        <Link href="/terms-and-conditions" className="font-bold hover:underline hover:opacity-60">
+          {t('pages.termsAndConditions.title')}
+        </Link>
+
+        <Link
+          href="https://github.com/qlaffont/gift-app"
+          target="_blank"
+          className="font-bold hover:underline hover:opacity-60"
+        >
+          {t('navbar.sourceCode')}
+        </Link>
+      </div>
     </div>
   );
 };

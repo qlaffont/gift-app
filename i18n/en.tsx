@@ -5,6 +5,7 @@ const lng = {
     login: 'Signup/Login',
     logout: 'Logout',
     profile: 'My Profile ({{username}})',
+    sourceCode: 'Source Code by Quentin Laffont',
   },
   components: {
     form: {

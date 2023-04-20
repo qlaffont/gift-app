@@ -6,6 +6,7 @@ const lng: typeof enDict = {
     login: "S'inscrire/Se connecter",
     logout: 'Se déconnecter',
     profile: 'Mon profil ({{username}})',
+    sourceCode: 'Code Source par Quentin Laffont',
   },
   components: {
     form: {
