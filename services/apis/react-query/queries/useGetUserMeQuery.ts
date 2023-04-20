@@ -5,7 +5,11 @@ import { fetcher } from '../fetcher';
 
 export const useGetUserMeQuery = (
   variables?: undefined,
-  options?: UseQueryOptions<unknown, unknown, { email: string; name: string; id: string; lang: Language }>,
+  options?: UseQueryOptions<
+    unknown,
+    unknown,
+    { email: string; name: string; id: string; lang: Language; description?: string }
+  >,
 ) =>
   useQuery({
     queryKey: variables === undefined ? ['getUserMe'] : ['getUserMe', variables],

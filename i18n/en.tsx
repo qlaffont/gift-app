@@ -131,6 +131,12 @@ const lng = {
         passwordInvalid: 'Ce mot de passe est invalid.',
         accessOrEmpty: "This list doesn't contain any gift or you don't have an access on it.",
       },
+      edit: {
+        editAction: 'Edit',
+        editTitle: 'Edit profile',
+        name: 'Profile name',
+        description: 'Description',
+      },
     },
   },
   yup: {

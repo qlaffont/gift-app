@@ -112,6 +112,12 @@ const lng: typeof enDict = {
       seo: 'Liste de cadeau de {{username}}',
       share: 'Partager',
       shareMessage: 'Voici ma liste de cadeau !',
+      edit: {
+        editAction: 'Modifier',
+        editTitle: 'Modifier le profil',
+        name: 'Nom du profil',
+        description: 'Description',
+      },
       giftList: {
         add: 'Créer une liste de cadeaux',
         edit: 'Modifier une liste de cadeaux',

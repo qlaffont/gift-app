@@ -2,6 +2,7 @@ import { dehydrate, QueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
 import { useCallback, useMemo, useState } from 'react';
 import toast from 'react-hot-toast';
+import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 import { useBoolean, useSsr } from 'usehooks-ts';
 
 import { Button } from '../../../components/atoms/Button';
@@ -9,6 +10,7 @@ import { SEO } from '../../../components/atoms/SEO';
 import { GiftListItem } from '../../../components/modules/giftList/GiftListItem';
 import { GiftListModal } from '../../../components/modules/giftList/GiftListModal';
 import { ConfirmModal } from '../../../components/modules/modal/ConfirmModal';
+import { ProfileModal } from '../../../components/modules/profile/ProfileModal';
 import { useI18n } from '../../../i18n/useI18n';
 import { useDeleteGiftListMutation } from '../../../services/apis/react-query/mutations/useDeleteGiftListMutation';
 import {
@@ -29,6 +31,7 @@ const Profile = () => {
   const [currentGiftList, setCurrentGiftList] = useState<Partial<GiftList>>();
   const { value: isOpenGiftListModal, setValue: setIsOpenGiftListModal } = useBoolean();
   const { value: isOpenDeleteModal, setValue: setIsOpenDeleteModal } = useBoolean();
+  const { value: isOpenEditModal, setValue: setIsOpenEditModal } = useBoolean();
 
   const { mutateAsync: deleteGiftList, isLoading: isLoadingDelete } = useDeleteGiftListMutation();
 
@@ -57,13 +60,18 @@ const Profile = () => {
       <SEO title={t('pages.profile.seo', { username: router.query.username as string })} />
       <div className="flex flex-wrap justify-between">
         <div>
-          <div>
-            <h1 className="text-2xl font-bold">{router?.query?.username || user?.name}</h1>
-            {user?.description && <p>{user?.description}</p>}
+          <div className="space-y-2">
+            <h1 className="text-2xl font-bold">{user?.name || router?.query?.username}</h1>
+            {user?.description && <ReactMarkdown>{user?.description}</ReactMarkdown>}
           </div>
         </div>
 
-        <div>
+        <div className="flex flex-wrap items-center gap-1">
+          {isUser && (
+            <Button prefixIcon="icon icon-pen" variant="warning" onClick={() => setIsOpenEditModal(true)}>
+              {t('pages.profile.edit.editAction')}
+            </Button>
+          )}
           <Button prefixIcon="icon icon-share" onClick={() => onShare()}>
             {t('pages.profile.share')}
           </Button>
@@ -111,6 +119,7 @@ const Profile = () => {
         giftList={currentGiftList}
         onClose={() => setIsOpenGiftListModal(false)}
       />
+      <ProfileModal isOpen={isOpenEditModal} onClose={() => setIsOpenEditModal(false)} />
       <ConfirmModal
         title={t('pages.profile.giftList.delete')}
         description={t('pages.profile.giftList.deleteDescription')}
