@@ -1,8 +1,17 @@
-# STARTER WEB
+# Gift App
+
+A simple application to manage gift for users.
+
+**Feature :**
+- Compare pricing to get the most affordable price
+- Able to know if a gift is already taken
+- Able to define priority of gift
+- Share your gift list with other persons
 
 ## Server requirements
 
 - Node (Please check .nvmrc to get Node.JS version)
+- MySQL Server or PlanetScale Database
 
 ## How to start the project ?
 
@@ -17,11 +26,6 @@
 - Build app `pnpm build`
 - Start server  `pnpm start`
 
-## Package Scripts
+## Template
 
-- `dev` : Start Dev server (hot reload activated)
-- `build` : Build app
-- `start` : Start server in production mode
-- `lint` : Lint all files
-- `prepare` : Install husky
-- `update-template` : Update project with template (/!\ Verify result !)
+This project is generated with [flexper/starter-web](https://github.com/flexper/starter-web)
