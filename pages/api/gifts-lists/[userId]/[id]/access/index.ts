@@ -56,13 +56,14 @@ export default api({
     }
 
     if (!giftList.giftListUserAccesses.find((v) => v.owner.email === req.body.email)) {
+      const generatedUserName = `invitedUser${new Date().getTime()}`;
       const user = await prisma.user.upsert({
         where: {
           email: req.body.email,
         },
         create: {
           email: req.body.email,
-          name: `randomgenerateduser${new Date().getTime()}`,
+          name: generatedUserName,
           lang: 'FR',
         },
         update: {},
@@ -74,7 +75,7 @@ export default api({
         to: [
           {
             email: req.body.email,
-            name: user.name.startsWith('randomgenerateduser') ? undefined : user.name,
+            name: user.name.startsWith(generatedUserName) ? undefined : user.name,
           },
         ],
         sender: undefined,

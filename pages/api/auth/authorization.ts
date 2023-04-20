@@ -55,7 +55,6 @@ export default api({
             },
             data: {
               googleUserId: id,
-              name,
             },
           });
         }
@@ -95,7 +94,6 @@ export default api({
             },
             data: {
               discordUserId: id,
-              name: `${username}`,
             },
           });
         }
