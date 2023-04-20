@@ -80,8 +80,8 @@ dependencies:
     specifier: 18.2.0
     version: 18.2.0
   react-date-picker:
-    specifier: ^9.2.0
-    version: 9.2.0(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^9.2.1
+    version: 9.2.1(react-dom@18.2.0)(react@18.2.0)
   react-dom:
     specifier: 18.2.0
     version: 18.2.0(react@18.2.0)
@@ -5700,8 +5700,8 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /react-date-picker@9.2.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-kAE7HFLq1ic4pS0Pk9SyPTjejIfjTyPov04a2eZzLxfZh8ss8EPaaaX7bBUP4RUCkbxHpR0P4UHloD0/fFDCZw==}
+  /react-date-picker@9.2.1(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-5DPe/AVeiDjM4EEyGBxDu1iW9Au2i5JZFMqg+ARr4MoRWqhoGLDOBYZ+Pzb788/B6XQ89Ywu+zbubOBx5tSU+Q==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
