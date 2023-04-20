@@ -82,6 +82,7 @@ export default api({
         params: {
           USERNAME: giftList.owner.name,
           EMAIL: giftList.owner.email,
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
           URL: new URL(`/${giftList.owner.name}/${giftList.owner.id}`, process.env.NEXT_PUBLIC_BASE_URL!).toString(),
         },
       });
