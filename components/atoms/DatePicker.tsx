@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { useMemo } from 'react';
+//@ts-ignore
 import DatePickerCmp from 'react-date-picker/dist/entry.nostyle';
 
 import { useI18n } from '../../i18n/useI18n';
