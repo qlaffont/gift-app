@@ -56,7 +56,7 @@ const ExtendedApp = ({ Component, pageProps }) => {
   const Layout = Component.Layout ? Component.Layout : AppLayout;
 
   useNextAuthProtectedHandler({
-    publicURLs: ['/', '/:username/:id'],
+    publicURLs: ['/', '/:username/:id', '/terms-and-conditions'],
     loginURL: '/auth/login',
     authCallbackURL: '/auth',
     allowNotFound: true,

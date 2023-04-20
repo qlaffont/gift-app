@@ -83,6 +83,23 @@ const lng: typeof enDict = {
     home: {
       hello: 'Bienvenue tout le monde !',
     },
+    termsAndConditions: {
+      title: 'Termes et conditions',
+      data: {
+        title: 'Vos données',
+        description:
+          "Vos données ne seront pas vendues à d'autres plates-formes ou logiciels. Vos données vous appartiennent. Si vous devez fermer votre compte et supprimer vos données, vous pouvez contacter par email contact@qlaffont.com concernant https://gift.qlaffont.com",
+      },
+      google: {
+        title: 'Compte Google',
+        description: "Votre compte Google n'est utilisé que pour l'authentification.",
+      },
+      discord: {
+        title: 'Compte Discord',
+        description: "Votre compte Discord est uniquement utilisé pour l'authentification.",
+      },
+      privacyPolicy: 'Politique de Confidentialité',
+    },
     auth: {
       login: {
         title: 'Connexion',

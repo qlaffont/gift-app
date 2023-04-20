@@ -86,6 +86,23 @@ const lng = {
         discord: 'Login with Discord',
       },
     },
+    termsAndConditions: {
+      title: 'Terms and Conditions',
+      data: {
+        title: 'Your Data',
+        description:
+          'Your data will not be sell to others platforms or softwares. Your data still belong to you. If you need to close your account and remove your data you can contact by mail at contact@qlaffont.com regarding https://gift.qlaffont.com',
+      },
+      google: {
+        title: 'Google account',
+        description: 'Your Google account is only use for authentication.',
+      },
+      discord: {
+        title: 'Discord account',
+        description: 'Your Discord account is only use for authentication.',
+      },
+      privacyPolicy: 'Privacy Policy',
+    },
     home: {
       hello: 'Hello world !',
     },
