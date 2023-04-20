@@ -60,6 +60,7 @@ export const GiftListItem = ({
     data: giftListData,
     error,
     isFetched,
+    isFetching,
   } = useFindGiftListByIdQuery(
     {
       userId: router.query.id as string,
@@ -82,8 +83,16 @@ export const GiftListItem = ({
       <div className="flex flex-wrap items-center justify-between">
         <div className="space-y-2">
           {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
-          <h2 className="cursor-pointer text-xl font-bold" onClick={() => setIsDeveloped((b) => !b)}>
-            {giftList.name}
+          <h2
+            className="flex cursor-pointer flex-wrap items-center gap-2 text-xl font-bold"
+            onClick={() => setIsDeveloped((b) => !b)}
+          >
+            <div>{giftList.name}</div>
+            {isFetching && (
+              <div>
+                <span className="icon icon-refresh block h-4 w-4 animate-spin bg-black dark:bg-white"></span>
+              </div>
+            )}
           </h2>
           <div className="[&>p]:pb-3">
             <ReactMarkdown>{giftList?.description}</ReactMarkdown>

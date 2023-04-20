@@ -105,3 +105,29 @@ input[type="number"].appearance-none{
 .public-DraftStyleDefault-block {
   margin: 0 !important;
 }
+
+@import "~nprogress/nprogress.css";
+
+#nprogress {
+  .bar {
+    background: black !important;
+  }
+
+  .spinner-icon {
+    border-top-color: black !important;
+    border-left-color: black !important;
+  }
+}
+
+.dark {
+  #nprogress {
+    .bar {
+      background: white !important;
+    }
+
+    .spinner-icon {
+      border-top-color: white !important;
+      border-left-color: white !important;
+    }
+  }
+}

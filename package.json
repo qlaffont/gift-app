@@ -41,6 +41,7 @@
     "next-seo": "5.15.0",
     "nextkit": "^3.4.3",
     "node-fetch": "2",
+    "nprogress": "^0.2.0",
     "prisma": "^4.10.1",
     "prisma-field-encryption": "^1.4.1",
     "react": "18.2.0",

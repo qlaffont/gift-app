@@ -6,7 +6,9 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { isDevelopmentEnv } from 'env-vars-validator';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import { Router } from 'next/router';
 import { NextAuthProvider, useNextAuthProtectedHandler } from 'next-protected-auth';
+import NProgress from 'nprogress';
 import { useEffect } from 'react';
 import { resolveValue, Toaster, ToastIcon } from 'react-hot-toast';
 import { locales, RosettyProvider } from 'rosetty-react';
@@ -77,6 +79,18 @@ const ExtendedApp = ({ Component, pageProps }) => {
       changeLang(user?.lang?.toLowerCase() || 'en');
     }
   }, [user, changeLang]);
+
+  Router.events.on('routeChangeStart', () => {
+    NProgress.start();
+  });
+
+  Router.events.on('routeChangeComplete', () => {
+    NProgress.done();
+  });
+
+  Router.events.on('routeChangeError', () => {
+    NProgress.done();
+  });
 
   return (
     <div className="h-screen w-screen overflow-auto bg-white text-black dark:bg-zinc-900 dark:text-white ">
