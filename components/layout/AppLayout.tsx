@@ -94,7 +94,7 @@ export const AppLayout = ({ children }: React.PropsWithChildren) => {
             </div>
           ) : (
             <div className="flex flex-wrap items-center gap-2 ">
-              {/* <DarkModeToggler /> */}
+              <DarkModeToggler />
 
               <LangToggler />
 
