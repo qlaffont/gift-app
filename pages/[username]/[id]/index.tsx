@@ -1,12 +1,13 @@
 import { dehydrate, QueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import toast from 'react-hot-toast';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 import { useBoolean, useSsr } from 'usehooks-ts';
 
 import { Button } from '../../../components/atoms/Button';
 import { SEO } from '../../../components/atoms/SEO';
+import { GiftListInstructionsModal } from '../../../components/modules/giftList/GiftListInstructionsModal';
 import { GiftListItem } from '../../../components/modules/giftList/GiftListItem';
 import { GiftListModal } from '../../../components/modules/giftList/GiftListModal';
 import { ConfirmModal } from '../../../components/modules/modal/ConfirmModal';
@@ -32,6 +33,7 @@ const Profile = () => {
   const { value: isOpenGiftListModal, setValue: setIsOpenGiftListModal } = useBoolean();
   const { value: isOpenDeleteModal, setValue: setIsOpenDeleteModal } = useBoolean();
   const { value: isOpenEditModal, setValue: setIsOpenEditModal } = useBoolean();
+  const { value: isOpenInstructionsModal, setValue: setIsOpenInstructionsModal } = useBoolean();
 
   const { mutateAsync: deleteGiftList, isLoading: isLoadingDelete } = useDeleteGiftListMutation();
 
@@ -55,6 +57,14 @@ const Profile = () => {
     }
   }, [isBrowser]);
 
+  useEffect(() => {
+    if (isBrowser) {
+      if (!localStorage.getItem('instructionsGiven')) {
+        setIsOpenInstructionsModal(true);
+      }
+    }
+  }, [isBrowser]);
+
   return (
     <div className="space-y-5">
       <SEO title={t('pages.profile.seo', { username: router.query.username as string })} />
@@ -67,9 +77,13 @@ const Profile = () => {
         </div>
 
         <div className="flex flex-wrap items-center gap-1">
-          {isUser && (
+          {isUser ? (
             <Button prefixIcon="icon icon-pen" variant="warning" onClick={() => setIsOpenEditModal(true)}>
               {t('pages.profile.edit.editAction')}
+            </Button>
+          ) : (
+            <Button variant="info" prefixIcon="icon icon-info" onClick={() => setIsOpenInstructionsModal(true)}>
+              {t('pages.profile.info')}
             </Button>
           )}
           <Button prefixIcon="icon icon-share" onClick={() => onShare()}>
@@ -134,6 +148,15 @@ const Profile = () => {
           await invalidateQueries(['findUserById', { id: router.query.id }]);
         }}
         actionLabel={t('components.form.delete')}
+      />
+      <GiftListInstructionsModal
+        isOpen={isOpenInstructionsModal}
+        onClose={() => {
+          if (isBrowser) {
+            setIsOpenInstructionsModal(false);
+            localStorage.setItem('instructionsGiven', 'true');
+          }
+        }}
       />
     </div>
   );

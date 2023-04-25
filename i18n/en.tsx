@@ -124,6 +124,7 @@ const lng = {
     profile: {
       seo: 'Gift list of {{username}}',
       share: 'Share',
+      info: 'Informations',
       shareMessage: 'This is my gift list !',
       giftList: {
         add: 'Create a gift list',
@@ -150,6 +151,16 @@ const lng = {
         editTitle: 'Edit profile',
         name: 'Profile name',
         description: 'Description',
+      },
+      instructions: {
+        title: 'Instructions',
+        isConnected: 'You need to be connected to indicate to others users that you have taken your gift(s).',
+        priority: 'Each gift is ranked by prority ! Be sure to check it before you buy it.',
+        compare:
+          'By clicking on a gift, you will be able to access gift informations and able to compare price between many sellers.',
+        taken:
+          'When you have bought a gift, you just need to go back to this website to indicate that you have taken the gift !',
+        understand: 'I understand !',
       },
     },
   },

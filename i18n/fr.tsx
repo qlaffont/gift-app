@@ -125,6 +125,7 @@ const lng: typeof enDict = {
     profile: {
       seo: 'Liste de cadeau de {{username}}',
       share: 'Partager',
+      info: 'Informations',
       shareMessage: 'Voici ma liste de cadeau !',
       edit: {
         editAction: 'Modifier',
@@ -151,6 +152,16 @@ const lng: typeof enDict = {
         },
         passwordInvalid: 'Ce mot de passe est invalid.',
         accessOrEmpty: 'Cette liste ne contient aucun cadeau ou ne vous est pas accessible.',
+      },
+      instructions: {
+        title: 'Instructions',
+        isConnected: 'Vous devez être connecté pour indiquer aux autres utilisateurs que vous avez pris vos cadeaux.',
+        priority: "Chaque cadeau est classé par priorité ! Assurez-vous de le vérifier avant de l'acheter.",
+        compare:
+          'En cliquant sur un cadeau, vous pourrez accéder aux informations des cadeaux et vous serez en mesure de comparer le prix entre de nombreux vendeurs.',
+        taken:
+          'Lorsque vous avez acheté un cadeau, il vous suffit de retourner sur ce site Web pour indiquer que vous avez pris le cadeau !',
+        understand: "J'ai compris !",
       },
     },
   },

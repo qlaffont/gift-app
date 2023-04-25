@@ -8,7 +8,7 @@
 
   $icons: 'en', 'fr', 'user-list', 'login', 'logout', 'sun', 'moon', 'share', 'list-add', 'close', 'arrow-down',
   'pen', 'refresh', 'trash', 'gift', 'download', 'card', 'chart', 'shopping-bag',
-  'square-check';
+  'square-check', 'info';
 
   @each $icon in $icons {
     &.icon-#{$icon} {
