@@ -176,40 +176,42 @@ export const GiftListItem = ({
             </div>
           )}
 
-          {giftListData?.gifts.map((v) => (
-            <div
-              key={v.id}
-              className={clsx(
-                'block cursor-pointer rounded-md border border-black',
-                'border-opacity-20 !bg-cover !bg-center hover:opacity-70 dark:border-white',
-                !isUser && !isNil(v.takenWhen) ? 'opacity-20' : '',
-              )}
-              style={{ background: `url(${v.coverUrl})` }}
-              onClick={() => {
-                setGift(v);
-                setIsOpenGiftViewModal(true);
-              }}
-            >
-              <div className="flex h-52 w-52 flex-col justify-between">
-                <div className="p-3">
-                  {v.priority > 0 && (
-                    <Button
-                      prefixIcon="icon icon-gift"
-                      variant={v.priority === 3 ? 'error' : v.priority === 2 ? 'warning' : 'info'}
-                      size="roundSmall"
-                    ></Button>
-                  )}
-                </div>
+          {giftListData?.gifts
+            .sort((a, b) => a.priority - b.priority)
+            .map((v) => (
+              <div
+                key={v.id}
+                className={clsx(
+                  'block cursor-pointer rounded-md border border-black',
+                  'border-opacity-20 !bg-cover !bg-center hover:opacity-70 dark:border-white',
+                  !isUser && !isNil(v.takenWhen) ? 'opacity-20' : '',
+                )}
+                style={{ background: `url(${v.coverUrl})` }}
+                onClick={() => {
+                  setGift(v);
+                  setIsOpenGiftViewModal(true);
+                }}
+              >
+                <div className="flex h-52 w-52 flex-col justify-between">
+                  <div className="p-3">
+                    {v.priority > 0 && (
+                      <Button
+                        prefixIcon="icon icon-gift"
+                        variant={v.priority === 3 ? 'error' : v.priority === 2 ? 'warning' : 'info'}
+                        size="roundSmall"
+                      ></Button>
+                    )}
+                  </div>
 
-                <div className="w-full">
-                  <div className="w-full rounded-b-md bg-slate-200 bg-opacity-80 p-3 dark:bg-zinc-700 dark:bg-opacity-80 ">
-                    <p className="line-clamp-1">{v.name}</p>
-                    <p className="text-sm line-clamp-2">{v.description}</p>
+                  <div className="w-full">
+                    <div className="w-full rounded-b-md bg-slate-200 bg-opacity-80 p-3 dark:bg-zinc-700 dark:bg-opacity-80 ">
+                      <p className="line-clamp-1">{v.name}</p>
+                      <p className="text-sm line-clamp-2">{v.description}</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
 
           {(!giftListData?.gifts || giftListData?.gifts?.length === 0) &&
             giftList.access === GiftListAccess.PASSWORD_PROTECTED && (

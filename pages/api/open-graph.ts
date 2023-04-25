@@ -11,6 +11,7 @@ export default api({
       const res = await fetch(req.query.url as string);
       return res;
     } catch (error) {
+      console.log(error);
       return {};
     }
   },

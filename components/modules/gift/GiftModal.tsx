@@ -104,17 +104,17 @@ export const GiftModal = ({
         </div>
 
         <div className="flex flex-wrap items-center justify-center gap-2">
+          {gift?.link && (
+            <div>
+              <Link href={gift.link} target="_blank">
+                <Button className="m-auto" prefixIcon="icon icon-card">
+                  {t('components.modules.gift.buyIt')}
+                </Button>
+              </Link>
+            </div>
+          )}
           {isNil(gift?.takenWhen) && canSeeTaken && (
             <>
-              {gift?.link && (
-                <div>
-                  <Link href={gift.link} target="_blank">
-                    <Button className="m-auto" prefixIcon="icon icon-card">
-                      {t('components.modules.gift.buyIt')}
-                    </Button>
-                  </Link>
-                </div>
-              )}
               <div>
                 <Link href={compareLink} target="_blank">
                   <Button className="m-auto" prefixIcon="icon icon-chart" variant="info">

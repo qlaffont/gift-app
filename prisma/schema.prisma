@@ -24,8 +24,8 @@ model User {
 
   email       String @unique /// @encrypted
   emailHash       String? @unique /// @encryption:hash(email)
-  name        String /// @encrypted
-  description String? /// @encrypted
+  name        String @db.LongText /// @encrypted
+  description String? @db.LongText /// @encrypted
 
   discordUserId String? @unique /// @encrypted
   discordUserIdHash       String? @unique /// @encryption:hash(discordUserId)
@@ -65,11 +65,11 @@ enum GiftListAccess {
 model GiftList {
   id String @id @default(uuid())
 
-  name           String
-  description    String?
+  name           String @db.LongText
+  description    String? @db.LongText
   resetTakenWhen DateTime?
   access         GiftListAccess
-  password       String?
+  password       String? @db.LongText
 
   owner   User   @relation(fields: [ownerId], references: [id])
   ownerId String
@@ -97,10 +97,10 @@ model GiftListUserAccess {
 model Gift {
   id String @id @default(uuid())
 
-  name        String
-  description String?
-  link        String?
-  coverUrl    String?
+  name        String @db.LongText
+  description String? @db.LongText
+  link        String? @db.LongText
+  coverUrl    String? @db.LongText
 
   takenBy   User?     @relation(fields: [takenById], references: [id])
   takenById String?
