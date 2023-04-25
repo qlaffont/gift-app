@@ -107,11 +107,13 @@ const lng: typeof enDict = {
       },
       google: {
         title: 'Compte Google',
-        description: "Votre compte Google n'est utilisé que pour l'authentification.",
+        description:
+          "Votre compte Google n'est utilisé que pour l'authentification. Votre prenom / nom est utilisé pour remplir vos informations. Ces informations sont cryptées pour respecter la loi RGPD.",
       },
       discord: {
         title: 'Compte Discord',
-        description: "Votre compte Discord est uniquement utilisé pour l'authentification.",
+        description:
+          "Votre compte Discord est uniquement utilisé pour l'authentification. Votre nom d'utilisateur est utilisé pour remplir vos informations. Ces informations sont cryptées pour respecter la loi RGPD.",
       },
       privacyPolicy: 'Politique de Confidentialité',
     },

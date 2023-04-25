@@ -96,11 +96,13 @@ const lng = {
       },
       google: {
         title: 'Google account',
-        description: 'Your Google account is only use for authentication.',
+        description:
+          'Your Google account is only use for authentication. Your firstName / LastName is used to fill your informations. These informations are crypted to respect RGPD law.',
       },
       discord: {
         title: 'Discord account',
-        description: 'Your Discord account is only use for authentication.',
+        description:
+          'Your Discord account is only use for authentication. Your username is used to prefill your informations. These informations are crypted to respect RGPD law.',
       },
       privacyPolicy: 'Privacy Policy',
     },
