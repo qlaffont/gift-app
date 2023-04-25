@@ -40,7 +40,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => (
           <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
           <link rel="icon" type="image/png" href="/favicon.png" />
           <title>App</title>
-          <div dangerouslySetInnerHTML={{ __html: process.env.NEXT_PUBLIC_TRACKING_SCRIPT }}></div>
+          {/* <div dangerouslySetInnerHTML={{ __html: process.env.NEXT_PUBLIC_TRACKING_SCRIPT }}></div> */}
         </Head>
         <RosettyProvider languages={rosettyLocales} defaultLanguage="en">
           <NextAuthProvider>
