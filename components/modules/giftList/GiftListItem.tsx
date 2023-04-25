@@ -177,7 +177,7 @@ export const GiftListItem = ({
           )}
 
           {giftListData?.gifts
-            .sort((a, b) => a.priority - b.priority)
+            .sort((a, b) => b.priority - a.priority)
             .map((v) => (
               <div
                 key={v.id}
