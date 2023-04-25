@@ -82,7 +82,21 @@ const lng: typeof enDict = {
   },
   pages: {
     home: {
-      hello: 'Bienvenue tout le monde !',
+      title: 'Créez votre liste de cadeaux facilement et partagez-la !',
+      step1: {
+        title: 'Créez votre compte',
+        description: 'Créez votre compte pour pouvoir gérer votre liste de cadeaux',
+      },
+      step2: {
+        title: 'Saisissez vos cadeaux',
+        description:
+          'Vous pouvez saisir des informations sur vos cadeaux. Vous pouvez également insérer un lien pour votre cadeau et nous remplissons automatiquement les informations.',
+      },
+      step3: {
+        title: 'Partagez votre liste de cadeaux !',
+        description:
+          "Vous pouvez partager votre liste de cadeaux avec d'autres utilisateurs ! Ces utilisateurs pourront informer les autres qu'ils ont pris vos cadeaux.",
+      },
     },
     termsAndConditions: {
       title: 'Termes et conditions',

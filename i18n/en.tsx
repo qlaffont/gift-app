@@ -105,7 +105,21 @@ const lng = {
       privacyPolicy: 'Privacy Policy',
     },
     home: {
-      hello: 'Hello world !',
+      title: 'Create your gift list easely and share it !',
+      step1: {
+        title: 'Create your account',
+        description: 'Create your account to be able to manage your gift list',
+      },
+      step2: {
+        title: 'Insert yours gifts',
+        description:
+          'You can enter informations about your gifts. You can also insert a link for your gift and automatically we fill informations.',
+      },
+      step3: {
+        title: 'Share your gift list !',
+        description:
+          'You can share your gift list with others users ! These users will be able to inform others that they have taken your gifts.',
+      },
     },
     profile: {
       seo: 'Gift list of {{username}}',
