@@ -2,7 +2,7 @@ import { api } from '../../../server';
 import prisma from '../../../services/prisma';
 
 export default api({
-  async POST() {
+  async GET() {
     // Delete already taken fields
 
     await prisma.gift.deleteMany({
