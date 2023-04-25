@@ -40,7 +40,13 @@ const MyApp = ({ Component, pageProps }: AppProps) => (
           <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
           <link rel="icon" type="image/png" href="/favicon.png" />
           <title>App</title>
-          {/* <div dangerouslySetInnerHTML={{ __html: process.env.NEXT_PUBLIC_TRACKING_SCRIPT }}></div> */}
+          {process.env.NEXT_PUBLIC_UMAMI_TRACKING_SCRIPT && process.env.NEXT_PUBLIC_UMAMI_TRACKING_WEBSITE && (
+            <script
+              async
+              src={process.env.NEXT_PUBLIC_UMAMI_TRACKING_SCRIPT}
+              data-website-id={process.env.NEXT_PUBLIC_UMAMI_TRACKING_WEBSITE}
+            ></script>
+          )}
         </Head>
         <RosettyProvider languages={rosettyLocales} defaultLanguage="en">
           <NextAuthProvider>
