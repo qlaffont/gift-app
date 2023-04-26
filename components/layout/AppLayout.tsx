@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useNextAuthProtected } from 'next-protected-auth';
@@ -73,7 +74,12 @@ export const AppLayout = ({ children }: React.PropsWithChildren) => {
               <Link href={`/${user?.name}/${user?.id}`}>
                 <div className="flex items-center gap-1 hover:opacity-70">
                   <div>
-                    <i className="icon icon-user-list mb-2 block h-5 w-6 bg-black dark:bg-white"></i>
+                    <i
+                      className={clsx(
+                        'icon  mb-2 block h-5 w-6 bg-black dark:bg-white',
+                        user?.name ? 'icon-user-list' : 'icon-refresh animate-spin',
+                      )}
+                    ></i>
                   </div>
                   <div>
                     <p className="hidden font-bold sm:block">{t('navbar.profile', { username: user?.name })}</p>

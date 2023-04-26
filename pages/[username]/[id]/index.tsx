@@ -1,4 +1,5 @@
 import { dehydrate, QueryClient } from '@tanstack/react-query';
+import { isNil } from 'lodash';
 import { useRouter } from 'next/router';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import toast from 'react-hot-toast';
@@ -36,10 +37,9 @@ const Profile = () => {
   const { value: isOpenInstructionsModal, setValue: setIsOpenInstructionsModal } = useBoolean();
 
   const { mutateAsync: deleteGiftList, isLoading: isLoadingDelete } = useDeleteGiftListMutation();
-
-  const { data: user } = useFindUserByIdQuery(
+  const { data: user, isLoading } = useFindUserByIdQuery(
     { id: router.query.id as string },
-    { enabled: router?.query?.id?.length > 0 },
+    { enabled: !isNil(router?.query?.id) && router?.query?.id?.length > 0 },
   );
 
   const isUser = useMemo(() => connectedUser?.id === router.query.id, [connectedUser]);
@@ -59,11 +59,15 @@ const Profile = () => {
 
   useEffect(() => {
     if (isBrowser) {
-      if (!localStorage.getItem('instructionsGiven')) {
+      if (user && !isUser && !localStorage.getItem('instructionsGiven')) {
         setIsOpenInstructionsModal(true);
       }
+
+      if (user && isUser) {
+        setIsOpenInstructionsModal(false);
+      }
     }
-  }, [isBrowser]);
+  }, [isBrowser, isUser, user]);
 
   return (
     <div className="space-y-5">
@@ -77,6 +81,11 @@ const Profile = () => {
         </div>
 
         <div className="flex flex-wrap items-center gap-1">
+          {isLoading && (
+            <div>
+              <i className="icon icon-refresh mb-2 block h-7 w-7 animate-spin bg-black dark:bg-white"></i>
+            </div>
+          )}
           {isUser ? (
             <Button prefixIcon="icon icon-pen" variant="warning" onClick={() => setIsOpenEditModal(true)}>
               {t('pages.profile.edit.editAction')}
@@ -163,14 +172,23 @@ const Profile = () => {
 };
 
 export async function getServerSideProps({ params }) {
-  const queryClient = new QueryClient();
-  await queryClient.prefetchQuery(['findUserById', { id: params.id }], findUserByIdFetcher(params));
+  if (!isNil(params?.id) && params?.id !== '<no source>') {
+    const queryClient = new QueryClient();
+    await queryClient.prefetchQuery(
+      ['findUserById', { id: params.id }],
+      findUserByIdFetcher({
+        id: params.id,
+      }),
+    );
 
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-    },
-  };
+    return {
+      props: {
+        dehydratedState: dehydrate(queryClient),
+      },
+    };
+  }
+
+  return { props: {} };
 }
 
 export default Profile;

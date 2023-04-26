@@ -186,7 +186,7 @@ export const GiftListItem = ({
                   'border-opacity-20 !bg-cover !bg-center hover:opacity-70 dark:border-white',
                   !isUser && !isNil(v.takenWhen) ? 'opacity-20' : '',
                 )}
-                style={{ background: `url(${v.coverUrl})` }}
+                style={!isNil(v.coverUrl) ? { background: `url(${v.coverUrl})` } : {}}
                 onClick={() => {
                   setGift(v);
                   setIsOpenGiftViewModal(true);
