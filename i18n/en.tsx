@@ -88,7 +88,7 @@ const lng = {
       },
     },
     termsAndConditions: {
-      title: 'Terms and Conditions',
+      title: 'Privacy policy / Legal notices / CGU ',
       data: {
         title: 'Your Data',
         description:
@@ -97,12 +97,12 @@ const lng = {
       google: {
         title: 'Google account',
         description:
-          'Your Google account is only use for authentication. Your firstName / LastName is used to fill your informations. These informations are crypted to respect RGPD law.',
+          'Your Google account is only use for authentication. Your FirstName / LastName is used to pre-fill your username. These informations are crypted to respect RGPD law.',
       },
       discord: {
         title: 'Discord account',
         description:
-          'Your Discord account is only use for authentication. Your username is used to prefill your informations. These informations are crypted to respect RGPD law.',
+          'Your Discord account is only use for authentication. Your username is used to pre-fill your username. These informations are crypted to respect RGPD law.',
       },
       privacyPolicy: 'Privacy Policy',
     },

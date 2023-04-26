@@ -99,7 +99,7 @@ const lng: typeof enDict = {
       },
     },
     termsAndConditions: {
-      title: 'Termes et conditions',
+      title: 'Politique de confidentialité / Mentions légales / CGU',
       data: {
         title: 'Vos données',
         description:
@@ -108,12 +108,12 @@ const lng: typeof enDict = {
       google: {
         title: 'Compte Google',
         description:
-          "Votre compte Google n'est utilisé que pour l'authentification. Votre prenom / nom est utilisé pour remplir vos informations. Ces informations sont cryptées pour respecter la loi RGPD.",
+          "Votre compte Google n'est utilisé que pour l'authentification. Votre prenom / nom est utilisé pour pre-remplir votre pseudo. Ces informations sont cryptées pour respecter la loi RGPD.",
       },
       discord: {
         title: 'Compte Discord',
         description:
-          "Votre compte Discord est uniquement utilisé pour l'authentification. Votre nom d'utilisateur est utilisé pour remplir vos informations. Ces informations sont cryptées pour respecter la loi RGPD.",
+          "Votre compte Discord est uniquement utilisé pour l'authentification. Votre nom d'utilisateur est utilisé pour pre-remplir votre pseudo. Ces informations sont cryptées pour respecter la loi RGPD.",
       },
       privacyPolicy: 'Politique de Confidentialité',
     },
