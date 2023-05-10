@@ -2,6 +2,7 @@ import isNil from 'lodash/isNil';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { useMemo } from 'react';
+import { useSsr } from 'usehooks-ts';
 
 import { useI18n } from '../../../i18n/useI18n';
 import { Gift } from '../../../services/types/prisma.type';
@@ -31,6 +32,7 @@ export const GiftModal = ({
 }) => {
   const { t, actualLang } = useI18n();
   const user = useUser();
+  const { isBrowser } = useSsr();
 
   const compareLink = useMemo(() => {
     if (actualLang === 'fr') {
@@ -122,18 +124,24 @@ export const GiftModal = ({
                   </Button>
                 </Link>
               </div>
-              {user?.id && (
-                <div>
-                  <Button
-                    className="m-auto animate-pulse"
-                    prefixIcon="icon icon-shopping-bag"
-                    variant="success"
-                    onClick={() => onAlreadyBuy()}
-                  >
-                    {t('components.modules.gift.taken')}
-                  </Button>
-                </div>
-              )}
+              <div>
+                <Button
+                  className="m-auto animate-pulse"
+                  prefixIcon="icon icon-shopping-bag"
+                  variant="success"
+                  onClick={() => {
+                    if (user?.id) {
+                      onAlreadyBuy();
+                    } else {
+                      if (isBrowser) {
+                        window.open('/auth/login');
+                      }
+                    }
+                  }}
+                >
+                  {t('components.modules.gift.taken')}
+                </Button>
+              </div>
             </>
           )}
         </div>
