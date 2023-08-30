@@ -137,6 +137,7 @@ const lng = {
         deleteBtn: 'Delete',
         accessBtn: 'Access',
         cleanTaken: 'Remove taken gifts',
+        seeMore: 'See more',
         cleanTakenDescription: 'Are you sure your want to clean already boughts gifts ?',
         fields: {
           name: 'Name',

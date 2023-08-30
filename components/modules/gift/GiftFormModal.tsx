@@ -132,6 +132,8 @@ export const GiftFormModal = ({
       setValuesReactHookForm(setValue, gift, {
         ignoreKeys: ['id', 'createdAt', 'updatedAt', 'giftId'],
       });
+    } else {
+      reset();
     }
   }, [gift]);
 

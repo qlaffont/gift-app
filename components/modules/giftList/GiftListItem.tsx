@@ -16,7 +16,7 @@ import { Gift, GiftList, GiftListAccess } from '../../../services/types/prisma.t
 import { useUser } from '../../../services/useUser';
 import { Button } from '../../atoms/Button';
 import { Input } from '../../atoms/Input';
-import { GiftFormModal } from '../gift/GiftFormModal';
+import { GiftFormModal, PriorityOptions } from '../gift/GiftFormModal';
 import { GiftModal } from '../gift/GiftModal';
 import { ConfirmModal } from '../modal/ConfirmModal';
 import { GiftListAccessModal } from './GiftListAccessModal';
@@ -159,82 +159,178 @@ export const GiftListItem = ({
       </div>
 
       {isDeveloped && (
-        <div className="flex flex-col items-center gap-2 overflow-auto rounded-md bg-zinc-100 p-5 dark:bg-zinc-800 sm:flex-row">
-          {isUser && (
-            <div className="h-52 w-52">
-              <div
-                className="flex h-52 w-52 cursor-pointer items-center justify-center rounded-md border border-black border-opacity-20 hover:opacity-70 dark:border-white"
-                onClick={() => {
-                  setGift(undefined);
-                  setIsOpenGiftFormModal(true);
-                }}
-              >
-                <Button variant="success" size="small" suffixIcon="icon icon-gift">
-                  +
-                </Button>
-              </div>
-            </div>
-          )}
-
-          {giftListData?.gifts
-            .sort((a, b) => b.priority - a.priority)
-            .map((v) => (
-              <div
-                key={v.id}
-                className={clsx(
-                  'block cursor-pointer rounded-md border border-black',
-                  'border-opacity-20 !bg-cover !bg-center hover:opacity-70 dark:border-white',
-                  !isUser && !isNil(v.takenWhen) ? 'opacity-20' : '',
-                )}
-                style={!isNil(v.coverUrl) ? { background: `url(${v.coverUrl})` } : {}}
-                onClick={() => {
-                  setGift(v);
-                  setIsOpenGiftViewModal(true);
-                }}
-              >
-                <div className="flex h-52 w-52 flex-col justify-between">
-                  <div className="p-3">
-                    {v.priority > 0 && (
-                      <Button
-                        prefixIcon="icon icon-gift"
-                        variant={v.priority === 3 ? 'error' : v.priority === 2 ? 'warning' : 'info'}
-                        size="roundSmall"
-                      ></Button>
-                    )}
-                  </div>
-
-                  <div className="w-full">
-                    <div className="w-full rounded-b-md bg-slate-200 bg-opacity-80 p-3 dark:bg-zinc-700 dark:bg-opacity-80 ">
-                      <p className="line-clamp-1">{v.name}</p>
-                      <p className="text-sm line-clamp-2">{v.description}</p>
-                    </div>
-                  </div>
+        <>
+          <div className="flex flex-col items-center gap-2 overflow-auto rounded-md bg-zinc-100 p-5 dark:bg-zinc-800 sm:flex-row md:hidden">
+            {isUser && (
+              <div className="h-52 w-52">
+                <div
+                  className="flex h-52 w-52 cursor-pointer items-center justify-center rounded-md border border-black border-opacity-20 hover:opacity-70 dark:border-white"
+                  onClick={() => {
+                    setGift(undefined);
+                    setIsOpenGiftFormModal(true);
+                  }}
+                >
+                  <Button variant="success" size="small" suffixIcon="icon icon-gift">
+                    +
+                  </Button>
                 </div>
-              </div>
-            ))}
-
-          {(!giftListData?.gifts || giftListData?.gifts?.length === 0) &&
-            giftList.access === GiftListAccess.PASSWORD_PROTECTED && (
-              <div className="m-auto text-center">
-                <Input
-                  label={t('pages.profile.giftList.fields.password')}
-                  blockClassName="bg-white"
-                  onChange={(e) => setPassword(e?.target?.value)}
-                  error={
-                    error && isFetched && passwordDebounce?.length > 0
-                      ? { message: 'pages.profile.giftList.passwordInvalid' }
-                      : ''
-                  }
-                />
               </div>
             )}
 
-          {(!giftListData?.gifts || giftListData?.gifts?.length === 0) && giftList.access === GiftListAccess.EMAIL && (
-            <div className="m-auto text-center">
-              <p className="text-sm font-bold">{t('pages.profile.giftList.accessOrEmpty')}</p>
+            {giftListData?.gifts
+              .sort((a, b) => b.priority - a.priority)
+              .map((v) => (
+                <div
+                  key={v.id}
+                  className={clsx(
+                    'block cursor-pointer rounded-md border border-black',
+                    'border-opacity-20 !bg-cover !bg-center hover:opacity-70 dark:border-white',
+                    !isUser && !isNil(v.takenWhen) ? 'opacity-20' : '',
+                  )}
+                  style={!isNil(v.coverUrl) ? { background: `url(${v.coverUrl})` } : {}}
+                  onClick={() => {
+                    setGift(v);
+                    setIsOpenGiftViewModal(true);
+                  }}
+                >
+                  <div className="flex h-52 w-52 flex-col justify-between">
+                    <div className="p-3">
+                      {v.priority > 0 && (
+                        <Button
+                          prefixIcon="icon icon-gift"
+                          variant={v.priority === 3 ? 'error' : v.priority === 2 ? 'warning' : 'info'}
+                          size="roundSmall"
+                        ></Button>
+                      )}
+                    </div>
+
+                    <div className="w-full">
+                      <div className="w-full rounded-b-md bg-slate-200 bg-opacity-80 p-3 dark:bg-zinc-700 dark:bg-opacity-80 ">
+                        <p className="line-clamp-1">{v.name}</p>
+                        <p className="text-sm line-clamp-2">{v.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+
+            {(!giftListData?.gifts || giftListData?.gifts?.length === 0) &&
+              giftList.access === GiftListAccess.PASSWORD_PROTECTED && (
+                <div className="m-auto text-center">
+                  <Input
+                    label={t('pages.profile.giftList.fields.password')}
+                    blockClassName="bg-white"
+                    onChange={(e) => setPassword(e?.target?.value)}
+                    error={
+                      error && isFetched && passwordDebounce?.length > 0
+                        ? { message: 'pages.profile.giftList.passwordInvalid' }
+                        : ''
+                    }
+                  />
+                </div>
+              )}
+
+            {(!giftListData?.gifts || giftListData?.gifts?.length === 0) &&
+              giftList.access === GiftListAccess.EMAIL && (
+                <div className="m-auto text-center">
+                  <p className="text-sm font-bold">{t('pages.profile.giftList.accessOrEmpty')}</p>
+                </div>
+              )}
+          </div>
+
+          <div className="hidden gap-2 overflow-auto rounded-md bg-zinc-100 p-5 dark:bg-zinc-800 sm:flex-row md:block">
+            <div>
+              {isUser && (
+                <div
+                  className="flex cursor-pointer items-center justify-end rounded-md border-opacity-20 pb-5 hover:opacity-70"
+                  onClick={() => {
+                    setGift(undefined);
+                    setIsOpenGiftFormModal(true);
+                  }}
+                >
+                  <Button variant="success" size="small" suffixIcon="icon icon-gift">
+                    +
+                  </Button>
+                </div>
+              )}
             </div>
-          )}
-        </div>
+
+            <div className="space-y-5">
+              {giftListData?.gifts
+                .sort((a, b) => b.priority - a.priority)
+                .map((v) => (
+                  <div
+                    className={clsx(
+                      'flex w-full cursor-pointer gap-2 hover:opacity-50',
+                      !isUser && !isNil(v.takenWhen) ? 'opacity-20' : '',
+                    )}
+                    key={v.id}
+                    onClick={() => {
+                      setGift(v);
+                      setIsOpenGiftViewModal(true);
+                    }}
+                  >
+                    <div
+                      className="h-52 w-[20%] rounded-md border !bg-cover !bg-center !bg-no-repeat"
+                      style={!isNil(v.coverUrl) ? { backgroundImage: `url(${v.coverUrl})` } : {}}
+                    ></div>
+
+                    <div className="flex w-full flex-grow flex-col justify-between rounded-md bg-slate-200 bg-opacity-80 p-3 dark:bg-zinc-700 dark:bg-opacity-80">
+                      <div className="w-full">
+                        <div className="w-full space-y-2 ">
+                          {v.priority > 0 && (
+                            <div>
+                              <Button
+                                prefixIcon="icon icon-gift"
+                                variant={v.priority === 3 ? 'error' : v.priority === 2 ? 'warning' : 'info'}
+                                size="roundSmall"
+                                className="!py-1"
+                              >
+                                <span className="text-sm">
+                                  {PriorityOptions(t).find((e) => e.value === v.priority).label}
+                                </span>
+                              </Button>
+                            </div>
+                          )}
+                          <p className="text-lg font-bold line-clamp-1">{v.name}</p>
+                          <p className="text-ellipsis text-sm line-clamp-2">{v.description}</p>
+                        </div>
+                      </div>
+
+                      <div>
+                        <Button variant="info" className="mx-auto">
+                          <span className="hidden md:block">{t('pages.profile.giftList.seeMore')}</span>
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+            </div>
+
+            {(!giftListData?.gifts || giftListData?.gifts?.length === 0) &&
+              giftList.access === GiftListAccess.PASSWORD_PROTECTED && (
+                <div className="m-auto w-fit text-center">
+                  <Input
+                    label={t('pages.profile.giftList.fields.password')}
+                    blockClassName="bg-white"
+                    onChange={(e) => setPassword(e?.target?.value)}
+                    error={
+                      error && isFetched && passwordDebounce?.length > 0
+                        ? { message: 'pages.profile.giftList.passwordInvalid' }
+                        : ''
+                    }
+                  />
+                </div>
+              )}
+
+            {(!giftListData?.gifts || giftListData?.gifts?.length === 0) &&
+              giftList.access === GiftListAccess.EMAIL && (
+                <div className="m-auto text-center">
+                  <p className="text-sm font-bold">{t('pages.profile.giftList.accessOrEmpty')}</p>
+                </div>
+              )}
+          </div>
+        </>
       )}
       <GiftFormModal
         isOpen={isOpenGiftFormModal}

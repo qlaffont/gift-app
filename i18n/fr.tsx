@@ -144,6 +144,7 @@ const lng: typeof enDict = {
         deleteBtn: 'Supprimer',
         accessBtn: 'Accès',
         cleanTaken: 'Supprimer les cadeaux achetés',
+        seeMore: 'Voir plus',
         cleanTakenDescription: 'Êtes-vous sûr que vous souhaitez nettoyer les cadeaux achetés ?',
         fields: {
           name: 'Nom',
