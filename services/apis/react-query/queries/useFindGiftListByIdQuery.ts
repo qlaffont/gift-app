@@ -4,7 +4,6 @@ import { Gift, GiftListAccess } from '../../../types/prisma.type';
 import { fetcher } from '../fetcher';
 
 type Return = {
-  password: any;
   id: string;
   name: string;
   description: string;

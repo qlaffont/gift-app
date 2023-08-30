@@ -40,7 +40,7 @@ const lng = {
         description: 'Are you sure your want to delete this item ?',
       },
       gift: {
-        add: 'Create a gift',
+        add: 'Add a gift',
         edit: 'Edit a gift',
         editBtn: 'Edit',
         delete: 'Delete a gift',
@@ -69,6 +69,9 @@ const lng = {
       },
       giftListAccess: {
         email: 'Email Address',
+      },
+      giftList: {
+        print: 'Print gift list',
       },
     },
   },

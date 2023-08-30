@@ -65,7 +65,7 @@ const ExtendedApp = ({ Component, pageProps }) => {
   const Layout = Component.Layout ? Component.Layout : AppLayout;
 
   useNextAuthProtectedHandler({
-    publicURLs: ['/', '/:username/:id', '/terms-and-conditions'],
+    publicURLs: ['/', '/gift-lists/:username/:id/:giftListId/print', '/:username/:id', '/terms-and-conditions'],
     loginURL: '/auth/login',
     authCallbackURL: '/auth',
     allowNotFound: true,
@@ -100,7 +100,7 @@ const ExtendedApp = ({ Component, pageProps }) => {
   });
 
   return (
-    <div className="h-screen w-screen overflow-auto bg-white text-black dark:bg-zinc-900 dark:text-white ">
+    <div className="overflow-auto bg-white text-black dark:bg-zinc-900 dark:text-white ">
       <Layout>
         <Component {...pageProps} />
         {isDevelopmentEnv() && <ReactQueryDevtools initialIsOpen={false} />}

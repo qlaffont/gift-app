@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import isNil from 'lodash/isNil';
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
@@ -239,7 +240,7 @@ export const GiftListItem = ({
           </div>
 
           <div className="hidden gap-2 overflow-auto rounded-md bg-zinc-100 p-5 dark:bg-zinc-800 sm:flex-row md:block">
-            <div>
+            <div className="flex items-center justify-end gap-2">
               {isUser && (
                 <div
                   className="flex cursor-pointer items-center justify-end rounded-md border-opacity-20 pb-5 hover:opacity-70"
@@ -248,11 +249,21 @@ export const GiftListItem = ({
                     setIsOpenGiftFormModal(true);
                   }}
                 >
-                  <Button variant="success" size="small" suffixIcon="icon icon-gift">
-                    +
+                  <Button variant="success" size="small" prefixIcon="icon icon-shopping-bag">
+                    {t('components.modules.gift.add')}
                   </Button>
                 </div>
               )}
+
+              <Link
+                href={`/gift-lists/${router.query.username}/${router.query.id}/${giftListData?.id}/print`}
+                target="_blank"
+                className="flex cursor-pointer items-center justify-end rounded-md border-opacity-20 pb-5 hover:opacity-70"
+              >
+                <Button variant="info" size="small" prefixIcon="icon icon-print">
+                  {t('components.modules.giftList.print')}
+                </Button>
+              </Link>
             </div>
 
             <div className="space-y-5">

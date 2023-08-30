@@ -41,7 +41,7 @@ const lng: typeof enDict = {
         description: 'Are your sure your want to delete this item ?',
       },
       gift: {
-        add: 'Créer un cadeau',
+        add: 'Ajouter un cadeau',
         edit: 'Modifier un cadeau',
         editBtn: 'Modifier',
         delete: 'Supprimer un cadeau',
@@ -70,6 +70,9 @@ const lng: typeof enDict = {
       },
       giftListAccess: {
         email: 'Adresse email',
+      },
+      giftList: {
+        print: 'Imprimer la liste de cadeaux',
       },
     },
   },
