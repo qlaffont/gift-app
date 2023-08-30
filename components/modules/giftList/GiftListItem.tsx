@@ -256,7 +256,9 @@ export const GiftListItem = ({
               )}
 
               <Link
-                href={`/gift-lists/${router.query.username}/${router.query.id}/${giftListData?.id}/print`}
+                href={`/gift-lists/${router.query.username}/${router.query.id}/${giftListData?.id}/print${
+                  passwordDebounce && passwordDebounce?.length > 0 ? `?password=${passwordDebounce}` : ``
+                }`}
                 target="_blank"
                 className="flex cursor-pointer items-center justify-end rounded-md border-opacity-20 pb-5 hover:opacity-70"
               >
