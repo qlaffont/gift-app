@@ -107,16 +107,14 @@ export const GiftModal = ({
 
         <div className="flex flex-wrap items-center justify-center gap-2">
           {gift?.link && (
-            <div>
-              <Link href={gift.link} target="_blank">
-                <Button className="m-auto" prefixIcon="icon icon-card">
-                  {t('components.modules.gift.buyIt')}
-                </Button>
-              </Link>
-            </div>
-          )}
-          {isNil(gift?.takenWhen) && canSeeTaken && (
             <>
+              <div>
+                <Link href={gift.link} target="_blank">
+                  <Button className="m-auto" prefixIcon="icon icon-card">
+                    {t('components.modules.gift.buyIt')}
+                  </Button>
+                </Link>
+              </div>
               <div>
                 <Link href={compareLink} target="_blank">
                   <Button className="m-auto" prefixIcon="icon icon-chart" variant="info">
@@ -124,25 +122,27 @@ export const GiftModal = ({
                   </Button>
                 </Link>
               </div>
-              <div>
-                <Button
-                  className="m-auto animate-pulse"
-                  prefixIcon="icon icon-shopping-bag"
-                  variant="success"
-                  onClick={() => {
-                    if (user?.id) {
-                      onAlreadyBuy();
-                    } else {
-                      if (isBrowser) {
-                        window.open('/auth/login');
-                      }
-                    }
-                  }}
-                >
-                  {t('components.modules.gift.taken')}
-                </Button>
-              </div>
             </>
+          )}
+          {isNil(gift?.takenWhen) && canSeeTaken && (
+            <div>
+              <Button
+                className="m-auto animate-pulse"
+                prefixIcon="icon icon-shopping-bag"
+                variant="success"
+                onClick={() => {
+                  if (user?.id) {
+                    onAlreadyBuy();
+                  } else {
+                    if (isBrowser) {
+                      window.open('/auth/login');
+                    }
+                  }
+                }}
+              >
+                {t('components.modules.gift.taken')}
+              </Button>
+            </div>
           )}
         </div>
       </div>
