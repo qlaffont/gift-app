@@ -37,7 +37,7 @@ export default async function handler(req, res) {
       });
 
       if (!user) {
-        await prisma.user.create({
+        user = await prisma.user.create({
           data: {
             googleUserId: id,
             email,
