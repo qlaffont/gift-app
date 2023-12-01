@@ -1,7 +1,6 @@
 import { validateEnv } from 'env-vars-validator';
 import jwt from 'jsonwebtoken';
 
-import { api } from '../../../server';
 import { getAuthMethod, saveRefresh } from '../../../services/apis/authUser';
 import oAuthDiscord from '../../../services/auth/Discord';
 import oAuthGoogle from '../../../services/auth/Google';
