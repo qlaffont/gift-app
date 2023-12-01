@@ -117,7 +117,6 @@ export default async function handler(req, res) {
     res.redirect('/auth?accessToken=' + accessToken);
   } catch (error) {
     console.log(error);
-    throw new Error("Login error ! Please try again !")
+    throw new Error("Login error ! Please try again !");
   }
 }
-
