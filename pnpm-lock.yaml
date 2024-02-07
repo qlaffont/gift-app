@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@headlessui/react':
     specifier: 1.7.12
@@ -139,8 +143,8 @@ devDependencies:
     specifier: 17.4.4
     version: 17.4.4
   '@hookform/devtools':
-    specifier: 4.3.0
-    version: 4.3.0(@babel/core@7.21.0)(@types/react@18.0.28)(react-dom@18.2.0)(react@18.2.0)
+    specifier: 4.3.1
+    version: 4.3.1(@babel/core@7.21.0)(@types/react@18.0.28)(react-dom@18.2.0)(react@18.2.0)
   '@next/eslint-plugin-next':
     specifier: ^13.3.0
     version: 13.3.0
@@ -412,6 +416,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.9
+    dev: false
 
   /@babel/runtime@7.21.0:
     resolution: {integrity: sha512-xwII0//EObnq89Ji5AKYQaRYiW/nZ3llSv29d49IuxPhKbtJoLP+9QUUZ4nVragQVtaVGeZrpB+ZtG/Pdy/POw==}
@@ -634,7 +639,7 @@ packages:
       '@babel/core': 7.21.0
       '@babel/helper-module-imports': 7.18.6
       '@babel/plugin-syntax-jsx': 7.18.6(@babel/core@7.21.0)
-      '@babel/runtime': 7.19.0
+      '@babel/runtime': 7.21.0
       '@emotion/hash': 0.9.0
       '@emotion/memoize': 0.8.0
       '@emotion/serialize': 1.1.0
@@ -679,7 +684,7 @@ packages:
         optional: true
     dependencies:
       '@babel/core': 7.21.0
-      '@babel/runtime': 7.19.0
+      '@babel/runtime': 7.21.0
       '@emotion/babel-plugin': 11.10.2(@babel/core@7.21.0)
       '@emotion/cache': 11.10.3
       '@emotion/serialize': 1.1.0
@@ -716,7 +721,7 @@ packages:
         optional: true
     dependencies:
       '@babel/core': 7.21.0
-      '@babel/runtime': 7.19.0
+      '@babel/runtime': 7.21.0
       '@emotion/babel-plugin': 11.10.2(@babel/core@7.21.0)
       '@emotion/is-prop-valid': 1.2.0
       '@emotion/react': 11.10.4(@babel/core@7.21.0)(@types/react@18.0.28)(react@18.2.0)
@@ -787,8 +792,8 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@hookform/devtools@4.3.0(@babel/core@7.21.0)(@types/react@18.0.28)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-DTTTYJ9j+L4Nd/qj0k41WNbRF/qNQfZxbHwUupFeQWu6JOJ5Ak5ksxuoCbfSWrsXV5EPSmcfhpsDos0IOlwhsg==}
+  /@hookform/devtools@4.3.1(@babel/core@7.21.0)(@types/react@18.0.28)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-CrWxEoHQZaOXJZVQ8KBgOuAa8p2LI8M0DAN5GTRTmdCieRwFVjVDEmuTAVazWVRRkpEQSgSt3KYp7VmmqXdEnw==}
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18
       react-dom: ^16.8.0 || ^17 || ^18
@@ -5985,6 +5990,7 @@ packages:
 
   /regenerator-runtime@0.13.9:
     resolution: {integrity: sha512-p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA==}
+    dev: false
 
   /regexp.prototype.flags@1.4.3:
     resolution: {integrity: sha512-fjggEOO3slI6Wvgjwflkc4NFRCTZAu5CnNfBd5qOMYhWdn67nJBBu34/TkD++eeFmd8C9r9jfXJ27+nSiRkSUA==}
@@ -7044,7 +7050,7 @@ packages:
     peerDependencies:
       react: '>=16.13'
     dependencies:
-      '@babel/runtime': 7.19.0
+      '@babel/runtime': 7.21.0
       dequal: 2.0.3
       react: 18.2.0
     dev: true
