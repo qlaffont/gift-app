@@ -31,7 +31,7 @@
     "date-fns": "^2.29.3",
     "draft-js": "^0.11.7",
     "draftjs-md-converter": "^1.5.2",
-    "env-vars-validator": "1.2.5",
+    "env-vars-validator": "1.2.56",
     "fetch-opengraph": "^1.0.36",
     "googleapis": "^112.0.0",
     "jsonwebtoken": "^9.0.0",
