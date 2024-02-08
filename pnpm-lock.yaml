@@ -121,7 +121,7 @@ dependencies:
     version: 4.6.1
   tailwindcss:
     specifier: 3.2.7
-    version: 3.2.7(postcss@8.4.35)(ts-node@10.9.1)
+    version: 3.2.7(postcss@8.4.35)(ts-node@10.9.2)
   usehooks-ts:
     specifier: 2.9.1
     version: 2.9.1(react-dom@18.2.0)(react@18.2.0)
@@ -218,8 +218,8 @@ devDependencies:
     specifier: 1.58.3
     version: 1.58.3
   ts-node:
-    specifier: 10.9.1
-    version: 10.9.1(@types/node@18.14.2)(typescript@4.9.5)
+    specifier: 10.9.2
+    version: 10.9.2(@types/node@18.14.2)(typescript@4.9.5)
   typescript:
     specifier: 4.9.5
     version: 4.9.5
@@ -546,12 +546,12 @@ packages:
       '@types/node': 18.14.2
       chalk: 4.1.2
       cosmiconfig: 8.0.0
-      cosmiconfig-typescript-loader: 4.3.0(@types/node@18.14.2)(cosmiconfig@8.0.0)(ts-node@10.9.1)(typescript@4.9.5)
+      cosmiconfig-typescript-loader: 4.3.0(@types/node@18.14.2)(cosmiconfig@8.0.0)(ts-node@10.9.2)(typescript@4.9.5)
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       lodash.uniq: 4.5.0
       resolve-from: 5.0.0
-      ts-node: 10.9.1(@types/node@18.14.2)(typescript@4.9.5)
+      ts-node: 10.9.2(@types/node@18.14.2)(typescript@4.9.5)
       typescript: 4.9.5
     transitivePeerDependencies:
       - '@swc/core'
@@ -1139,7 +1139,7 @@ packages:
       tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
     dependencies:
       mini-svg-data-uri: 1.4.4
-      tailwindcss: 3.2.7(postcss@8.4.35)(ts-node@10.9.1)
+      tailwindcss: 3.2.7(postcss@8.4.35)(ts-node@10.9.2)
     dev: false
 
   /@tailwindcss/line-clamp@0.4.4(tailwindcss@3.2.7):
@@ -1147,7 +1147,7 @@ packages:
     peerDependencies:
       tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
     dependencies:
-      tailwindcss: 3.2.7(postcss@8.4.35)(ts-node@10.9.1)
+      tailwindcss: 3.2.7(postcss@8.4.35)(ts-node@10.9.2)
     dev: true
 
   /@tanstack/match-sorter-utils@8.7.0:
@@ -2303,7 +2303,7 @@ packages:
     resolution: {integrity: sha512-3lqz5YjWTYnW6dlDa5TLaTCcShfar1e40rmcJVwCBJC6mWlFuj0eCHIElmG1g5kyuJ/GD+8Wn4FFCcz4gJPfaQ==}
     dev: false
 
-  /cosmiconfig-typescript-loader@4.3.0(@types/node@18.14.2)(cosmiconfig@8.0.0)(ts-node@10.9.1)(typescript@4.9.5):
+  /cosmiconfig-typescript-loader@4.3.0(@types/node@18.14.2)(cosmiconfig@8.0.0)(ts-node@10.9.2)(typescript@4.9.5):
     resolution: {integrity: sha512-NTxV1MFfZDLPiBMjxbHRwSh5LaLcPMwNdCutmnHJCKoVnlvldPWlllonKwrsRJ5pYZBIBGRWWU2tfvzxgeSW5Q==}
     engines: {node: '>=12', npm: '>=6'}
     peerDependencies:
@@ -2314,7 +2314,7 @@ packages:
     dependencies:
       '@types/node': 18.14.2
       cosmiconfig: 8.0.0
-      ts-node: 10.9.1(@types/node@18.14.2)(typescript@4.9.5)
+      ts-node: 10.9.2(@types/node@18.14.2)(typescript@4.9.5)
       typescript: 4.9.5
     dev: true
 
@@ -5504,7 +5504,7 @@ packages:
       camelcase-css: 2.0.1
       postcss: 8.4.35
 
-  /postcss-load-config@3.1.4(postcss@8.4.35)(ts-node@10.9.1):
+  /postcss-load-config@3.1.4(postcss@8.4.35)(ts-node@10.9.2):
     resolution: {integrity: sha512-6DiM4E7v4coTE4uzA8U//WhtPwyhiim3eyjEMFCnUpzbrkK9wJHgKDT2mR+HbtSrd/NubVaYTOpSpjUl8NQeRg==}
     engines: {node: '>= 10'}
     peerDependencies:
@@ -5518,7 +5518,7 @@ packages:
     dependencies:
       lilconfig: 2.0.6
       postcss: 8.4.35
-      ts-node: 10.9.1(@types/node@18.14.2)(typescript@4.9.5)
+      ts-node: 10.9.2(@types/node@18.14.2)(typescript@4.9.5)
       yaml: 1.10.2
 
   /postcss-nested@6.0.0(postcss@8.4.35):
@@ -6674,7 +6674,7 @@ packages:
       tslib: 2.5.0
     dev: true
 
-  /tailwindcss@3.2.7(postcss@8.4.35)(ts-node@10.9.1):
+  /tailwindcss@3.2.7(postcss@8.4.35)(ts-node@10.9.2):
     resolution: {integrity: sha512-B6DLqJzc21x7wntlH/GsZwEXTBttVSl1FtCzC8WP4oBc/NKef7kaax5jeihkkCEWc831/5NDJ9gRNDK6NEioQQ==}
     engines: {node: '>=12.13.0'}
     hasBin: true
@@ -6698,7 +6698,7 @@ packages:
       postcss: 8.4.35
       postcss-import: 14.1.0(postcss@8.4.35)
       postcss-js: 4.0.0(postcss@8.4.35)
-      postcss-load-config: 3.1.4(postcss@8.4.35)(ts-node@10.9.1)
+      postcss-load-config: 3.1.4(postcss@8.4.35)(ts-node@10.9.2)
       postcss-nested: 6.0.0(postcss@8.4.35)
       postcss-selector-parser: 6.0.11
       postcss-value-parser: 4.2.0
@@ -6825,8 +6825,8 @@ packages:
     resolution: {integrity: sha512-AqTiAOLcj85xS7vQ8QkAV41hPDIJ71XJB4RCUrzo/1GM2CQwhkJGaf9Hgr7BOugMRpgGUrqRg/DrBDl4H40+8g==}
     dev: false
 
-  /ts-node@10.9.1(@types/node@18.14.2)(typescript@4.9.5):
-    resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
+  /ts-node@10.9.2(@types/node@18.14.2)(typescript@4.9.5):
+    resolution: {integrity: sha512-f0FFpIdcHgn8zcPSbf1dRevwt047YMnaiJM3u2w2RewrB+fob/zePZcrOyQoLMMO7aBIddLcQIEK5dYjkLnGrQ==}
     hasBin: true
     peerDependencies:
       '@swc/core': '>=1.2.50'
