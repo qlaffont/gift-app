@@ -88,8 +88,8 @@ export const SelectComponent: React.FC<Props> = ({
           ? ReactSelectAsyncCreatableCmp
           : ReactSelectAsyncCmp
         : creatable
-        ? ReactSelectCreatableCmp
-        : ReactSelectCmp,
+          ? ReactSelectCreatableCmp
+          : ReactSelectCmp,
     [async, creatable],
   );
 
@@ -103,6 +103,7 @@ export const SelectComponent: React.FC<Props> = ({
       {/* @ts-ignore */}
       <div className={clsx(disabled ? '!cursor-not-allowed opacity-50' : '')}>
         <SelectCmp
+          //@ts-ignore
           styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
           menuPortalTarget={typeof document !== 'undefined' ? document?.body : undefined}
           value={options.find((c) => c.value === value)}

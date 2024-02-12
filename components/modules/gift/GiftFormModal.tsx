@@ -53,7 +53,7 @@ export const GiftFormModal = ({
   const { mutateAsync: updateGift } = useUpdateGiftMutation();
   const { value: isLoading, setValue: setIsLoading } = useBoolean();
 
-  const { mutateAsync: fetchData, isLoading: isLoadingFetchData } = useFetchOGDataMutation();
+  const { mutateAsync: fetchData, isPending: isLoadingFetchData } = useFetchOGDataMutation();
 
   const schema = useMemo(
     () =>

@@ -1,4 +1,4 @@
-import { getCookie, removeCookies, setCookie } from 'cookies-next';
+import { deleteCookie, getCookie, setCookie } from 'cookies-next';
 import jwt from 'jsonwebtoken';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { NextkitError } from 'nextkit';
@@ -61,7 +61,7 @@ export const saveRefresh = (refreshToken: string, req: NextApiRequest, res: Next
 };
 
 export const removeRefresh = (req: NextApiRequest, res: NextApiResponse) => {
-  removeCookies('refresh', {
+  deleteCookie('refresh', {
     req,
     res,
     httpOnly: true,

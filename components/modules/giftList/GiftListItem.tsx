@@ -48,9 +48,9 @@ export const GiftListItem = ({
 
   const invalidateQueries = useInvalidateQueries();
 
-  const { mutateAsync: deleteGift, isLoading: isLoadingDelete } = useDeleteGiftMutation();
-  const { mutateAsync: takeGift, isLoading: isLoadingTaken } = useTakenGiftMutation();
-  const { mutateAsync: cleanGiftList, isLoading: isLoadingClean } = useCleanGiftListMutation();
+  const { mutateAsync: deleteGift, isPending: isLoadingDelete } = useDeleteGiftMutation();
+  const { mutateAsync: takeGift, isPending: isLoadingTaken } = useTakenGiftMutation();
+  const { mutateAsync: cleanGiftList, isPending: isLoadingClean } = useCleanGiftListMutation();
 
   const [gift, setGift] = useState<Partial<Gift>>();
 
@@ -68,6 +68,7 @@ export const GiftListItem = ({
       id: giftList.id,
       password: passwordDebounce,
     },
+    //@ts-ignore
     {
       enabled:
         router.query.id &&

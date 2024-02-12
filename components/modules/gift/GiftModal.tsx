@@ -56,10 +56,10 @@ export const GiftModal = ({
                 gift?.priority === 3
                   ? 'error'
                   : gift?.priority === 2
-                  ? 'warning'
-                  : gift?.priority === 1
-                  ? 'info'
-                  : 'primary'
+                    ? 'warning'
+                    : gift?.priority === 1
+                      ? 'info'
+                      : 'primary'
               }
               size="small"
             >

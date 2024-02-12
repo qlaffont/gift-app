@@ -36,9 +36,10 @@ const Profile = () => {
   const { value: isOpenEditModal, setValue: setIsOpenEditModal } = useBoolean();
   const { value: isOpenInstructionsModal, setValue: setIsOpenInstructionsModal } = useBoolean();
 
-  const { mutateAsync: deleteGiftList, isLoading: isLoadingDelete } = useDeleteGiftListMutation();
+  const { mutateAsync: deleteGiftList, isPending: isLoadingDelete } = useDeleteGiftListMutation();
   const { data: user, isLoading } = useFindUserByIdQuery(
     { id: router.query.id as string },
+    //@ts-ignore
     { enabled: !isNil(router?.query?.id) && router?.query?.id?.length > 0 },
   );
 
@@ -174,12 +175,12 @@ const Profile = () => {
 export async function getServerSideProps({ params }) {
   if (!isNil(params?.id) && params?.id !== '<no source>') {
     const queryClient = new QueryClient();
-    await queryClient.prefetchQuery(
-      ['findUserById', { id: params.id }],
-      findUserByIdFetcher({
+    await queryClient.prefetchQuery({
+      queryKey: ['findUserById', { id: params.id }],
+      queryFn: findUserByIdFetcher({
         id: params.id,
       }),
-    );
+    });
 
     return {
       props: {

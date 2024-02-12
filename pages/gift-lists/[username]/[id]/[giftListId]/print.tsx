@@ -36,6 +36,7 @@ const PrintGiftList = () => {
       id: router.query.giftListId as string,
       password: router.query.password as string,
     },
+    //@ts-ignore
     {
       enabled: !!router.query.id && !!router.query.giftListId,
     },

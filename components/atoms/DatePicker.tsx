@@ -1,7 +1,9 @@
+import 'react-date-picker/dist/DatePicker.css';
+import 'react-calendar/dist/Calendar.css';
+
 import clsx from 'clsx';
 import { useMemo } from 'react';
-//@ts-ignore
-import DatePickerCmp from 'react-date-picker/dist/entry.nostyle';
+import DatePickerCmp from 'react-date-picker';
 
 import { useI18n } from '../../i18n/useI18n';
 import { stringCharactersParser } from '../../services/string.utils';

@@ -22,13 +22,14 @@ export const GiftListAccessModal = ({
 }) => {
   const { t } = useI18n();
   const invalidateQueries = useInvalidateQueries();
-  const { mutateAsync: createAccess, isLoading: isLoadingCreate } = useCreateGiftListAccessMutation();
-  const { mutateAsync: deleteAccess, isLoading: isLoadingDelete } = useDeleteGiftListAccessMutation();
+  const { mutateAsync: createAccess, isPending: isLoadingCreate } = useCreateGiftListAccessMutation();
+  const { mutateAsync: deleteAccess, isPending: isLoadingDelete } = useDeleteGiftListAccessMutation();
   const { data, isLoading: isLoadingData } = useFindGiftListAccessByIdQuery(
     {
       id: giftList?.id,
       userId: giftList?.ownerId,
     },
+    //@ts-ignore
     {
       enabled: !!giftList?.id && isOpen,
     },

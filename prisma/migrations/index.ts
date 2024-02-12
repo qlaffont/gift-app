@@ -38,7 +38,7 @@ export type MigrationReport = {
 }
 
 /**
- * Migrate models concurrently.
+ * Migrate models sequentially.
  *
  * Processed models:
  * - User
@@ -49,11 +49,7 @@ export async function migrate(
   client: PrismaClient,
   reportProgress: ProgressReportCallback = defaultProgressReport
 ): Promise<MigrationReport> {
-  const [
-    processedUser
-  ] = await Promise.all([
-    migrateUser(client, reportProgress)
-  ])
+  const processedUser = await migrateUser(client, reportProgress)
   return {
     User: processedUser
   }

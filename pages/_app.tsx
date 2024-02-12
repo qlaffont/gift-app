@@ -1,8 +1,9 @@
 import '../scss/app.scss';
 
 import { Transition } from '@headlessui/react';
-import { Hydrate, QueryClientProvider } from '@tanstack/react-query';
+import { HydrationBoundary, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { enGB, fr } from 'date-fns/locale';
 import { isDevelopmentEnv } from 'env-vars-validator';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
@@ -11,7 +12,7 @@ import { NextAuthProvider, useNextAuthProtectedHandler } from 'next-protected-au
 import NProgress from 'nprogress';
 import { useEffect } from 'react';
 import { resolveValue, Toaster, ToastIcon } from 'react-hot-toast';
-import { locales, RosettyProvider } from 'rosetty-react';
+import { RosettyProvider } from 'rosetty-react';
 
 import { AppLayout } from '../components/layout/AppLayout';
 import enDict from '../i18n/en';
@@ -22,14 +23,14 @@ import RestAPIService from '../services/apis/RestAPIService';
 import { useUser } from '../services/useUser';
 
 const rosettyLocales = {
-  fr: { dict: frDict, locale: locales.fr },
-  en: { dict: enDict, locale: locales.enGB },
+  fr: { dict: frDict, locale: fr },
+  en: { dict: enDict, locale: enGB },
 };
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
   <>
     <QueryClientProvider client={reactQueryClient}>
-      <Hydrate state={pageProps.dehydratedState}>
+      <HydrationBoundary state={pageProps.dehydratedState}>
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="google" content="notranslate" />
@@ -53,7 +54,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => (
             <ExtendedApp {...{ Component, pageProps }} />
           </NextAuthProvider>
         </RosettyProvider>
-      </Hydrate>
+      </HydrationBoundary>
     </QueryClientProvider>
   </>
 );
