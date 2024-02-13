@@ -10,7 +10,6 @@ import { useUser } from '../../../services/useUser';
 import { Button } from '../../atoms/Button';
 import Modal from '../../atoms/Modal';
 import { PriorityOptions } from './GiftFormModal';
-//@ts-ignore
 const ReactMarkdown = dynamic(() => import('react-markdown').then((mod) => mod.default));
 
 export const GiftModal = ({
