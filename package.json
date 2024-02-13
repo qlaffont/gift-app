@@ -51,7 +51,7 @@
     "react-draft-wysiwyg": "^1.15.0",
     "react-hook-form": "7.50.1",
     "react-hot-toast": "2.4.1",
-    "react-markdown": "^8.0.7",
+    "react-markdown": "^9.0.0",
     "react-select": "5.8.0",
     "rosetty-react": "3.0.18",
     "sendim": "^1.2.74",
