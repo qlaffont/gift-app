@@ -41,7 +41,7 @@
     "next-protected-auth": "2.0.222",
     "next-seo": "6.4.0",
     "nextkit": "^3.4.3",
-    "node-fetch": "2",
+    "node-fetch": "3",
     "nprogress": "^0.2.0",
     "prisma": "^5.9.1",
     "prisma-field-encryption": "^1.5.2",
