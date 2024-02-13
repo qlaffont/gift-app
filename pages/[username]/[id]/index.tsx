@@ -3,7 +3,7 @@ import { isNil } from 'lodash';
 import { useRouter } from 'next/router';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import toast from 'react-hot-toast';
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
+import Markdown from 'react-markdown';
 import { useBoolean, useSsr } from 'usehooks-ts';
 
 import { Button } from '../../../components/atoms/Button';
@@ -77,7 +77,7 @@ const Profile = () => {
         <div>
           <div className="space-y-2">
             <h1 className="text-2xl font-bold">{user?.name || router?.query?.username}</h1>
-            {user?.description && <ReactMarkdown>{user?.description}</ReactMarkdown>}
+            {user?.description && <Markdown>{user?.description}</Markdown>}
           </div>
         </div>
 

@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
+import Markdown from 'react-markdown';
 import { useSsr } from 'usehooks-ts';
 
 import { EmptyLayout } from '../../../../../components/layout/EmptyLayout';
@@ -14,7 +14,7 @@ const PrintGiftListItem = ({ gift }: { gift: Gift }) => {
       <div>-</div>
       <div>
         <p className="text-lg font-bold line-clamp-1">{gift.name}</p>
-        <ReactMarkdown className="!text-sm !opacity-80">{gift?.description}</ReactMarkdown>
+        <Markdown className="!text-sm !opacity-80">{gift?.description}</Markdown>
         {gift?.link && (
           <a href={gift?.link} className="pt-1 !text-sm italic underline">
             {gift?.link}

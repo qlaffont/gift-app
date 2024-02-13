@@ -21,7 +21,6 @@ import { GiftFormModal, PriorityOptions } from '../gift/GiftFormModal';
 import { GiftModal } from '../gift/GiftModal';
 import { ConfirmModal } from '../modal/ConfirmModal';
 import { GiftListAccessModal } from './GiftListAccessModal';
-//@ts-ignore
 const ReactMarkdown = dynamic(() => import('react-markdown').then((mod) => mod.default));
 
 export const GiftListItem = ({
