@@ -108,8 +108,8 @@ dependencies:
     specifier: 5.8.0
     version: 5.8.0(@babel/core@7.23.9)(@types/react@18.2.60)(react-dom@18.2.0)(react@18.2.0)
   rosetty-react:
-    specifier: 3.0.33
-    version: 3.0.33
+    specifier: 3.0.34
+    version: 3.0.34
   sendim:
     specifier: ^1.2.74
     version: 1.2.83
@@ -6553,8 +6553,8 @@ packages:
       templite: 1.2.0
     dev: false
 
-  /rosetty-react@3.0.33:
-    resolution: {integrity: sha512-LByhAf5fVpWBWW6mGsKiHB/aca3nRRN00u2EX0fWhfXM8t367JkcvXJ2brDBleDkVk2athZI0z8pFDb8hrTRpA==}
+  /rosetty-react@3.0.34:
+    resolution: {integrity: sha512-MMTkZMvPMwr/IUhmgOk0tBfNOc3rY+A/kDY8BACWx0N2mbzOYmFuJTHuIyN8ZWnGbR64GdyZzrGvha/nMw419Q==}
     engines: {node: '>=10'}
     dependencies:
       rosetty: 3.0.13
