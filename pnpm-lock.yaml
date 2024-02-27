@@ -112,7 +112,7 @@ dependencies:
     version: 3.0.33
   sendim:
     specifier: ^1.2.74
-    version: 1.2.81
+    version: 1.2.83
   sendim-sendinblue:
     specifier: ^1.1.52
     version: 1.1.52
@@ -3890,6 +3890,7 @@ packages:
 
   /graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
+    dev: false
 
   /graphemer@1.4.0:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
@@ -4591,7 +4592,7 @@ packages:
     dependencies:
       universalify: 2.0.0
     optionalDependencies:
-      graceful-fs: 4.2.11
+      graceful-fs: 4.2.10
     dev: true
 
   /jsonparse@1.3.1:
@@ -6846,14 +6847,14 @@ packages:
     engines: {node: '>=10'}
     deprecated: This project has been renamed. Install using sendim-brevo instead.
     dependencies:
-      sendim: 1.2.81
+      sendim: 1.2.83
       sib-api-v3-typescript: 2.2.2
     transitivePeerDependencies:
       - supports-color
     dev: false
 
-  /sendim@1.2.81:
-    resolution: {integrity: sha512-k5tx4iOzM94O9R7VPN7tMFRMA00+BrF7p4ozsGTddSKnLgJzpiOqi3nE1E3J6k83Cqk2bDPtcpzNIsEe7rK3Vw==}
+  /sendim@1.2.83:
+    resolution: {integrity: sha512-v3cct2RW1+CALBXEC6HhrgD3FQGCEr8AT3zPTqkA2iK0mLjtoG87S2y0aHaRB/MavfYqCsvRuVClnEpgKf1gLw==}
     engines: {node: '>=10'}
     dependencies:
       pino: 8.19.0
