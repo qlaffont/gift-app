@@ -8,7 +8,7 @@ const Editor = dynamic(() => import('react-draft-wysiwyg').then((mod) => mod.Edi
 
 import clsx from 'clsx';
 import { Controller } from 'react-hook-form';
-import { useSsr } from 'usehooks-ts';
+import { useIsClient } from 'usehooks-ts';
 
 export const TextAreaMarkdown = ({
   name,
@@ -30,7 +30,7 @@ export const TextAreaMarkdown = ({
   helperText?: string;
   disabled?: boolean;
 }) => {
-  const { isBrowser } = useSsr();
+  const isBrowser = useIsClient();
 
   if (!isBrowser) {
     return <></>;

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useSsr } from 'usehooks-ts';
+import { useIsClient } from 'usehooks-ts';
 
 const COLOR_SCHEME_QUERY = '(prefers-color-scheme: dark)';
 
@@ -17,7 +17,7 @@ const getPrefersScheme = (defaultValue?: boolean): boolean => {
 };
 
 export const useDark = (defaultValue?: boolean) => {
-  const { isBrowser } = useSsr();
+  const isBrowser = useIsClient();
   // const [isDarkMode, setDarkMode] = useLocalStorage<boolean>('darkMode', false);
   const [isDarkMode, setDarkMode] = useState<boolean>(undefined);
 

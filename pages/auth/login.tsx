@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import { useSsr } from 'usehooks-ts';
+import { useIsClient } from 'usehooks-ts';
 
 import { Button } from '../../components/atoms/Button';
 import Modal from '../../components/atoms/Modal';
@@ -11,7 +11,7 @@ import RestAPIService from '../../services/apis/RestAPIService';
 
 const Login = () => {
   const { t } = useI18n();
-  const { isBrowser } = useSsr();
+  const isBrowser = useIsClient();
   const { query } = useRouter();
 
   useEffect(() => {

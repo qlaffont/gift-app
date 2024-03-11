@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import toast from 'react-hot-toast';
 import Markdown from 'react-markdown';
-import { useBoolean, useSsr } from 'usehooks-ts';
+import { useBoolean, useIsClient } from 'usehooks-ts';
 
 import { Button } from '../../../components/atoms/Button';
 import { SEO } from '../../../components/atoms/SEO';
@@ -26,7 +26,7 @@ import { useUser } from '../../../services/useUser';
 const Profile = () => {
   const router = useRouter();
   const { t } = useI18n();
-  const { isBrowser } = useSsr();
+  const isBrowser = useIsClient();
   const connectedUser = useUser();
   const invalidateQueries = useInvalidateQueries();
 

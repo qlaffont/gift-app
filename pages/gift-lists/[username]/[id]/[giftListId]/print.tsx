@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import Markdown from 'react-markdown';
-import { useSsr } from 'usehooks-ts';
+import { useIsClient } from 'usehooks-ts';
 
 import { EmptyLayout } from '../../../../../components/layout/EmptyLayout';
 import { useI18n } from '../../../../../i18n/useI18n';
@@ -28,7 +28,7 @@ const PrintGiftListItem = ({ gift }: { gift: Gift }) => {
 const PrintGiftList = () => {
   const router = useRouter();
   const { t } = useI18n();
-  const { isBrowser } = useSsr();
+  const isBrowser = useIsClient();
 
   const { data: giftListData, isFetching } = useFindGiftListByIdQuery(
     {
