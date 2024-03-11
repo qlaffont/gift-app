@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { useBoolean, useDebounce } from 'usehooks-ts';
+import { useBoolean, useDebounceValue } from 'usehooks-ts';
 
 import { useI18n } from '../../../i18n/useI18n';
 import { useCleanGiftListMutation } from '../../../services/apis/react-query/mutations/useCleanGiftListMutation';
@@ -43,7 +43,7 @@ export const GiftListItem = ({
   const { value: isOpenConfirmModal, setValue: setIsOpenConfirmModal } = useBoolean();
   const { value: isOpenCleanTakenModal, setValue: setIsOpenCleanTakenModal } = useBoolean();
   const [password, setPassword] = useState<string>();
-  const passwordDebounce = useDebounce(password, 300);
+  const [passwordDebounce, setPasswordDebounce] = useDebounceValue(password, 300);
 
   const invalidateQueries = useInvalidateQueries();
 
@@ -221,7 +221,10 @@ export const GiftListItem = ({
                   <Input
                     label={t('pages.profile.giftList.fields.password')}
                     blockClassName="bg-white"
-                    onChange={(e) => setPassword(e?.target?.value)}
+                    onChange={(e) => {
+                      setPassword(e?.target?.value);
+                      setPasswordDebounce(e?.target?.value);
+                    }}
                     error={
                       error && isFetched && passwordDebounce?.length > 0
                         ? { message: 'pages.profile.giftList.passwordInvalid' }
@@ -326,7 +329,10 @@ export const GiftListItem = ({
                   <Input
                     label={t('pages.profile.giftList.fields.password')}
                     blockClassName="bg-white"
-                    onChange={(e) => setPassword(e?.target?.value)}
+                    onChange={(e) => {
+                      setPassword(e?.target?.value);
+                      setPasswordDebounce(e?.target?.value);
+                    }}
                     error={
                       error && isFetched && passwordDebounce?.length > 0
                         ? { message: 'pages.profile.giftList.passwordInvalid' }

@@ -2,7 +2,7 @@ import isNil from 'lodash/isNil';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { useMemo } from 'react';
-import { useSsr } from 'usehooks-ts';
+import { useIsClient } from 'usehooks-ts';
 
 import { useI18n } from '../../../i18n/useI18n';
 import { Gift } from '../../../services/types/prisma.type';
@@ -31,7 +31,7 @@ export const GiftModal = ({
 }) => {
   const { t, actualLang } = useI18n();
   const user = useUser();
-  const { isBrowser } = useSsr();
+  const isBrowser = useIsClient();
 
   const compareLink = useMemo(() => {
     if (actualLang === 'fr') {
