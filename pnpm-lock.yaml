@@ -112,7 +112,7 @@ dependencies:
     version: 3.0.47
   sendim:
     specifier: ^1.2.74
-    version: 1.2.86
+    version: 1.2.88
   sendim-sendinblue:
     specifier: ^1.1.52
     version: 1.1.52
@@ -6603,14 +6603,14 @@ packages:
     engines: {node: '>=10'}
     deprecated: This project has been renamed. Install using sendim-brevo instead.
     dependencies:
-      sendim: 1.2.86
+      sendim: 1.2.88
       sib-api-v3-typescript: 2.2.2
     transitivePeerDependencies:
       - supports-color
     dev: false
 
-  /sendim@1.2.86:
-    resolution: {integrity: sha512-Fb6FJ1t17ox2L7mzSmbEqWkxZowpymMUPJ79AvKA3c140Al76p8jQqmyWB5jvExV1sKoSuqGjTg8rk8tyEbprw==}
+  /sendim@1.2.88:
+    resolution: {integrity: sha512-1uG3vrV7lhrO/uW7GMvSKU4Bsnc2+A0uE9T2nN43lhYnfLMPS7k0uHLadO4qAp9pAuxBbWUAGhmdW7/XAiVZPA==}
     engines: {node: '>=10'}
     dependencies:
       pino: 8.19.0
