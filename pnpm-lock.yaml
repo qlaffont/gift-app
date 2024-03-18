@@ -34,7 +34,7 @@ dependencies:
     version: 4.1.1
   date-fns:
     specifier: ^3.3.1
-    version: 3.5.0
+    version: 3.6.0
   draft-js:
     specifier: ^0.11.7
     version: 0.11.7(react-dom@18.2.0)(react@18.2.0)
@@ -2508,8 +2508,8 @@ packages:
       is-data-view: 1.0.1
     dev: true
 
-  /date-fns@3.5.0:
-    resolution: {integrity: sha512-a+DwyXn7NOfdJireCzAA0B9p7jIXEu/Q9JKCyMYvH6+0vPUNbQceA0neXrdfJ/xzl3mhOh5vibQQ3936Tssm6A==}
+  /date-fns@3.6.0:
+    resolution: {integrity: sha512-fRHTG8g/Gif+kSh50gaGEdToemgfj74aRX3swtiouboip5JDLAyDE9F11nHMIcvOaXeOC6D7SpNhi7uFyB7Uww==}
     dev: false
 
   /debug@2.6.9:
@@ -6497,7 +6497,7 @@ packages:
     resolution: {integrity: sha512-xAdH+NlAnQad1gRIGHAGKPMikwOSF/qu7IE/5BvcMkZaJK1eN3rwC+VPXxg8jQc1Q/GGKXLmznYlRXl87VC+Fw==}
     engines: {node: '>=10'}
     dependencies:
-      date-fns: 3.5.0
+      date-fns: 3.6.0
       rosetta: 1.1.0
     dev: false
 
