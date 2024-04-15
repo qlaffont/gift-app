@@ -88,7 +88,7 @@
     "lint-staged": "15.2.2",
     "postcss": "8.4.38",
     "prettier": "3.2.5",
-    "prettier-plugin-tailwindcss": "0.5.13",
+    "prettier-plugin-tailwindcss": "0.5.14",
     "prompt-sync": "^4.2.0",
     "sass": "1.75.0",
     "ts-node": "10.9.2",
