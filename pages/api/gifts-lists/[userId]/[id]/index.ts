@@ -3,7 +3,7 @@ import { NextkitError } from 'nextkit';
 
 import { api } from '../../../../../server';
 import { getUserFromReq } from '../../../../../services/apis/authUser';
-import { CryptoUtils } from '../../../../../services/crypto.utils';
+// import { CryptoUtils } from '../../../../../services/crypto.utils';
 import prisma from '../../../../../services/prisma';
 
 export default api({
@@ -56,9 +56,9 @@ export default api({
         },
       });
 
-      if (!(await CryptoUtils.compareArgonHash(req.query.password as string, giftList.password))) {
-        throw new NextkitError(404, 'Not found');
-      }
+      // if (!(await CryptoUtils.compareArgonHash(req.query.password as string, giftList.password))) {
+      throw new NextkitError(404, 'Not found');
+      // }
     } else {
       giftList = await prisma.giftList.findFirst({
         where: {
@@ -97,7 +97,7 @@ export default api({
     };
 
     if (data.password && data.password?.length > 0) {
-      data.password = await CryptoUtils.getArgonHash(data.password as string);
+      // data.password = await CryptoUtils.getArgonHash(data.password as string);
     }
 
     await prisma.giftList.update({

@@ -3,7 +3,7 @@ import { NextkitError } from 'nextkit';
 
 import { api } from '../../../../server';
 import { getUserFromReq } from '../../../../services/apis/authUser';
-import { CryptoUtils } from '../../../../services/crypto.utils';
+// import { CryptoUtils } from '../../../../services/crypto.utils';
 import prisma from '../../../../services/prisma';
 
 export default api({
@@ -57,7 +57,7 @@ export default api({
     };
 
     if (data.password && data.password?.length > 0) {
-      data.password = await CryptoUtils.getArgonHash(data.password as string);
+      // data.password = await CryptoUtils.getArgonHash(data.password as string);
     }
 
     return prisma.giftList.create({
