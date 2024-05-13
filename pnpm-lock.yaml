@@ -34,7 +34,7 @@ dependencies:
     version: 4.1.1
   date-fns:
     specifier: ^3.3.1
-    version: 3.3.1
+    version: 3.6.0
   draft-js:
     specifier: ^0.11.7
     version: 0.11.7(react-dom@18.3.1)(react@18.3.1)
@@ -97,7 +97,7 @@ dependencies:
     version: 18.3.1(react@18.3.1)
   react-draft-wysiwyg:
     specifier: ^1.15.0
-    version: 1.15.0(draft-js@0.11.7)(immutable@4.3.5)(react-dom@18.3.1)(react@18.3.1)
+    version: 1.15.0(draft-js@0.11.7)(immutable@4.3.6)(react-dom@18.3.1)(react@18.3.1)
   react-hook-form:
     specifier: 7.51.4
     version: 7.51.4(react@18.3.1)
@@ -2620,8 +2620,8 @@ packages:
       is-data-view: 1.0.1
     dev: true
 
-  /date-fns@3.3.1:
-    resolution: {integrity: sha512-y8e109LYGgoQDveiEBD3DYXKba1jWf5BA8YU1FL5Tvm0BTdEfy54WLCwnuYWZNnzzvALy/QQ4Hov+Q9RVRv+Zw==}
+  /date-fns@3.6.0:
+    resolution: {integrity: sha512-fRHTG8g/Gif+kSh50gaGEdToemgfj74aRX3swtiouboip5JDLAyDE9F11nHMIcvOaXeOC6D7SpNhi7uFyB7Uww==}
     dev: false
 
   /debug@2.6.9:
@@ -2784,14 +2784,14 @@ packages:
       - supports-color
     dev: false
 
-  /draftjs-utils@0.10.2(draft-js@0.11.7)(immutable@4.3.5):
+  /draftjs-utils@0.10.2(draft-js@0.11.7)(immutable@4.3.6):
     resolution: {integrity: sha512-EstHqr3R3JVcilJrBaO/A+01GvwwKmC7e4TCjC7S94ZeMh4IVmf60OuQXtHHpwItK8C2JCi3iljgN5KHkJboUg==}
     peerDependencies:
       draft-js: ^0.11.x
       immutable: 3.x.x || 4.x.x
     dependencies:
       draft-js: 0.11.7(react-dom@18.3.1)(react@18.3.1)
-      immutable: 4.3.5
+      immutable: 4.3.6
     dev: false
 
   /eastasianwidth@0.2.0:
@@ -4062,14 +4062,14 @@ packages:
     resolution: {integrity: sha512-DV5Ln36z34NNTDgnz0EWGBLZENelNAtkiFA4kyNOG2tDI6Mz1uSWiq1wAKdyjnJwyDiDO7Fa2SO1CTxPXL8VxA==}
     dev: false
 
-  /html-to-draftjs@1.5.0(draft-js@0.11.7)(immutable@4.3.5):
+  /html-to-draftjs@1.5.0(draft-js@0.11.7)(immutable@4.3.6):
     resolution: {integrity: sha512-kggLXBNciKDwKf+KYsuE+V5gw4dZ7nHyGMX9m0wy7urzWjKGWyNFetmArRLvRV0VrxKN70WylFsJvMTJx02OBQ==}
     peerDependencies:
       draft-js: ^0.10.x || ^0.11.x
       immutable: 3.x.x || 4.x.x
     dependencies:
       draft-js: 0.11.7(react-dom@18.3.1)(react@18.3.1)
-      immutable: 4.3.5
+      immutable: 4.3.6
     dev: false
 
   /html-url-attributes@3.0.0:
@@ -4149,6 +4149,10 @@ packages:
 
   /immutable@4.3.5:
     resolution: {integrity: sha512-8eabxkth9gZatlwl5TBuJnCsoTADlL6ftEr7A4qgdaTsPyreilDSnUk57SO+jfKcNtxPa22U5KK6DSeAYhpBJw==}
+
+  /immutable@4.3.6:
+    resolution: {integrity: sha512-Ju0+lEMyzMVZarkTn/gqRpdqd5dOPaz1mCZ0SH3JV6iFw81PldE/PEB1hWVEA288HPt4WXW8O7AWxB10M+03QQ==}
+    dev: false
 
   /import-fresh@3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
@@ -6374,7 +6378,7 @@ packages:
       react: 18.3.1
       scheduler: 0.23.2
 
-  /react-draft-wysiwyg@1.15.0(draft-js@0.11.7)(immutable@4.3.5)(react-dom@18.3.1)(react@18.3.1):
+  /react-draft-wysiwyg@1.15.0(draft-js@0.11.7)(immutable@4.3.6)(react-dom@18.3.1)(react@18.3.1):
     resolution: {integrity: sha512-p1cYZcWc6/ALFBVksbFoCM3b29fGQDlZLIMrXng0TU/UElxIOF2/AWWo4L5auIYVhmqKTZ0NkNjnXOzGGuxyeA==}
     peerDependencies:
       draft-js: ^0.10.x || ^0.11.x
@@ -6384,9 +6388,9 @@ packages:
     dependencies:
       classnames: 2.3.2
       draft-js: 0.11.7(react-dom@18.3.1)(react@18.3.1)
-      draftjs-utils: 0.10.2(draft-js@0.11.7)(immutable@4.3.5)
-      html-to-draftjs: 1.5.0(draft-js@0.11.7)(immutable@4.3.5)
-      immutable: 4.3.5
+      draftjs-utils: 0.10.2(draft-js@0.11.7)(immutable@4.3.6)
+      html-to-draftjs: 1.5.0(draft-js@0.11.7)(immutable@4.3.6)
+      immutable: 4.3.6
       linkify-it: 2.2.0
       prop-types: 15.8.1
       react: 18.3.1
@@ -6789,7 +6793,7 @@ packages:
     resolution: {integrity: sha512-xAdH+NlAnQad1gRIGHAGKPMikwOSF/qu7IE/5BvcMkZaJK1eN3rwC+VPXxg8jQc1Q/GGKXLmznYlRXl87VC+Fw==}
     engines: {node: '>=10'}
     dependencies:
-      date-fns: 3.3.1
+      date-fns: 3.6.0
       rosetta: 1.1.0
     dev: false
 
