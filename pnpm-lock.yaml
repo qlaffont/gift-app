@@ -34,7 +34,7 @@ importers:
         version: 2.1.1
       cookies-next:
         specifier: ^4.1.1
-        version: 4.1.1
+        version: 4.2.1
       date-fns:
         specifier: ^3.3.1
         version: 3.6.0
@@ -844,9 +844,6 @@ packages:
   '@types/ms@0.7.31':
     resolution: {integrity: sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==}
 
-  '@types/node@16.18.14':
-    resolution: {integrity: sha512-wvzClDGQXOCVNU4APPopC2KtMYukaF1MN/W3xAmslx22Z4/IF1/izDMekuyoUlwfnDHYCIZGaj7jMwnJKBTxKw==}
-
   '@types/node@20.12.12':
     resolution: {integrity: sha512-eWLDGF/FOSPtAvEqeRAQ4C8LSA7M1I7i0ky1I8U7kD1J5ITyW3AsRhQrKVoWf5pFKZ2kILsEGJhsI9r93PYnOw==}
 
@@ -1445,8 +1442,8 @@ packages:
     resolution: {integrity: sha512-U71cyTamuh1CRNCfpGY6to28lxvNwPG4Guz/EVjgf3Jmzv0vlDp1atT9eS5dDjMYHucpHbWns6Lwf3BKz6svdw==}
     engines: {node: '>= 0.6'}
 
-  cookies-next@4.1.1:
-    resolution: {integrity: sha512-20QaN0iQSz87Os0BhNg9M71eM++gylT3N5szTlhq2rK6QvXn1FYGPB4eAgU4qFTunbQKhD35zfQ95ZWgzUy3Cg==}
+  cookies-next@4.2.1:
+    resolution: {integrity: sha512-qsjtZ8TLlxCSX2JphMQNhkm3V3zIMQ05WrLkBKBwu50npBbBfiZWIdmSMzBGcdGKfMK19E0PIitTfRFAdMGHXg==}
 
   core-js@2.6.12:
     resolution: {integrity: sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==}
@@ -5135,8 +5132,6 @@ snapshots:
 
   '@types/ms@0.7.31': {}
 
-  '@types/node@16.18.14': {}
-
   '@types/node@20.12.12':
     dependencies:
       undici-types: 5.26.5
@@ -5867,10 +5862,9 @@ snapshots:
 
   cookie@0.6.0: {}
 
-  cookies-next@4.1.1:
+  cookies-next@4.2.1:
     dependencies:
       '@types/cookie': 0.6.0
-      '@types/node': 16.18.14
       cookie: 0.6.0
 
   core-js@2.6.12: {}
