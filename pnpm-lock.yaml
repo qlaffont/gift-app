@@ -205,8 +205,8 @@ importers:
         specifier: 9.0.11
         version: 9.0.11
       lint-staged:
-        specifier: 15.2.4
-        version: 15.2.4
+        specifier: 15.2.5
+        version: 15.2.5
       postcss:
         specifier: 8.4.38
         version: 8.4.38
@@ -2616,10 +2616,6 @@ packages:
     resolution: {integrity: sha512-utWOt/GHzuUxnLKxB6dk81RoOeoNeHgbrXiuGk4yyF5qlRz+iIVWu56E2fqGHFrXz0QNUhLB/8nKqvRH66JKGQ==}
     engines: {node: '>=10'}
 
-  lilconfig@3.0.0:
-    resolution: {integrity: sha512-K2U4W2Ff5ibV7j7ydLr+zLAkIg5JJ4lPn1Ltsdt+Tz/IjQ8buJ55pZAxoP34lqIiwtF9iAvtLv3JGv7CAyAg+g==}
-    engines: {node: '>=14'}
-
   lilconfig@3.1.1:
     resolution: {integrity: sha512-O18pf7nyvHTckunPWCV1XUNXU1piu01y2b7ATJ0ppkUkk8ocqVWBrYjJBCwHDjD/ZWcfyrA0P4gKhzWGi5EINQ==}
     engines: {node: '>=14'}
@@ -2630,8 +2626,8 @@ packages:
   linkify-it@2.2.0:
     resolution: {integrity: sha512-GnAl/knGn+i1U/wjBz3akz2stz+HrHLsxMwHQGofCDfPvlf+gDKN58UtfmUquTY4/MXeE2x7k19KQmeoZi94Iw==}
 
-  lint-staged@15.2.4:
-    resolution: {integrity: sha512-3F9KRQIS2fVDGtCkBp4Bx0jswjX7zUcKx6OF0ZeY1prksUyKPRIIUqZhIUYAstJfvj6i48VFs4dwVIbCYwvTYQ==}
+  lint-staged@15.2.5:
+    resolution: {integrity: sha512-j+DfX7W9YUvdzEZl3Rk47FhDF6xwDBV5wwsCPw6BwWZVPYJemusQmvb9bRsW23Sqsaa+vRloAWogbK4BUuU2zA==}
     engines: {node: '>=18.12.0'}
     hasBin: true
 
@@ -2920,6 +2916,10 @@ packages:
 
   micromatch@4.0.6:
     resolution: {integrity: sha512-Y4Ypn3oujJYxJcMacVgcs92wofTHxp9FzfDpQON4msDefoC0lb3ETvQLOdLcbhSwU1bz8HrL/1sygfBIHudrkQ==}
+    engines: {node: '>=8.6'}
+
+  micromatch@4.0.7:
+    resolution: {integrity: sha512-LPP/3KorzCwBxfeUuZmaR6bG2kdeHSbe0P2tY3FLRU4vYrjYz5hI4QZwV0njUx3jeuKe67YukQ1LSPZBKDqO/Q==}
     engines: {node: '>=8.6'}
 
   mime-db@1.52.0:
@@ -4374,10 +4374,6 @@ packages:
   yaml@1.10.2:
     resolution: {integrity: sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==}
     engines: {node: '>= 6'}
-
-  yaml@2.3.4:
-    resolution: {integrity: sha512-8aAvwVUSHpfEqTQ4w/KMlf3HcRdt50E5ODIQJBw1fQ5RL34xabzxtUlzTXVqc4rkZsPbvrXKWnABCD7kWSmocA==}
-    engines: {node: '>= 14'}
 
   yaml@2.4.2:
     resolution: {integrity: sha512-B3VqDZ+JAg1nZpaEmWtTXUlBneoGx6CPM9b0TENK6aoSu5t73dItudwdgmi6tHlIZZId4dZ9skcAQ2UbcyAeVA==}
@@ -6485,7 +6481,7 @@ snapshots:
       '@nodelib/fs.walk': 1.2.8
       glob-parent: 5.1.2
       merge2: 1.4.1
-      micromatch: 4.0.5
+      micromatch: 4.0.6
 
   fast-glob@3.3.2:
     dependencies:
@@ -6493,7 +6489,7 @@ snapshots:
       '@nodelib/fs.walk': 1.2.8
       glob-parent: 5.1.2
       merge2: 1.4.1
-      micromatch: 4.0.5
+      micromatch: 4.0.6
 
   fast-json-stable-stringify@2.1.0: {}
 
@@ -7247,8 +7243,6 @@ snapshots:
 
   lilconfig@2.1.0: {}
 
-  lilconfig@3.0.0: {}
-
   lilconfig@3.1.1: {}
 
   lines-and-columns@1.2.4: {}
@@ -7257,7 +7251,7 @@ snapshots:
     dependencies:
       uc.micro: 1.0.6
 
-  lint-staged@15.2.4:
+  lint-staged@15.2.5:
     dependencies:
       chalk: 5.3.0
       commander: 12.1.0
@@ -7265,7 +7259,7 @@ snapshots:
       execa: 8.0.1
       lilconfig: 3.1.1
       listr2: 8.2.1
-      micromatch: 4.0.6
+      micromatch: 4.0.7
       pidtree: 0.6.0
       string-argv: 0.3.2
       yaml: 2.4.2
@@ -7751,6 +7745,11 @@ snapshots:
       braces: 3.0.3
       picomatch: 4.0.2
 
+  micromatch@4.0.7:
+    dependencies:
+      braces: 3.0.3
+      picomatch: 2.3.1
+
   mime-db@1.52.0: {}
 
   mime-types@2.1.35:
@@ -8167,8 +8166,8 @@ snapshots:
 
   postcss-load-config@4.0.2(postcss@8.4.38)(ts-node@10.9.2(@types/node@20.12.12)(typescript@5.4.5)):
     dependencies:
-      lilconfig: 3.0.0
-      yaml: 2.3.4
+      lilconfig: 3.1.1
+      yaml: 2.4.2
     optionalDependencies:
       postcss: 8.4.38
       ts-node: 10.9.2(@types/node@20.12.12)(typescript@5.4.5)
@@ -9310,8 +9309,6 @@ snapshots:
   yallist@4.0.0: {}
 
   yaml@1.10.2: {}
-
-  yaml@2.3.4: {}
 
   yaml@2.4.2: {}
 
