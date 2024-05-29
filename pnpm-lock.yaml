@@ -64,16 +64,16 @@ importers:
         version: 2.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       next:
         specifier: 14.2.3
-        version: 14.2.3(@babel/core@7.24.6)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.2)
+        version: 14.2.3(@babel/core@7.24.6)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.3)
       next-protected-auth:
         specifier: 2.0.316
-        version: 2.0.316(@babel/core@7.24.6)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.2)
+        version: 2.0.316(@babel/core@7.24.6)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.3)
       next-seo:
         specifier: 6.5.0
-        version: 6.5.0(next@14.2.3(@babel/core@7.24.6)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 6.5.0(next@14.2.3(@babel/core@7.24.6)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.3))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       nextkit:
         specifier: ^3.4.3
-        version: 3.4.3(next@14.2.3(@babel/core@7.24.6)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.2))
+        version: 3.4.3(next@14.2.3(@babel/core@7.24.6)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.3))
       node-fetch:
         specifier: '3'
         version: 3.3.2
@@ -220,8 +220,8 @@ importers:
         specifier: ^4.2.0
         version: 4.2.0
       sass:
-        specifier: 1.77.2
-        version: 1.77.2
+        specifier: 1.77.3
+        version: 1.77.3
       ts-node:
         specifier: 10.9.2
         version: 10.9.2(@types/node@20.12.13)(typescript@5.4.5)
@@ -3747,8 +3747,8 @@ packages:
   safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
 
-  sass@1.77.2:
-    resolution: {integrity: sha512-eb4GZt1C3avsX3heBNlrc7I09nyT00IUuo4eFhAbeXWU2fvA7oXI53SxODVAA+zgZCk9aunAZgO+losjR3fAwA==}
+  sass@1.77.3:
+    resolution: {integrity: sha512-WJHo+jmFp0dwRuymPmIovuxHaBntcCyja5hCB0yYY9wWrViEp4kF5Cdai98P72v6FzroPuABqu+ddLMbQWmwzA==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -7830,9 +7830,9 @@ snapshots:
 
   negotiator@0.6.3: {}
 
-  next-protected-auth@2.0.316(@babel/core@7.24.6)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.2):
+  next-protected-auth@2.0.316(@babel/core@7.24.6)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.3):
     dependencies:
-      next: 14.2.3(@babel/core@7.24.6)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.2)
+      next: 14.2.3(@babel/core@7.24.6)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.3)
       react-test-renderer: 18.2.0(react@18.3.1)
       usehooks-ts: 3.1.0(react@18.3.1)
     transitivePeerDependencies:
@@ -7844,13 +7844,13 @@ snapshots:
       - react-dom
       - sass
 
-  next-seo@6.5.0(next@14.2.3(@babel/core@7.24.6)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  next-seo@6.5.0(next@14.2.3(@babel/core@7.24.6)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.3))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
-      next: 14.2.3(@babel/core@7.24.6)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.2)
+      next: 14.2.3(@babel/core@7.24.6)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.3)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  next@14.2.3(@babel/core@7.24.6)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.2):
+  next@14.2.3(@babel/core@7.24.6)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.3):
     dependencies:
       '@next/env': 14.2.3
       '@swc/helpers': 0.5.5
@@ -7871,14 +7871,14 @@ snapshots:
       '@next/swc-win32-arm64-msvc': 14.2.3
       '@next/swc-win32-ia32-msvc': 14.2.3
       '@next/swc-win32-x64-msvc': 14.2.3
-      sass: 1.77.2
+      sass: 1.77.3
     transitivePeerDependencies:
       - '@babel/core'
       - babel-plugin-macros
 
-  nextkit@3.4.3(next@14.2.3(@babel/core@7.24.6)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.2)):
+  nextkit@3.4.3(next@14.2.3(@babel/core@7.24.6)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.3)):
     dependencies:
-      next: 14.2.3(@babel/core@7.24.6)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.2)
+      next: 14.2.3(@babel/core@7.24.6)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.3)
 
   node-addon-api@8.0.0: {}
 
@@ -8592,7 +8592,7 @@ snapshots:
 
   safer-buffer@2.1.2: {}
 
-  sass@1.77.2:
+  sass@1.77.3:
     dependencies:
       chokidar: 3.5.3
       immutable: 4.3.6
