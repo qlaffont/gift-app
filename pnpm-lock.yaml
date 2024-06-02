@@ -118,7 +118,7 @@ importers:
         version: 3.0.139
       sendim:
         specifier: ^1.2.74
-        version: 1.2.123
+        version: 1.2.124
       sendim-sendinblue:
         specifier: ^1.1.52
         version: 1.1.52
@@ -3774,8 +3774,8 @@ packages:
     engines: {node: '>=10'}
     deprecated: This project has been renamed. Install using sendim-brevo instead.
 
-  sendim@1.2.123:
-    resolution: {integrity: sha512-ZOfIXV1qRHYYkGg+4XNa9lDgq1YxM2b4QClXutbH5fSVHCOopp8EY8JdVJ7laMRJtrpX32AlKjJuwu5G+tidHQ==}
+  sendim@1.2.124:
+    resolution: {integrity: sha512-AsHRQLalZxAik7JiFgaMneMJHxjqDKY4Pr5eYaL37WvFvl0gJ6WWM6xEH6iZWdMxufVE0J9h0BzecSMaShhPkg==}
     engines: {node: '>=10'}
 
   set-function-length@1.2.2:
@@ -4028,8 +4028,8 @@ packages:
   thenify@3.3.1:
     resolution: {integrity: sha512-RVZSIV5IG10Hk3enotrhvz0T9em6cyHBLkH/YAZuKqd8hRkKhSfCGIcP2KUY0EPxndzANBmNllzWPwak+bheSw==}
 
-  thread-stream@3.0.1:
-    resolution: {integrity: sha512-O5O/RbdV3CjhtwFa4slXvrb/26lzsf4/NMts3QFIRniIsi+584QSneJXaHXasqcZO+B7pWZkr+4h9knhnAQevg==}
+  thread-stream@3.0.2:
+    resolution: {integrity: sha512-cBL4xF2A3lSINV4rD5tyqnKH4z/TgWPvT+NaVhJDSwK962oo/Ye7cHSMbDzwcu7tAE1SfU6Q4XtV6Hucmi6Hlw==}
 
   through@2.3.8:
     resolution: {integrity: sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==}
@@ -8133,7 +8133,7 @@ snapshots:
       real-require: 0.2.0
       safe-stable-stringify: 2.4.3
       sonic-boom: 4.0.1
-      thread-stream: 3.0.1
+      thread-stream: 3.0.2
 
   pirates@4.0.6: {}
 
@@ -8612,12 +8612,12 @@ snapshots:
 
   sendim-sendinblue@1.1.52:
     dependencies:
-      sendim: 1.2.123
+      sendim: 1.2.124
       sib-api-v3-typescript: 2.2.2
     transitivePeerDependencies:
       - supports-color
 
-  sendim@1.2.123:
+  sendim@1.2.124:
     dependencies:
       pino: 9.1.0
 
@@ -8926,7 +8926,7 @@ snapshots:
     dependencies:
       any-promise: 1.3.0
 
-  thread-stream@3.0.1:
+  thread-stream@3.0.2:
     dependencies:
       real-require: 0.2.0
 
