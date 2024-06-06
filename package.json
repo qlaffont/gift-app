@@ -33,7 +33,7 @@
     "draftjs-md-converter": "^1.5.2",
     "env-vars-validator": "1.2.56",
     "fetch-opengraph": "^1.0.36",
-    "googleapis": "^137.0.0",
+    "googleapis": "^139.0.0",
     "jsonwebtoken": "^9.0.2",
     "lodash": "^4.17.21",
     "lottie-react": "^2.4.0",
