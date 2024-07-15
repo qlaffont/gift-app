@@ -118,7 +118,7 @@ importers:
         version: 3.0.174
       sendim:
         specifier: ^1.2.74
-        version: 1.2.143
+        version: 1.2.144
       sendim-sendinblue:
         specifier: ^1.1.52
         version: 1.1.52
@@ -3276,8 +3276,8 @@ packages:
   pino-std-serializers@7.0.0:
     resolution: {integrity: sha512-e906FRY0+tV27iq4juKzSYPbUj2do2X2JX4EzSca1631EB2QJQUqGbDuERal7LCtOpxl6x3+nvo9NPZcmjkiFA==}
 
-  pino@9.2.0:
-    resolution: {integrity: sha512-g3/hpwfujK5a4oVbaefoJxezLzsDgLcNJeITvC6yrfwYeT9la+edCK42j5QpEQSQCZgTKapXvnQIdgZwvRaZug==}
+  pino@9.3.1:
+    resolution: {integrity: sha512-afSfrq/hUiW/MFmQcLEwV9Zh8Ry6MrMTOyBU53o/fc0gEl+1OZ/Fks/xQCM2nOC0C/OfDtQMnT2d8c3kpcfSzA==}
     hasBin: true
 
   pirates@4.0.6:
@@ -3743,8 +3743,8 @@ packages:
     engines: {node: '>=10'}
     deprecated: This project has been renamed. Install using sendim-brevo instead.
 
-  sendim@1.2.143:
-    resolution: {integrity: sha512-h8rUPktu4Sot69GMV79J+4ydRvPWSjSDY4OMl8FtUYLkvn47KiRckTFkTUdEg2P40AvhT1loe4bSpUiEwLpTcw==}
+  sendim@1.2.144:
+    resolution: {integrity: sha512-Vc/xysYoaoRjmTxemJSvFzBcDD4Fj8gRP2xI2mGBTkdoJGPewX1nqW1zbCTHVSrSAFHU/BjJz3p96AczgFS4og==}
     engines: {node: '>=10'}
 
   set-function-length@1.2.2:
@@ -8105,7 +8105,7 @@ snapshots:
 
   pino-std-serializers@7.0.0: {}
 
-  pino@9.2.0:
+  pino@9.3.1:
     dependencies:
       atomic-sleep: 1.0.0
       fast-redact: 3.5.0
@@ -8593,14 +8593,14 @@ snapshots:
 
   sendim-sendinblue@1.1.52:
     dependencies:
-      sendim: 1.2.143
+      sendim: 1.2.144
       sib-api-v3-typescript: 2.2.2
     transitivePeerDependencies:
       - supports-color
 
-  sendim@1.2.143:
+  sendim@1.2.144:
     dependencies:
-      pino: 9.2.0
+      pino: 9.3.1
 
   set-function-length@1.2.2:
     dependencies:
