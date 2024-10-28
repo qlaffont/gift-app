@@ -66,8 +66,8 @@ importers:
         specifier: 15.0.1
         version: 15.0.1(@babel/core@7.26.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.80.4)
       next-protected-auth:
-        specifier: 2.0.380
-        version: 2.0.380(@babel/core@7.26.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.80.4)
+        specifier: 2.0.381
+        version: 2.0.381(@babel/core@7.26.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.80.4)
       next-seo:
         specifier: 6.6.0
         version: 6.6.0(next@15.0.1(@babel/core@7.26.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.80.4))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -3099,8 +3099,8 @@ packages:
     resolution: {integrity: sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==}
     engines: {node: '>= 0.6'}
 
-  next-protected-auth@2.0.380:
-    resolution: {integrity: sha512-kKaKa/pbSScVZkp0Xx0YPWqG23fLbHPaTZwlVjB/d8wELf8RxUp9K39IUJnmrQfI+7S9z6Z1ws40ejkYZeSQ4Q==}
+  next-protected-auth@2.0.381:
+    resolution: {integrity: sha512-SI1Fn0z3lKApMsXBEIEtK75iUCQzGg+sblbqL2ki+OZybbRqUzh1i51zTlsVMNZyY3gBr3WJ/JOaR7xU3YCJoA==}
     engines: {node: '>=10'}
 
   next-seo@6.6.0:
@@ -7836,7 +7836,7 @@ snapshots:
 
   negotiator@0.6.3: {}
 
-  next-protected-auth@2.0.380(@babel/core@7.26.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.80.4):
+  next-protected-auth@2.0.381(@babel/core@7.26.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.80.4):
     dependencies:
       next: 15.0.1(@babel/core@7.26.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.80.4)
       usehooks-ts: 3.1.0(react@18.3.1)
