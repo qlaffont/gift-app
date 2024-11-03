@@ -19,7 +19,7 @@ importers:
         version: 5.21.1(prisma@5.21.1)
       '@tailwindcss/forms':
         specifier: 0.5.9
-        version: 0.5.9(tailwindcss@3.4.14(ts-node@10.9.2(@types/node@22.8.6)(typescript@5.6.3)))
+        version: 0.5.9(tailwindcss@3.4.14(ts-node@10.9.2(@types/node@22.8.7)(typescript@5.6.3)))
       '@tanstack/react-query':
         specifier: 5.59.17
         version: 5.59.17(react@18.3.1)
@@ -127,7 +127,7 @@ importers:
         version: 4.8.1
       tailwindcss:
         specifier: 3.4.14
-        version: 3.4.14(ts-node@10.9.2(@types/node@22.8.6)(typescript@5.6.3))
+        version: 3.4.14(ts-node@10.9.2(@types/node@22.8.7)(typescript@5.6.3))
       usehooks-ts:
         specifier: 3.1.0
         version: 3.1.0(react@18.3.1)
@@ -143,7 +143,7 @@ importers:
         version: 7.26.0
       '@commitlint/cli':
         specifier: 19.5.0
-        version: 19.5.0(@types/node@22.8.6)(typescript@5.6.3)
+        version: 19.5.0(@types/node@22.8.7)(typescript@5.6.3)
       '@commitlint/config-conventional':
         specifier: 19.5.0
         version: 19.5.0
@@ -155,10 +155,10 @@ importers:
         version: 15.0.2
       '@tailwindcss/line-clamp':
         specifier: 0.4.4
-        version: 0.4.4(tailwindcss@3.4.14(ts-node@10.9.2(@types/node@22.8.6)(typescript@5.6.3)))
+        version: 0.4.4(tailwindcss@3.4.14(ts-node@10.9.2(@types/node@22.8.7)(typescript@5.6.3)))
       '@types/node':
-        specifier: 22.8.6
-        version: 22.8.6
+        specifier: 22.8.7
+        version: 22.8.7
       '@types/react':
         specifier: 18.3.12
         version: 18.3.12
@@ -224,7 +224,7 @@ importers:
         version: 1.80.6
       ts-node:
         specifier: 10.9.2
-        version: 10.9.2(@types/node@22.8.6)(typescript@5.6.3)
+        version: 10.9.2(@types/node@22.8.7)(typescript@5.6.3)
       typescript:
         specifier: 5.6.3
         version: 5.6.3
@@ -972,8 +972,8 @@ packages:
   '@types/ms@0.7.31':
     resolution: {integrity: sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==}
 
-  '@types/node@22.8.6':
-    resolution: {integrity: sha512-tosuJYKrIqjQIlVCM4PEGxOmyg3FCPa/fViuJChnGeEIhjA46oy8FMVoF9su1/v8PNs2a8Q0iFNyOx0uOF91nw==}
+  '@types/node@22.8.7':
+    resolution: {integrity: sha512-LidcG+2UeYIWcMuMUpBKOnryBWG/rnmOHQR5apjn8myTQcx3rinFRn7DcIFhMnS0PPFSC6OafdIKEad0lj6U0Q==}
 
   '@types/parse-json@4.0.0':
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
@@ -4605,11 +4605,11 @@ snapshots:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
 
-  '@commitlint/cli@19.5.0(@types/node@22.8.6)(typescript@5.6.3)':
+  '@commitlint/cli@19.5.0(@types/node@22.8.7)(typescript@5.6.3)':
     dependencies:
       '@commitlint/format': 19.5.0
       '@commitlint/lint': 19.5.0
-      '@commitlint/load': 19.5.0(@types/node@22.8.6)(typescript@5.6.3)
+      '@commitlint/load': 19.5.0(@types/node@22.8.7)(typescript@5.6.3)
       '@commitlint/read': 19.5.0
       '@commitlint/types': 19.5.0
       tinyexec: 0.3.0
@@ -4656,7 +4656,7 @@ snapshots:
       '@commitlint/rules': 19.5.0
       '@commitlint/types': 19.5.0
 
-  '@commitlint/load@19.5.0(@types/node@22.8.6)(typescript@5.6.3)':
+  '@commitlint/load@19.5.0(@types/node@22.8.7)(typescript@5.6.3)':
     dependencies:
       '@commitlint/config-validator': 19.5.0
       '@commitlint/execute-rule': 19.5.0
@@ -4664,7 +4664,7 @@ snapshots:
       '@commitlint/types': 19.5.0
       chalk: 5.3.0
       cosmiconfig: 9.0.0(typescript@5.6.3)
-      cosmiconfig-typescript-loader: 5.0.0(@types/node@22.8.6)(cosmiconfig@9.0.0(typescript@5.6.3))(typescript@5.6.3)
+      cosmiconfig-typescript-loader: 5.0.0(@types/node@22.8.7)(cosmiconfig@9.0.0(typescript@5.6.3))(typescript@5.6.3)
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       lodash.uniq: 4.5.0
@@ -5160,14 +5160,14 @@ snapshots:
     dependencies:
       tslib: 2.6.2
 
-  '@tailwindcss/forms@0.5.9(tailwindcss@3.4.14(ts-node@10.9.2(@types/node@22.8.6)(typescript@5.6.3)))':
+  '@tailwindcss/forms@0.5.9(tailwindcss@3.4.14(ts-node@10.9.2(@types/node@22.8.7)(typescript@5.6.3)))':
     dependencies:
       mini-svg-data-uri: 1.4.4
-      tailwindcss: 3.4.14(ts-node@10.9.2(@types/node@22.8.6)(typescript@5.6.3))
+      tailwindcss: 3.4.14(ts-node@10.9.2(@types/node@22.8.7)(typescript@5.6.3))
 
-  '@tailwindcss/line-clamp@0.4.4(tailwindcss@3.4.14(ts-node@10.9.2(@types/node@22.8.6)(typescript@5.6.3)))':
+  '@tailwindcss/line-clamp@0.4.4(tailwindcss@3.4.14(ts-node@10.9.2(@types/node@22.8.7)(typescript@5.6.3)))':
     dependencies:
-      tailwindcss: 3.4.14(ts-node@10.9.2(@types/node@22.8.6)(typescript@5.6.3))
+      tailwindcss: 3.4.14(ts-node@10.9.2(@types/node@22.8.7)(typescript@5.6.3))
 
   '@tanstack/query-core@5.59.17': {}
 
@@ -5217,7 +5217,7 @@ snapshots:
 
   '@types/conventional-commits-parser@5.0.0':
     dependencies:
-      '@types/node': 22.8.6
+      '@types/node': 22.8.7
 
   '@types/cookie@0.6.0': {}
 
@@ -5253,7 +5253,7 @@ snapshots:
 
   '@types/ms@0.7.31': {}
 
-  '@types/node@22.8.6':
+  '@types/node@22.8.7':
     dependencies:
       undici-types: 6.19.8
 
@@ -5926,9 +5926,9 @@ snapshots:
 
   core-util-is@1.0.2: {}
 
-  cosmiconfig-typescript-loader@5.0.0(@types/node@22.8.6)(cosmiconfig@9.0.0(typescript@5.6.3))(typescript@5.6.3):
+  cosmiconfig-typescript-loader@5.0.0(@types/node@22.8.7)(cosmiconfig@9.0.0(typescript@5.6.3))(typescript@5.6.3):
     dependencies:
-      '@types/node': 22.8.6
+      '@types/node': 22.8.7
       cosmiconfig: 9.0.0(typescript@5.6.3)
       jiti: 1.21.0
       typescript: 5.6.3
@@ -8137,13 +8137,13 @@ snapshots:
       camelcase-css: 2.0.1
       postcss: 8.4.47
 
-  postcss-load-config@4.0.2(postcss@8.4.47)(ts-node@10.9.2(@types/node@22.8.6)(typescript@5.6.3)):
+  postcss-load-config@4.0.2(postcss@8.4.47)(ts-node@10.9.2(@types/node@22.8.7)(typescript@5.6.3)):
     dependencies:
       lilconfig: 3.1.2
       yaml: 2.5.0
     optionalDependencies:
       postcss: 8.4.47
-      ts-node: 10.9.2(@types/node@22.8.6)(typescript@5.6.3)
+      ts-node: 10.9.2(@types/node@22.8.7)(typescript@5.6.3)
 
   postcss-nested@6.0.1(postcss@8.4.47):
     dependencies:
@@ -8880,7 +8880,7 @@ snapshots:
       '@pkgr/core': 0.1.1
       tslib: 2.6.2
 
-  tailwindcss@3.4.14(ts-node@10.9.2(@types/node@22.8.6)(typescript@5.6.3)):
+  tailwindcss@3.4.14(ts-node@10.9.2(@types/node@22.8.7)(typescript@5.6.3)):
     dependencies:
       '@alloc/quick-lru': 5.2.0
       arg: 5.0.2
@@ -8899,7 +8899,7 @@ snapshots:
       postcss: 8.4.47
       postcss-import: 15.1.0(postcss@8.4.47)
       postcss-js: 4.0.1(postcss@8.4.47)
-      postcss-load-config: 4.0.2(postcss@8.4.47)(ts-node@10.9.2(@types/node@22.8.6)(typescript@5.6.3))
+      postcss-load-config: 4.0.2(postcss@8.4.47)(ts-node@10.9.2(@types/node@22.8.7)(typescript@5.6.3))
       postcss-nested: 6.0.1(postcss@8.4.47)
       postcss-selector-parser: 6.0.11
       resolve: 1.22.8
@@ -8973,14 +8973,14 @@ snapshots:
 
   ts-interface-checker@0.1.13: {}
 
-  ts-node@10.9.2(@types/node@22.8.6)(typescript@5.6.3):
+  ts-node@10.9.2(@types/node@22.8.7)(typescript@5.6.3):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.9
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.3
-      '@types/node': 22.8.6
+      '@types/node': 22.8.7
       acorn: 8.8.0
       acorn-walk: 8.2.0
       arg: 4.1.3
