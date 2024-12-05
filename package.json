@@ -42,7 +42,7 @@
     "next-seo": "6.6.0",
     "nextkit": "^3.4.3",
     "node-fetch": "3",
-    "node-gyp": "^10.1.0",
+    "node-gyp": "^11.0.0",
     "nprogress": "^0.2.0",
     "prisma": "^6.0.0",
     "prisma-field-encryption": "^1.5.2",
