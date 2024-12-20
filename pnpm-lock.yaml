@@ -94,7 +94,7 @@ importers:
         version: 18.3.1
       react-date-picker:
         specifier: ^11.0.0
-        version: 11.0.0(@types/react-dom@18.3.5(@types/react@18.3.17))(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 11.0.0(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-dom:
         specifier: 18.3.1
         version: 18.3.1(react@18.3.1)
@@ -109,10 +109,10 @@ importers:
         version: 2.4.1(csstype@3.1.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-markdown:
         specifier: ^9.0.0
-        version: 9.0.1(@types/react@18.3.17)(react@18.3.1)
+        version: 9.0.1(@types/react@18.3.18)(react@18.3.1)
       react-select:
         specifier: 5.9.0
-        version: 5.9.0(@babel/core@7.26.0)(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 5.9.0(@babel/core@7.26.0)(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       rosetty-react:
         specifier: 3.0.239
         version: 3.0.239
@@ -149,7 +149,7 @@ importers:
         version: 19.6.0
       '@hookform/devtools':
         specifier: 4.3.3
-        version: 4.3.3(@babel/core@7.26.0)(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 4.3.3(@babel/core@7.26.0)(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@next/eslint-plugin-next':
         specifier: ^15.0.0
         version: 15.1.2
@@ -160,11 +160,11 @@ importers:
         specifier: 22.10.2
         version: 22.10.2
       '@types/react':
-        specifier: 18.3.17
-        version: 18.3.17
+        specifier: 18.3.18
+        version: 18.3.18
       '@types/react-dom':
         specifier: 18.3.5
-        version: 18.3.5(@types/react@18.3.17)
+        version: 18.3.5(@types/react@18.3.18)
       '@typescript-eslint/eslint-plugin':
         specifier: 8.18.1
         version: 8.18.1(@typescript-eslint/parser@8.18.1(eslint@8.57.1)(typescript@5.7.2))(eslint@8.57.1)(typescript@5.7.2)
@@ -982,8 +982,8 @@ packages:
   '@types/react-transition-group@4.4.5':
     resolution: {integrity: sha512-juKD/eiSM3/xZYzjuzH6ZwpP+/lejltmiS3QEzV/vmb/Q8+HfDmxu+Baga8UEMGBqV88Nbg4l2hY/K2DkyaLLA==}
 
-  '@types/react@18.3.17':
-    resolution: {integrity: sha512-opAQ5no6LqJNo9TqnxBKsgnkIYHozW9KSTlFVoSUJYh1Fl/sswkEoqIugRSm7tbh6pABtYjGAjW+GOS23j8qbw==}
+  '@types/react@18.3.18':
+    resolution: {integrity: sha512-t4yC+vtgnkYjNSKlFx1jkAhH8LgTo2N/7Qvi83kdEaUtMDiwpbLAktKDaAMlRcJ5eSxZkH74eEGt1ky31d7kfQ==}
 
   '@types/unist@2.0.6':
     resolution: {integrity: sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==}
@@ -4710,7 +4710,7 @@ snapshots:
 
   '@emotion/memoize@0.8.0': {}
 
-  '@emotion/react@11.10.4(@babel/core@7.26.0)(@types/react@18.3.17)(react@18.3.1)':
+  '@emotion/react@11.10.4(@babel/core@7.26.0)(@types/react@18.3.18)(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.21.0
       '@emotion/babel-plugin': 11.10.2(@babel/core@7.26.0)
@@ -4723,7 +4723,7 @@ snapshots:
       react: 18.3.1
     optionalDependencies:
       '@babel/core': 7.26.0
-      '@types/react': 18.3.17
+      '@types/react': 18.3.18
     transitivePeerDependencies:
       - supports-color
 
@@ -4737,19 +4737,19 @@ snapshots:
 
   '@emotion/sheet@1.2.0': {}
 
-  '@emotion/styled@11.10.4(@babel/core@7.26.0)(@emotion/react@11.10.4(@babel/core@7.26.0)(@types/react@18.3.17)(react@18.3.1))(@types/react@18.3.17)(react@18.3.1)':
+  '@emotion/styled@11.10.4(@babel/core@7.26.0)(@emotion/react@11.10.4(@babel/core@7.26.0)(@types/react@18.3.18)(react@18.3.1))(@types/react@18.3.18)(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.21.0
       '@emotion/babel-plugin': 11.10.2(@babel/core@7.26.0)
       '@emotion/is-prop-valid': 1.2.0
-      '@emotion/react': 11.10.4(@babel/core@7.26.0)(@types/react@18.3.17)(react@18.3.1)
+      '@emotion/react': 11.10.4(@babel/core@7.26.0)(@types/react@18.3.18)(react@18.3.1)
       '@emotion/serialize': 1.1.0
       '@emotion/use-insertion-effect-with-fallbacks': 1.0.0(react@18.3.1)
       '@emotion/utils': 1.2.0
       react: 18.3.1
     optionalDependencies:
       '@babel/core': 7.26.0
-      '@types/react': 18.3.17
+      '@types/react': 18.3.18
     transitivePeerDependencies:
       - supports-color
 
@@ -4799,10 +4799,10 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@hookform/devtools@4.3.3(@babel/core@7.26.0)(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@hookform/devtools@4.3.3(@babel/core@7.26.0)(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@emotion/react': 11.10.4(@babel/core@7.26.0)(@types/react@18.3.17)(react@18.3.1)
-      '@emotion/styled': 11.10.4(@babel/core@7.26.0)(@emotion/react@11.10.4(@babel/core@7.26.0)(@types/react@18.3.17)(react@18.3.1))(@types/react@18.3.17)(react@18.3.1)
+      '@emotion/react': 11.10.4(@babel/core@7.26.0)(@types/react@18.3.18)(react@18.3.1)
+      '@emotion/styled': 11.10.4(@babel/core@7.26.0)(@emotion/react@11.10.4(@babel/core@7.26.0)(@types/react@18.3.18)(react@18.3.1))(@types/react@18.3.18)(react@18.3.1)
       '@types/lodash': 4.14.185
       little-state-machine: 4.7.0(react@18.3.1)
       lodash: 4.17.21
@@ -5215,15 +5215,15 @@ snapshots:
 
   '@types/prop-types@15.7.5': {}
 
-  '@types/react-dom@18.3.5(@types/react@18.3.17)':
+  '@types/react-dom@18.3.5(@types/react@18.3.18)':
     dependencies:
-      '@types/react': 18.3.17
+      '@types/react': 18.3.18
 
   '@types/react-transition-group@4.4.5':
     dependencies:
-      '@types/react': 18.3.17
+      '@types/react': 18.3.18
 
-  '@types/react@18.3.17':
+  '@types/react@18.3.18':
     dependencies:
       '@types/prop-types': 15.7.5
       csstype: 3.1.3
@@ -8163,7 +8163,7 @@ snapshots:
 
   quick-format-unescaped@4.0.4: {}
 
-  react-calendar@5.0.0(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  react-calendar@5.0.0(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@wojtekmaj/date-utils': 1.1.3
       clsx: 2.1.1
@@ -8172,21 +8172,21 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
       warning: 4.0.3
     optionalDependencies:
-      '@types/react': 18.3.17
+      '@types/react': 18.3.18
 
-  react-date-picker@11.0.0(@types/react-dom@18.3.5(@types/react@18.3.17))(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  react-date-picker@11.0.0(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@wojtekmaj/date-utils': 1.1.3
       clsx: 2.1.1
       get-user-locale: 2.3.1
       make-event-props: 1.6.2
       react: 18.3.1
-      react-calendar: 5.0.0(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react-calendar: 5.0.0(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-dom: 18.3.1(react@18.3.1)
-      react-fit: 2.0.1(@types/react-dom@18.3.5(@types/react@18.3.17))(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react-fit: 2.0.1(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       update-input-width: 1.4.2
     optionalDependencies:
-      '@types/react': 18.3.17
+      '@types/react': 18.3.18
     transitivePeerDependencies:
       - '@types/react-dom'
 
@@ -8208,15 +8208,15 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  react-fit@2.0.1(@types/react-dom@18.3.5(@types/react@18.3.17))(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  react-fit@2.0.1(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       detect-element-overflow: 1.4.2
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       warning: 4.0.3
     optionalDependencies:
-      '@types/react': 18.3.17
-      '@types/react-dom': 18.3.5(@types/react@18.3.17)
+      '@types/react': 18.3.18
+      '@types/react-dom': 18.3.5(@types/react@18.3.18)
 
   react-hook-form@7.54.1(react@18.3.1):
     dependencies:
@@ -8232,10 +8232,10 @@ snapshots:
 
   react-is@16.13.1: {}
 
-  react-markdown@9.0.1(@types/react@18.3.17)(react@18.3.1):
+  react-markdown@9.0.1(@types/react@18.3.18)(react@18.3.1):
     dependencies:
       '@types/hast': 3.0.4
-      '@types/react': 18.3.17
+      '@types/react': 18.3.18
       devlop: 1.1.0
       hast-util-to-jsx-runtime: 2.3.0
       html-url-attributes: 3.0.0
@@ -8249,11 +8249,11 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  react-select@5.9.0(@babel/core@7.26.0)(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  react-select@5.9.0(@babel/core@7.26.0)(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@babel/runtime': 7.21.0
       '@emotion/cache': 11.10.3
-      '@emotion/react': 11.10.4(@babel/core@7.26.0)(@types/react@18.3.17)(react@18.3.1)
+      '@emotion/react': 11.10.4(@babel/core@7.26.0)(@types/react@18.3.18)(react@18.3.1)
       '@floating-ui/dom': 1.0.2
       '@types/react-transition-group': 4.4.5
       memoize-one: 6.0.0
@@ -8261,7 +8261,7 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       react-transition-group: 4.4.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      use-isomorphic-layout-effect: 1.2.0(@types/react@18.3.17)(react@18.3.1)
+      use-isomorphic-layout-effect: 1.2.0(@types/react@18.3.18)(react@18.3.1)
     transitivePeerDependencies:
       - '@babel/core'
       - '@types/react'
@@ -9085,11 +9085,11 @@ snapshots:
       dequal: 2.0.3
       react: 18.3.1
 
-  use-isomorphic-layout-effect@1.2.0(@types/react@18.3.17)(react@18.3.1):
+  use-isomorphic-layout-effect@1.2.0(@types/react@18.3.18)(react@18.3.1):
     dependencies:
       react: 18.3.1
     optionalDependencies:
-      '@types/react': 18.3.17
+      '@types/react': 18.3.18
 
   usehooks-ts@3.1.0(react@18.3.1):
     dependencies:
